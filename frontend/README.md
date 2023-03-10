@@ -1,32 +1,27 @@
-## Welcome to Book-Store app!
+# BookStore
 
----
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.6.
 
-### Installation
+## Development server
 
-EF Core Sql, Tools
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-### Features
+## Code scaffolding
 
-It's an app allows users to search and purchase a book online based on title, author and subject. 
-and the user can order their books online through credit card payment. Using this Website the user 
-can purchase a book online instead of going out to a book store and wasting time.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-The user can login using his account details or new customers can set up an account very quickly. 
+## Build
 
-They should give the details of their username, contact number and shipping address. 
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-The books are divided into many categories based on subject like Software, Database, English, Architecture etc.
+## Running unit tests
 
-The Administrator will have additional functionalities when compared to the
-common user. 
-He can add, delete and update the book details, book categories,
-member information and also confirm a placed order.
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-### technologies
+## Running end-to-end tests
 
-This application is developed using C#, ASP.NET, Web API, Angular. 
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-The Master page, data sets, user controls are used to develop the Online Book store. 
+## Further help
 
----
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

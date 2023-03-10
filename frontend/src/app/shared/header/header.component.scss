@@ -1,0 +1,12 @@
+.site-header{
+  background-color: black;
+  a{
+    color: #999;
+    transition: ease-in-out color .15s;
+    text-decoration: none;
+    &:hover{
+      color: var(--bs-link-color);
+
+    }
+  }
+}
