@@ -18,7 +18,7 @@ namespace Book_Store.Repository
             return context.Set<T>().ToList();
         }
 
-        public T GetByID(int id)
+        public T GetById(int id)
         {
             return context.Set<T>().Find(id);
         }

@@ -1,5 +1,6 @@
 
 using Book_Store.Models;
+using Book_Store.Repository.Books_Repo;
 using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store
@@ -20,6 +21,10 @@ namespace Book_Store
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Cs"));
             });
+
+            // add scoped
+            builder.Services.AddScoped<IBooksRepository, BooksRepository>();
+
 
             var app = builder.Build();
 
