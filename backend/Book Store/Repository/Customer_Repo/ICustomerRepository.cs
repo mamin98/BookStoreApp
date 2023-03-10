@@ -2,10 +2,10 @@
 
 namespace Book_Store.Repository.Customers_Repo
 {
-    public interface ICustomersRepository
+    public interface ICustomerRepository
     {
         void Delete(int id);
-        List<Customers> GetAll();
-        Customers GetById(int id);
+        List<Customer> GetAll();
+        Customer GetById(int id);
     }
 }

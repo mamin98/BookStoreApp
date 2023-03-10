@@ -4,6 +4,6 @@
     {
         public int Id { get; set; }
         public string Name { get; set; } = "";
-        public List<Books> Books { get; set; } = new List<Books>();
+        public List<Book> Books { get; set; } = new List<Book>();
     }
 }

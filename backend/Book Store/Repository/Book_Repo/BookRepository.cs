@@ -2,29 +2,29 @@
 
 namespace Book_Store.Repository.Books_Repo
 {
-    public class BooksRepository : IBooksRepository
+    public class BookRepository : IBookRepository
     {
         private readonly BookStoreContext context;
 
-        public BooksRepository(BookStoreContext _context)
+        public BookRepository(BookStoreContext _context)
         {
             context = _context;
         }
 
         // All Books
-        public List<Books> GetAll()
+        public List<Book> GetAll()
         {
             return context.Books.ToList();
         }
 
         // Book by Id
-        public Books GetById(int id)
+        public Book GetById(int id)
         {
             return context.Books.FirstOrDefault(b => b.Id == id);
         }
 
         // Add new Book
-        public void Insert(Books book)
+        public void Insert(Book book)
         {
 
             context.Books.Add(book);
@@ -32,7 +32,7 @@ namespace Book_Store.Repository.Books_Repo
         }
 
         // update Book details
-        public void Edit(Books book, int id)
+        public void Edit(Book book, int id)
         {
             book = GetById(id);
             context.Update(book);
@@ -44,7 +44,7 @@ namespace Book_Store.Repository.Books_Repo
         // Delete Book 
         public void Delete(int id)
         {
-            Books Book = GetById(id);
+            Book Book = GetById(id);
             context.Books.Remove(Book);
 
             context.SaveChanges();

@@ -6,6 +6,6 @@ namespace Book_Store.Models
     {
         public int Id { get; set; }
         public string Name { get; set; } = "";
-        public List<Books> Book { get; set; } = new List<Books>();
+        public List<Book> Book { get; set; } = new List<Book>();
     }
 }

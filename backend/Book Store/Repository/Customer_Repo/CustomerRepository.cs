@@ -2,23 +2,23 @@
 
 namespace Book_Store.Repository.Customers_Repo
 {
-    public class CustomersRepository : ICustomersRepository
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly BookStoreContext context;
 
-        public CustomersRepository(BookStoreContext _context)
+        public CustomerRepository(BookStoreContext _context)
         {
             context = _context;
         }
 
         // All Customers
-        public List<Customers> GetAll()
+        public List<Customer> GetAll()
         {
             return context.Customers.ToList();
         }
 
         // Customer by Id
-        public Customers GetById(int id)
+        public Customer GetById(int id)
         {
             return context.Customers.FirstOrDefault(b => b.ID == id);
         }
@@ -27,7 +27,7 @@ namespace Book_Store.Repository.Customers_Repo
         // Delete Customer 
         public void Delete(int id)
         {
-            Customers Book = GetById(id);
+            Customer Book = GetById(id);
             context.Customers.Remove(Book);
 
             context.SaveChanges();

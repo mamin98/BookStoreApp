@@ -4,10 +4,10 @@ namespace Book_Store.Models
 {
     public class BookStoreContext: DbContext
     {
-        public DbSet<Customers> Customers { get; set; }
-        public DbSet<Books> Books { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Book> Books { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
-        public DbSet<Orders> Orders { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public DbSet<Author> Author { get; set; }
         public DbSet<Publisher> Publisher { get; set; }
         public DbSet<Types> Types { get; set; }
@@ -20,7 +20,7 @@ namespace Book_Store.Models
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<OrderItem>()
-                .HasKey(k => new { k.OrederId, k.BookId});
+                .HasKey(k => new { k.OrderId, k.BookId});
 
         }
     }

@@ -2,29 +2,29 @@
 
 namespace Book_Store.Repository.Orders_Repo
 {
-    public class OrdersRepository : IOrdersRepository
+    public class OrderRepository : IOrderRepository
     {
         private readonly BookStoreContext context;
 
-        public OrdersRepository(BookStoreContext _context)
+        public OrderRepository(BookStoreContext _context)
         {
             context = _context;
         }
 
         // All orders
-        public List<Orders> GetAll()
+        public List<Order> GetAll()
         {
             return context.Orders.ToList();
         }
 
         // order by Id
-        public Orders GetById(int id)
+        public Order GetById(int id)
         {
             return context.Orders.FirstOrDefault(b => b.Id == id);
         }
 
         // Add new order
-        public void Insert(Orders order)
+        public void Insert(Order order)
         {
 
             context.Orders.Add(order);
@@ -32,7 +32,7 @@ namespace Book_Store.Repository.Orders_Repo
         }
 
         // update order details
-        public void Edit(Orders order, int id)
+        public void Edit(Order order, int id)
         {
             order = GetById(id);
             context.Update(order);
@@ -44,7 +44,7 @@ namespace Book_Store.Repository.Orders_Repo
         // Delete order 
         public void Delete(int id)
         {
-            Orders order = GetById(id);
+            Order order = GetById(id);
             context.Orders.Remove(order);
 
             context.SaveChanges();

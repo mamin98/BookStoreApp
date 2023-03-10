@@ -8,12 +8,12 @@ namespace Book_Store.Models
         public decimal Price { get; set; }
         
         [ForeignKey("Orders")]
-        public int OrederId { get; set; }
-        public Orders Orders { get; set; } = new Orders();
+        public int OrderId { get; set; }
+        public Order Orders { get; set; } = new Order();
 
 
         [ForeignKey("Books")]
         public int BookId { get; set; }
-        public Books Books { get; set; } = new Books();
+        public Book Books { get; set; } = new Book();
     }
 }

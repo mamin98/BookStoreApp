@@ -2,7 +2,7 @@
 
 namespace Book_Store.Models
 {
-    public class Orders
+    public class Order
     {
         public int Id { get; set; }
         public DateTime? OrderDate { get; set; }
@@ -10,7 +10,7 @@ namespace Book_Store.Models
 
         [ForeignKey("Customer")]
         public int CustomerId { get; set; }
-        public Customers Customer { get; set; } = new Customers();
+        public Customer Customer { get; set; } = new Customer();
 
         public List<OrderItem> Books { get; set; } = new List<OrderItem>();
     }
