@@ -23,7 +23,11 @@ namespace Book_Store.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(book_Repo.GetAll());
+            var Books = book_Repo.GetAll();
+
+            var MappedBooks = mapper.Map<List<HomeBookDto>>(Books);
+
+            return Ok(MappedBooks);
         }
 
         [HttpGet("{id}", Name ="BookRoute")]
@@ -38,14 +42,20 @@ namespace Book_Store.Controllers
 
             var mappedBook = mapper.Map<BookDetailsDto>(book);
 
+            mappedBook.AuthorName = book.Author.FirstName + " " + book.Author.LastName;
+            mappedBook.BookType = book.BookType.Name;
+            mappedBook.PublisherName = book.Publisher.Name;
+
             return Ok(mappedBook);
         }
 
         [HttpPost]
-        public IActionResult PostBook(Book book)
+        public IActionResult PostBook([FromForm]BookDto dto)
         {
             if(ModelState.IsValid)
             {
+                var book = mapper.Map<Book>(dto);
+                book.IsRecommended = true;
                 book_Repo.Insert(book);
 
                 string actionLink = Url.Link("BookRoute", new { id = book.Id });
@@ -55,7 +65,7 @@ namespace Book_Store.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult PutBook(Book book, int id) 
+        public IActionResult PutBook([FromForm]Book book, int id) 
         {
             var ExistingBook = book_Repo.GetById(id);
 
@@ -69,10 +79,10 @@ namespace Book_Store.Controllers
                     return StatusCode(StatusCodes.Status204NoContent);
                 }
 
+                // if model is invalid
                 return BadRequest(ModelState);
             }
 
-            // if model is invalid
             return NotFound($"There is No such a book with id: {id}");
         }
 
@@ -93,7 +103,8 @@ namespace Book_Store.Controllers
 
                     // no content, data deleted
                     return StatusCode(StatusCodes.Status204NoContent);
-                }catch(Exception ex)
+                }
+                catch(Exception ex)
                 {
                     return BadRequest(ex.Message);
                 }

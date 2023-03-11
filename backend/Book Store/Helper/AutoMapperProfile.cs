@@ -9,7 +9,8 @@ namespace Book_Store.Helper
         public AutoMapperProfile() 
         {
             CreateMap<Book, BookDetailsDto>();
-
+            CreateMap<Book, HomeBookDto>();
+            CreateMap<BookDto, Book>();
         }
     }
 }
