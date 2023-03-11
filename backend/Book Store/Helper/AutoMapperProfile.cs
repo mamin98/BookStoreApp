@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Book_Store.DTOs.AuthorDTOs;
 using Book_Store.DTOs.BookDTOs;
 using Book_Store.Models;
 
@@ -11,6 +12,7 @@ namespace Book_Store.Helper
             CreateMap<Book, BookDetailsDto>();
             CreateMap<Book, HomeBookDto>();
             CreateMap<BookDto, Book>();
+            CreateMap<CreateAuthorDto, Author>();
         }
     }
 }
