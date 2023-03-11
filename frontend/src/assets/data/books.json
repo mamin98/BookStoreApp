@@ -1,0 +1,112 @@
+
+   [
+    {
+        "id": 1,
+        "author_id": 1,
+        "title": "Oliver Twist",
+        "cover_image": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1545854312l/12609433._SY475_.jpg",
+        "pages": 234,
+        "releaseDate": "1839",
+        "isbn": "wt345"
+    },
+    {
+        "id": 2,
+        "author_id": 1,
+        "title": "Hard Times",
+        "cover_image": "https://cdn.waterstones.com/override/v1/large/9781/8479/9781847941831.jpg",
+        "pages": 300,
+        "releaseDate": "1854",
+        "isbn": "jk654"
+    },
+    {
+        "id": 3,
+        "author_id": 3,
+        "title": "Hamlet",
+        "cover_image": "https://images-na.ssl-images-amazon.com/images/I/8174kfNgcwL.jpg",
+        "pages": 160,
+        "releaseDate": "1603",
+        "isbn": "po789"
+    },
+    {
+        "id": 4,
+        "author_id": 2,
+        "title": "IT",
+        "cover_image": "https://images-na.ssl-images-amazon.com/images/I/81qW97ndkvL.jpg",
+        "pages": 500,
+        "releaseDate": "2017",
+        "isbn": "yu098"
+    },
+    {
+        "id": 5,
+        "author_id": 4,
+        "title": "Norwegian Wood",
+        "cover_image": "http://t1.gstatic.com/images?q=tbn:ANd9GcQvJJDi2mzwg9v_PlmKYL31gXIz0kvAObJak7DVFPcD_mJTIyec",
+        "pages": 296,
+        "releaseDate": "1987",
+        "isbn": "hj846"
+    },
+    {
+        "id": 6,
+        "author_id": 4,
+        "title": "Kafka on the Shore",
+        "cover_image": "http://t0.gstatic.com/images?q=tbn:ANd9GcRHFU_j93PPsbQGqoaZJnHH6-Emk_sIxG823SkoRTL0nvdEP41f",
+        "pages": 505,
+        "releaseDate": "2002",
+        "isbn": "op012"
+    },
+    {
+        "id": 7,
+        "author_id": 4,
+        "title": "After Dark",
+        "cover_image": "http://t3.gstatic.com/images?q=tbn:ANd9GcQBMNA8A19vQpNY4bkgadsLhiRUFqBKwKAA6ANrw8VEtOiPrYQJ",
+        "pages": 208,
+        "releaseDate": "2004",
+        "isbn": "cv456"
+    },
+    {
+        "id": 8,
+        "author_id": 4,
+        "title": "1Q84",
+        "cover_image": "http://t0.gstatic.com/images?q=tbn:ANd9GcTBQZSg-b2LFkLlt9fWndS1w8SONabDZBHf0dtdb3-bqcuKxduL",
+        "pages": 928,
+        "releaseDate": "2009",
+        "isbn": "al207"
+    },
+    {
+      "id": 8,
+      "author_id": 4,
+      "title": "1Q84",
+      "cover_image": "https://images-na.ssl-images-amazon.com/images/I/71dqHMWtq+L.jpg",
+      "pages": 928,
+      "releaseDate": "2009",
+      "isbn": "al207"
+  },
+  {
+    "id": 8,
+    "author_id": 4,
+    "title": "1Q84",
+    "cover_image": "https://images-na.ssl-images-amazon.com/images/I/71dqHMWtq+L.jpg",
+    "pages": 928,
+    "releaseDate": "2009",
+    "isbn": "al207"
+},
+{
+  "id": 8,
+  "author_id": 4,
+  "title": "1Q84",
+  "cover_image": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/dbda674d-f60b-4393-b71b-f70c1d874880/511x3v3NcWL._SX218_BO1204203200_QL40_ML2_.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230310%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230310T194234Z&X-Amz-Expires=86400&X-Amz-Signature=8ec4cb3cb71311cc0907d6266de1a8f896193b0abd5c5c71ca7fc94f300408fa&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22511x3v3NcWL._SX218_BO1%252C204%252C203%252C200_QL40_ML2_.jpg%22&x-id=GetObject",
+  "pages": 928,
+  "releaseDate": "2009",
+  "isbn": "al207"
+},
+{
+  "id": 8,
+  "author_id": 4,
+  "title": "1Q84",
+  "cover_image": "https://images-na.ssl-images-amazon.com/images/I/41YJyWQCBZL._SX310_BO1,204,203,200_.jpg",
+  "pages": 928,
+  "releaseDate": "2009",
+  "isbn": "al207"
+}
+  ]
+
