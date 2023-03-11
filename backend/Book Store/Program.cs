@@ -1,5 +1,5 @@
-
 using Book_Store.Models;
+using Book_Store.Repository.Author_Repo;
 using Book_Store.Repository.Books_Repo;
 using Book_Store.Repository.Orders_Repo;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +29,7 @@ namespace Book_Store
             // add scoped
             builder.Services.AddScoped<IBookRepository, BookRepository>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 
             var app = builder.Build();
 

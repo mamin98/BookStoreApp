@@ -6,5 +6,8 @@ namespace Book_Store.Repository.Author_Repo
     {
         List<Author> GetAll();
         Author GetById(int id);
+        void Insert(Author author);
+        void Edit(Author author, int id);
+        void Delete(int id);
     }
 }
