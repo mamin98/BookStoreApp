@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Book_Store.DTOs.BookDTOs;
+using Book_Store.Models;
 
 namespace Book_Store.Helper
 {
@@ -6,7 +8,8 @@ namespace Book_Store.Helper
     {
         public AutoMapperProfile() 
         {
-               
+            CreateMap<Book, BookDetailsDto>();
+
         }
     }
 }

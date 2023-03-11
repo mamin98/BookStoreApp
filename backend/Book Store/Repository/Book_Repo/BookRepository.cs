@@ -34,8 +34,10 @@ namespace Book_Store.Repository.Books_Repo
         // update Book details
         public void Edit(Book book, int id)
         {
-            book = GetById(id);
-            context.Update(book);
+            Book ExistingBook = GetById(id);
+
+            ExistingBook = book;
+            context.Update(ExistingBook);
 
             context.SaveChanges();
         }
