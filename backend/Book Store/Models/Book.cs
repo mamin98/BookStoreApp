@@ -9,8 +9,9 @@ namespace Book_Store.Models
         public string Isbn { get; set; } = "";
         public decimal Price { get; set; }
         public DateTime? PublicationDate { get; set; }
-        public string? Image { get; set; }
-        
+        public byte[]? Image { get; set; }
+        public bool IsRecommended { get; set; } = false;
+
         // Publisher
         [ForeignKey("Publisher")]
         public int PublisherId { get; set; }

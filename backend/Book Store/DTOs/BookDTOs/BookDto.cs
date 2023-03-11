@@ -21,7 +21,7 @@ namespace Book_Store.DTOs.BookDTOs
         
         [DataType(DataType.Date)]
         public DateTime? PublicationDate { get; set; }
-        public string? Image { get; set; }
+        public byte[]? Image { get; set; }
 
         // Publisher        
         [Required(ErrorMessage = "Choose a Book Publisher")]

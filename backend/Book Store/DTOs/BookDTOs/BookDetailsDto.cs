@@ -10,7 +10,7 @@ namespace Book_Store.DTOs.BookDTOs
         public string Isbn { get; set; } = "";
         public decimal Price { get; set; }
         public DateTime? PublicationDate { get; set; }
-        public string? Image { get; set; }
+        public byte[]? Image { get; set; }
 
         // Publisher
         public int PublisherId { get; set; }
