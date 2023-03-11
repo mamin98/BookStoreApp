@@ -1,6 +1,6 @@
-﻿namespace Book_Store.ViewModels.BookViewModel
+﻿namespace Book_Store.DTOs.BookDTOs
 {
-    public class HomeBookViewModel
+    public class HomeBookDto
     {
         public int ID { get; set; }
 

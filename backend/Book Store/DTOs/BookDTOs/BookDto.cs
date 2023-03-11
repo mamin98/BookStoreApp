@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Book_Store.ViewModels.BookViewModel
+namespace Book_Store.DTOs.BookDTOs
 {
-    public class BookViewModel
+    public class BookDto
     {
         public int Id { get; set; }
         
