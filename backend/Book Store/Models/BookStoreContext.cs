@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Book_Store.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store.Models
 {
@@ -22,6 +23,8 @@ namespace Book_Store.Models
             modelBuilder.Entity<OrderItem>()
                 .HasKey(k => new { k.OrderId, k.BookId});
 
+            // seed dummy data
+            modelBuilder.Seed();
         }
     }
 }
