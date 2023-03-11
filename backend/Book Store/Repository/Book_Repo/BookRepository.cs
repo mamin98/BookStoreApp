@@ -1,4 +1,5 @@
 ﻿using Book_Store.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store.Repository.Books_Repo
 {
@@ -20,13 +21,15 @@ namespace Book_Store.Repository.Books_Repo
         // Book by Id
         public Book GetById(int id)
         {
-            return context.Books.FirstOrDefault(b => b.Id == id);
+            return context.Books.Include(b => b.Author)
+                .Include(b => b.BookType)
+                .Include(b => b.Publisher)
+                .FirstOrDefault(b => b.Id == id);
         }
 
         // Add new Book
         public void Insert(Book book)
         {
-
             context.Books.Add(book);
             context.SaveChanges();
         }
