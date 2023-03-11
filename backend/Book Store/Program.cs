@@ -23,6 +23,9 @@ namespace Book_Store
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Cs"));
             });
 
+            //Auto Mapper Registeration
+            builder.Services.AddAutoMapper(typeof(Program));
+
             // add scoped
             builder.Services.AddScoped<IBookRepository, BookRepository>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
