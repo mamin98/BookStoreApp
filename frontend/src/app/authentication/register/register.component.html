@@ -1,1 +1,71 @@
-<p>register works!</p>
+<div class="container">
+  <h2>Sign-Up</h2>
+  <br />
+  <form [formGroup]="regForm">
+    <div class="form-group">
+      <label for="name">User Name : </label>
+      <input
+        type="text"
+        class="form-control"
+        [class.is-invalid]="username?.invalid && username?.touched"
+        formControlName="username"
+        name="username"
+      />
+      <div *ngIf="username?.invalid && username?.touched">
+        <small class="text-danger" *ngIf="username?.errors?.['required']"
+          >User Name Is Required !</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email : </label>
+      <input
+        type="email"
+        class="form-control"
+        [class.is-invalid]="email?.invalid && email?.touched"
+        formControlName="email"
+        name="email"
+      />
+      <div *ngIf="email?.invalid && email?.touched">
+        <small class="text-danger" *ngIf="email?.errors?.['required']"
+          >Email Is Required !</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="pass">Password : </label>
+      <input
+        type="password"
+        class="form-control"
+        [class.is-invalid]="password?.invalid && password?.touched"
+        formControlName="password"
+        name="password"
+      />
+      <div *ngIf="password?.invalid && password?.touched">
+        <small class="text-danger" *ngIf="password?.errors?.['required']"
+          >Password Is Required !</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="confirmPass">Confirm-Password : </label>
+      <input
+        type="password"
+        class="form-control"
+        [class.is-invalid]="confirmPass?.invalid && confirmPass?.touched"
+        formControlName="confirmPass"
+        name="confirmPass"
+      />
+      <div *ngIf="confirmPass?.invalid && confirmPass?.touched">
+        <small class="text-danger" *ngIf="confirmPass?.errors?.['required']"
+          >Confirm Password Is Required!</small
+        >
+      </div>
+      <small class="text-danger" *ngIf="regForm.errors?.['misMatch']"
+        >Doesn't Match Password !</small
+      >
+    </div>
+
+    <input type="submit" class="btn btn-success" value="Sign-Up" />
+  </form>
+</div>
