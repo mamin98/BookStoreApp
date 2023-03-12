@@ -69,7 +69,7 @@ namespace Book_Store.Controllers
 
                     author_Repo.Edit(mappedAuthor, id);
 
-                    // no content, data updated
+                    // Return with Modified Author
                     return Ok(mappedAuthor);
                 }
 
