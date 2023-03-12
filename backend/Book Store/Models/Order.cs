@@ -10,8 +10,8 @@ namespace Book_Store.Models
 
         [ForeignKey("Customer")]
         public int CustomerId { get; set; }
-        public Customer Customer { get; set; } = new Customer();
+        public Customer Customer { get; set; } = null!;
 
-        public List<OrderItem> Books { get; set; } = new List<OrderItem>();
+        public List<OrderItem> Books { get; set; } = null!;
     }
 }
