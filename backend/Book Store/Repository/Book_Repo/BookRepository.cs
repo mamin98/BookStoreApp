@@ -18,14 +18,21 @@ namespace Book_Store.Repository.Books_Repo
             return context.Books.ToList();
         }
 
-        // Book by Id
-        public Book GetById(int id)
+        
+        public Book GetByIdInclude(int id)
         {
             return context.Books.Include(b => b.Author)
                 .Include(b => b.BookType)
                 .Include(b => b.Publisher)
                 .FirstOrDefault(b => b.Id == id);
         }
+        
+        // Book by Id
+        public Book GetById(int id)
+        {
+            return context.Books.AsNoTracking().FirstOrDefault(b => b.Id == id);
+        }
+
 
         // Add new Book
         public void Insert(Book book)
@@ -40,6 +47,7 @@ namespace Book_Store.Repository.Books_Repo
             Book ExistingBook = GetById(id);
 
             ExistingBook = book;
+
             context.Update(ExistingBook);
 
             context.SaveChanges();

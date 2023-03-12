@@ -8,6 +8,7 @@ namespace Book_Store.Repository.Books_Repo
         void Edit(Book book, int id);
         List<Book> GetAll();
         Book GetById(int id);
+        Book GetByIdInclude(int id);
         void Insert(Book book);
     }
 }
