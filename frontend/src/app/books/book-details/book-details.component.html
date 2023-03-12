@@ -1,1 +1,32 @@
-<p>book-details works!</p>
+<h2
+  class="user-header"
+  style="
+    text-align: center;
+    text-align: center;
+    background-color: #eee;
+    width: 200px;
+    margin: 15px AUTO;
+    border-radius: 10px;
+  "
+>
+  Posts details
+</h2>
+
+<div class="container d-flex">
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <img
+        [src]="book.image"
+        class="card-img-top"
+        alt="..."
+        style="height: 180px"
+      />
+      <div class="card-body">
+        <p>{{ book.id }}</p>
+        <p>{{ book.title }}</p>
+        <p>{{ book.price }}</p>
+        <p>{{ book.quantity }}</p>
+      </div>
+    </div>
+  </div>
+</div>

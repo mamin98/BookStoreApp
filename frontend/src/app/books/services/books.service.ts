@@ -18,4 +18,8 @@ export class BooksService {
     return this.http.get('http://localhost:8114/api/Book')
 
   }
+
+  getBooksID(id:any){
+    return this.http.get('http://localhost:8114/api/Book/' + id)
+  }
 }
