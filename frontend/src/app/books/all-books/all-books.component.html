@@ -8,17 +8,31 @@
       routerLink="/bookDetails/{{ book.id }}"
     />
     <div class="card-body">
-      <p>{{ book.id }}</p>
+      <!-- <p>{{ book.id }}</p> -->
       <p>{{ book.title }}</p>
-      <p>{{ book.price }}</p>
-      <p>{{ book.quantity }}</p>
+
+      <p>books on store is {{ book.quantity }} book</p>
+      <p></p>
+      {{ book.price }}$
     </div>
     <div
       class="info d-flex"
       style="justify-content: space-between; padding: 10px; align-items: center"
     >
-      <span style="background: aquamarine; padding: 5px; border-radius: 5px">
-      </span>
+      <div
+        class="info d-flex"
+        style="
+          justify-content: space-between;
+          padding: 10px;
+          align-items: center;
+        "
+      >
+        <button class="btn btn-success">Add to Cart</button>
+        <!-- <div class="count-item d-flex w-50">
+          <input type="number" class="form-control" />
+          <button class="btn btn-danger">+</button>
+        </div> -->
+      </div>
     </div>
   </div>
 </div>
