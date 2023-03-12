@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ITI\\Dot NET\\GP\\BookStore\\Book Store\\backend\\Book Store\\Book Store.csproj": {}
+    "D:\\education\\ITI\\.net_round2_\\project\\grads-project\\new\\BookStoreApp\\backend\\Book Store\\Book Store.csproj": {}
   },
   "projects": {
-    "E:\\ITI\\Dot NET\\GP\\BookStore\\Book Store\\backend\\Book Store\\Book Store.csproj": {
+    "D:\\education\\ITI\\.net_round2_\\project\\grads-project\\new\\BookStoreApp\\backend\\Book Store\\Book Store.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ITI\\Dot NET\\GP\\BookStore\\Book Store\\backend\\Book Store\\Book Store.csproj",
+        "projectUniqueName": "D:\\education\\ITI\\.net_round2_\\project\\grads-project\\new\\BookStoreApp\\backend\\Book Store\\Book Store.csproj",
         "projectName": "Book Store",
-        "projectPath": "E:\\ITI\\Dot NET\\GP\\BookStore\\Book Store\\backend\\Book Store\\Book Store.csproj",
-        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
-        "outputPath": "E:\\ITI\\Dot NET\\GP\\BookStore\\Book Store\\backend\\Book Store\\obj\\",
+        "projectPath": "D:\\education\\ITI\\.net_round2_\\project\\grads-project\\new\\BookStoreApp\\backend\\Book Store\\Book Store.csproj",
+        "packagesPath": "C:\\Users\\abdelrahman\\.nuget\\packages\\",
+        "outputPath": "D:\\education\\ITI\\.net_round2_\\project\\grads-project\\new\\BookStoreApp\\backend\\Book Store\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abdelrahman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,6 +45,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.2, )"
@@ -78,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

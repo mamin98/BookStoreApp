@@ -86,3 +86,93 @@ E:\ITI\Dot NET\Projects\ITI GP\Book Store\Book Store\obj\Debug\net7.0\refint\Boo
 E:\ITI\Dot NET\Projects\ITI GP\Book Store\Book Store\obj\Debug\net7.0\Book Store.pdb
 E:\ITI\Dot NET\Projects\ITI GP\Book Store\Book Store\obj\Debug\net7.0\Book Store.genruntimeconfig.cache
 E:\ITI\Dot NET\Projects\ITI GP\Book Store\Book Store\obj\Debug\net7.0\ref\Book Store.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\appsettings.Development.json
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\appsettings.json
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Book Store.exe
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Book Store.deps.json
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Book Store.runtimeconfig.json
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Book Store.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Book Store.pdb
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\AutoMapper.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Azure.Core.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Azure.Identity.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Humanizer.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Extensions.Caching.Abstractions.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Extensions.Caching.Memory.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Extensions.Logging.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Identity.Client.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.OpenApi.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Mono.TextTemplating.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\System.CodeDom.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\System.Configuration.ConfigurationManager.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\System.Drawing.Common.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\System.Memory.Data.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\System.Runtime.Caching.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\System.Security.Permissions.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\System.Text.Encodings.Web.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\System.Text.Json.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\System.Windows.Extensions.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\runtimes\browser\lib\net7.0\System.Text.Encodings.Web.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\Book Store.csproj.AssemblyReference.cache
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\Book Store.GeneratedMSBuildEditorConfig.editorconfig
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\Book Store.AssemblyInfoInputs.cache
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\Book Store.AssemblyInfo.cs
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\Book Store.csproj.CoreCompileInputs.cache
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\Book Store.MvcApplicationPartsAssemblyInfo.cs
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\Book Store.MvcApplicationPartsAssemblyInfo.cache
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\staticwebassets\msbuild.Book Store.Microsoft.AspNetCore.StaticWebAssets.props
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\staticwebassets\msbuild.build.Book Store.props
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.Book Store.props
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.Book Store.props
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\staticwebassets.pack.json
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\staticwebassets.build.json
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\staticwebassets.development.json
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\scopedcss\bundle\Book Store.styles.css
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\Book Store.csproj.CopyComplete
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\Book Store.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\refint\Book Store.dll
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\Book Store.pdb
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\Book Store.genruntimeconfig.cache
+D:\education\ITI\.net_round2_\project\grads-project\new\BookStoreApp\backend\Book Store\obj\Debug\net7.0\ref\Book Store.dll
