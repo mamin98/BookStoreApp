@@ -33,7 +33,7 @@ namespace Book_Store.Controllers
         [HttpGet("{id}", Name ="BookRoute")]
         public IActionResult GetById(int id)
         {
-            var book = book_Repo.GetById(id);
+            var book = book_Repo.GetByIdInclude(id);
 
             if (book == null)
             {
@@ -65,7 +65,7 @@ namespace Book_Store.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult PutBook([FromForm]Book book, int id) 
+        public IActionResult PutBook(int id, [FromBody]BookDto dto) 
         {
             var ExistingBook = book_Repo.GetById(id);
 
@@ -73,10 +73,13 @@ namespace Book_Store.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    book_Repo.Edit(book, id);
+                    var MappedBook = mapper.Map<Book>(dto);
+                    MappedBook.Id = id;
+                    //ExistingBook = MappedBook;
+                    book_Repo.Edit(MappedBook, id);
 
-                    // no content, data updated
-                    return StatusCode(StatusCodes.Status204NoContent);
+                    // Return with the modified book
+                    return Ok(MappedBook);
                 }
 
                 // if model is invalid
