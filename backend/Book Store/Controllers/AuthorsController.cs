@@ -56,7 +56,7 @@ namespace Book_Store.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult PutAuthor([FromForm] Author author, int id)
+        public IActionResult PutAuthor([FromForm] CreateAuthorDto dto, int id)
         {
             var ExistingAuthor = author_Repo.GetById(id);
 
@@ -64,10 +64,13 @@ namespace Book_Store.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    author_Repo.Edit(author, id);
+                    var mappedAuthor = mapper.Map<Author>(dto);
+                    mappedAuthor.Id = id;
+
+                    author_Repo.Edit(mappedAuthor, id);
 
                     // no content, data updated
-                    return StatusCode(StatusCodes.Status204NoContent);
+                    return Ok(mappedAuthor);
                 }
 
                 // if model is invalid
