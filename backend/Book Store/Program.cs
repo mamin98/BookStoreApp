@@ -2,6 +2,7 @@ using Book_Store.Models;
 using Book_Store.Repository.Author_Repo;
 using Book_Store.Repository.Books_Repo;
 using Book_Store.Repository.Orders_Repo;
+using Book_Store.Repository.Types_Repo;
 using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store
@@ -30,6 +31,7 @@ namespace Book_Store
             builder.Services.AddScoped<IBookRepository, BookRepository>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
             builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+            builder.Services.AddScoped<ITypesRepository, TypesRepository>();
 
             //Enable CORS
             builder.Services.AddCors();
