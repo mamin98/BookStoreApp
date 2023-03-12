@@ -10,11 +10,17 @@ export class AllBooksComponent implements OnInit{
 books:any=[];
 constructor(private booksService:BooksService){}
   ngOnInit(): void{
-    this.booksService.getAllBooks().subscribe(
-      data=>{
-        this.books=data;
-      }
-    )
+    // this.booksService.getAllBooks().subscribe(
+    //   data=>{
+    //     this.books=data;
+    //   }
+    // )
     // any thing return observable we can make subscribe
+    this.getAllBooks();
+  }
+  getAllBooks(){
+    this.booksService.getAllBooks().subscribe((data:any) => {
+      this.books  = data
+    })
   }
 }

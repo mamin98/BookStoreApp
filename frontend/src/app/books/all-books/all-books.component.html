@@ -1,7 +1,7 @@
 <div class="d-flex books" style="flex-wrap: wrap; gap: 20px">
   <div class="card" *ngFor="let book of books" style="width: 20%">
     <img
-      [src]="book.cover_image"
+      [src]="book.image"
       class="card-img-top"
       alt="..."
       style="height: 180px"
@@ -9,13 +9,14 @@
     <div class="card-body">
       <p>{{ book.id }}</p>
       <p>{{ book.title }}</p>
+      <p>{{ book.price }}</p>
+      <p>{{ book.quantity }}</p>
     </div>
     <div
       class="info d-flex"
       style="justify-content: space-between; padding: 10px; align-items: center"
     >
       <span style="background: aquamarine; padding: 5px; border-radius: 5px">
-        {{ book.pages }}
       </span>
     </div>
   </div>

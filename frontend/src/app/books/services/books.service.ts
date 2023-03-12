@@ -10,7 +10,12 @@ export class BooksService {
   baseUrl:string="/assets/data/books.json"
   constructor(private http:HttpClient) { }
 
-  getAllBooks():Observable<IBooks[]>{
-    return this.http.get<IBooks[]>(this.baseUrl);
+  // getAllBooks():Observable<IBooks[]>{
+  //   return this.http.get<IBooks[]>(this.baseUrl);
+  // }
+
+  getAllBooks(){
+    return this.http.get('http://localhost:8114/api/Book')
+
   }
 }
