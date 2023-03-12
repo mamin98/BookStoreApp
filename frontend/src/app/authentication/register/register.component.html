@@ -1,7 +1,19 @@
-<div class="container">
-  <h2>Sign-Up</h2>
-  <br />
-  <form [formGroup]="regForm">
+<h2
+  class="user-header"
+  style="
+    text-align: center;
+    text-align: center;
+    background-color: #eee;
+    width: 200px;
+    margin: 15px AUTO;
+    border-radius: 10px;
+  "
+>
+  Sign-Up
+</h2>
+<br />
+<div class="reg-page d-flex gap-5">
+  <form [formGroup]="regForm" class="form-signup pt-5 pb-5">
     <div class="form-group">
       <label for="name">User Name : </label>
       <input
@@ -68,4 +80,7 @@
 
     <input type="submit" class="btn btn-success" value="Sign-Up" />
   </form>
+  <div class="img">
+    <img src="../././../../assets/imgs/chilling.png" alt="" />
+  </div>
 </div>

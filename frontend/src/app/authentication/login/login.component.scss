@@ -1,0 +1,17 @@
+.reg-page{
+  .form-login{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+      margin: 1px auto;
+
+  }
+  .img{
+    width: 50%;
+    img{
+      width: 100%;
+
+    }
+  }
+}

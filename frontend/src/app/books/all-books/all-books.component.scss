@@ -1,8 +1,51 @@
+$finalHeight: 250px;
+$finalWidth: 3 * $finalHeight;
+$scrollBarHeight: 1px;
+
+::-webkit-scrollbar {
+  width: $scrollBarHeight;
+  height: $scrollBarHeight;
+}
+
+::-webkit-scrollbar-button {
+  width: $scrollBarHeight;
+  height: $scrollBarHeight;
+}
 .books{
   flex-wrap: wrap;
     gap: 20px;
     margin: 60px auto;
     /* align-items: center; */
-    /* width: 100%; */
+
     justify-content: center;
+}
+
+.books-scroll{
+// position: absolute;
+display: block;
+top: 0;
+width: calc(#{$finalHeight} + #{$scrollBarHeight});
+max-height: $finalWidth;
+  margin: 0;
+  padding-top: $scrollBarHeight;
+  background: #abc;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: rotate(-90deg) translateY(-$finalHeight);
+  transform-origin: right top;
+  .cards-scroll{
+box-sizing: border-box;
+img{
+  transform: rotateZ(90deg);
+}
+  }
+}
+
+.squares {
+  padding: $finalHeight 0 0 0;
+  & > div {
+    width: $finalHeight;
+    height: $finalHeight;
+    margin: 10px 0;
+  }
 }
