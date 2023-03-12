@@ -31,6 +31,9 @@ namespace Book_Store
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
             builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 
+            //Enable CORS
+            builder.Services.AddCors();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -40,8 +43,9 @@ namespace Book_Store
                 app.UseSwaggerUI();
             }
 
-            app.UseAuthorization();
+            app.UseCors(c => c.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
+            app.UseAuthorization();
 
             app.MapControllers();
 
