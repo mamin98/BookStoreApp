@@ -1,4 +1,5 @@
 ﻿using Book_Store.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store.Repository.Author_Repo
 {
@@ -20,7 +21,7 @@ namespace Book_Store.Repository.Author_Repo
         // Author by Id
         public Author GetById(int id)
         {
-            return context.Author.FirstOrDefault(a => a.Id == id);
+            return context.Author.AsNoTracking().FirstOrDefault(a => a.Id == id);
         }
 
         public void Insert(Author New)
