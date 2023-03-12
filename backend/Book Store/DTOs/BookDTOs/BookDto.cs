@@ -20,8 +20,8 @@ namespace Book_Store.DTOs.BookDTOs
         public decimal Price { get; set; }
         
         [DataType(DataType.Date)]
-        public DateTime? PublicationDate { get; set; }
-        public byte[]? Image { get; set; }
+        public DateOnly? PublicationDate { get; set; }
+        public string? Image { get; set; }
 
         // Publisher        
         [Required(ErrorMessage = "Choose a Book Publisher")]
