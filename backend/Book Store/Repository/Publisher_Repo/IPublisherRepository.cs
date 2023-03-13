@@ -6,5 +6,8 @@ namespace Book_Store.Repository.Publisher_Repo
     {
         List<Publisher> GetAll();
         Publisher GetById(int id);
+        void Insert(Publisher New);
+        void Edit(Publisher publisher, int id);
+        void Delete(int id);
     }
 }
