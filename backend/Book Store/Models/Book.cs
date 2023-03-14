@@ -8,11 +8,12 @@ namespace Book_Store.Models
         public string Title { get; set; }
         public string Isbn { get; set; }
         public decimal Price { get; set; }
+        public int QuantitiyInStock { get; set; } = 1000;
         public DateOnly? PublicationDate { get; set; }
-        
+
         // upload image, when create add book
         public byte[]? UploadImage { get; set; }
-        
+
         // test image
         public string? Image { get; set; }
 
