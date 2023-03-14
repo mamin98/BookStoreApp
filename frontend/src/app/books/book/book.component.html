@@ -1,0 +1,35 @@
+<div class="box">
+  <img
+    [src]="data.image"
+    class="card-img-top"
+    style="height: 230px"
+    routerLink="/bookDetails/{{ data.id }}"
+  />
+  <div class="c-body">
+    <p class="title">{{ data.title }}</p>
+    <!-- <p>books on store is {{ data.quantity }} book</p> -->
+    <p class="price">{{ data.price }}$</p>
+  </div>
+  <div class="info">
+    <div class="button">
+      <a
+        class="btn btn-success"
+        *ngIf="!addButton"
+        (click)="addButton = true"
+        (click)="data()"
+      >
+        <i class="fa-solid fa-cart-shopping"></i>
+      </a>
+    </div>
+
+    <div
+      class="d-flex select-quantity"
+      style="justify-content: space-between; gap: 40px"
+      *ngIf="addButton"
+    >
+      <button class="btn btn-danger">-</button>
+      <p class="quantity">1</p>
+      <button class="btn btn-success">+</button>
+    </div>
+  </div>
+</div>

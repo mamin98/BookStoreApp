@@ -1,44 +1,5 @@
-<div class="d-flex books" style="flex-wrap: wrap; gap: 20px">
-  <div class="card" *ngFor="let book of books" style="width: 20%">
-    <img
-      [src]="book.image"
-      class="card-img-top"
-      alt="..."
-      style="height: 180px"
-      routerLink="/bookDetails/{{ book.id }}"
-    />
-    <div class="card-body">
-      <!-- <p>{{ book.id }}</p> -->
-      <p>{{ book.title }}</p>
-
-      <p>books on store is {{ book.quantity }} book</p>
-      <p></p>
-      {{ book.price }}$
-    </div>
-    <div
-      class="info d-flex"
-      style="justify-content: space-between; padding: 10px; align-items: center"
-    >
-      <div
-        class="info d-flex"
-        style="
-          justify-content: space-between;
-          padding: 10px;
-          align-items: center;
-        "
-      >
-        <button class="btn btn-success">Add to Cart</button>
-        <!-- <div class="count-item d-flex w-50">
-          <input type="number" class="form-control" />
-          <button class="btn btn-danger">+</button>
-        </div> -->
-      </div>
-    </div>
+<div class="books">
+  <div class="card" *ngFor="let book of books">
+    <app-book [data]="book"></app-book>
   </div>
 </div>
-
-<!-- <div class="books-scroll squares">
-  <div class="cards-scroll" *ngFor="let book of books">
-    <img [src]="book.cover_image" />
-  </div>
-</div> -->

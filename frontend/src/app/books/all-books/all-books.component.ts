@@ -8,6 +8,7 @@ import { BooksService } from '../services/books.service';
 })
 export class AllBooksComponent implements OnInit{
 books:any=[];
+addButton:boolean = false;
 constructor(private booksService:BooksService){}
   ngOnInit(): void{
     // this.booksService.getAllBooks().subscribe(
@@ -17,10 +18,12 @@ constructor(private booksService:BooksService){}
     // )
     // any thing return observable we can make subscribe
     this.getAllBooks();
+
   }
   getAllBooks(){
     this.booksService.getAllBooks().subscribe((data:any) => {
       this.books  = data
     })
   }
+
 }

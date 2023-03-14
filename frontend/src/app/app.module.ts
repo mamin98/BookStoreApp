@@ -15,6 +15,7 @@ import { CartComponent } from './carts/cart/cart.component';
 import { CustomValidateComponent } from './authentication/custom-validate/custom-validate.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
+import { BookComponent } from './books/book/book.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RegisterComponent } from './authentication/register/register.component'
     CartComponent,
     CustomValidateComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule,
