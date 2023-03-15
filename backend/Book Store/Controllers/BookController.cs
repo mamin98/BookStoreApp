@@ -2,7 +2,6 @@
 using Book_Store.DTOs.BookDTOs;
 using Book_Store.Models;
 using Book_Store.Repository.Books_Repo;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Book_Store.Controllers
@@ -20,14 +19,31 @@ namespace Book_Store.Controllers
             mapper = _mapper;
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
+        [HttpGet("{page:int}", Name = "HomePage")]
+        public IActionResult GetAll(int page)
         {
-            var Books = book_Repo.GetAll();
+            var OnePageBooks = 8f;
+            var PagesCount = Math.Ceiling(book_Repo.GetAll().Count / OnePageBooks);
 
-            var MappedBooks = mapper.Map<List<HomeBookDto>>(Books);
+            if (page > PagesCount)
+                return NotFound();
 
-            return Ok(MappedBooks);
+            var books =
+                book_Repo.GetAll()
+                .Skip((page - 1) * (int)OnePageBooks)
+                .Take((int)OnePageBooks)
+                .ToList();
+
+            var HomeBooks = new PagingBooksDto
+            {
+                Books = books,
+                CurrentPage = page,
+                TotalPages = (int)PagesCount
+            };
+
+            //var MappedBooks = mapper.Map<List<HomeBookDto>>(Books);
+
+            return Ok(HomeBooks);
         }
 
         [HttpGet("{id}", Name ="BookRoute")]
