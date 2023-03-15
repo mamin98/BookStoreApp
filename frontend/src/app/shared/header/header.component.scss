@@ -9,4 +9,17 @@
 
     }
   }
+  .cart{
+    a{
+      position: relative;
+      span:after{
+        content: "0";
+        position: absolute;
+        color: red;
+        font-weight: bold;
+        top: 0;
+        left: 9px;
+      }
+    }
+  }
 }

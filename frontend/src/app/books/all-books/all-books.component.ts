@@ -26,7 +26,7 @@ constructor(private booksService:BooksService){}
       this.books  = data
     })
   }
-//Get Data from LocalStoredg
+//Get Data from localStorage
   addToCart(event:any){
     // console.log(event)
     // JSON.stringify() // send data
