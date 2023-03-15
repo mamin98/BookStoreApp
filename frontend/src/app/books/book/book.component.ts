@@ -1,4 +1,5 @@
-import { Component,Input } from '@angular/core';
+import { Component,EventEmitter,Input, Output } from '@angular/core';
+import { EmailValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-book',
@@ -7,8 +8,10 @@ import { Component,Input } from '@angular/core';
 })
 export class BookComponent {
   @Input() data:any = {}
+  //Send data from parent to chield
+  @Output() item = new EventEmitter()
   addButton:boolean = false;
   add(){
-
+    this.item.emit(this.data)
   }
 }

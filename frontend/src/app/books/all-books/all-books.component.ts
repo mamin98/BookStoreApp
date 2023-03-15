@@ -9,6 +9,7 @@ import { BooksService } from '../services/books.service';
 export class AllBooksComponent implements OnInit{
 books:any=[];
 addButton:boolean = false;
+cartBooks:any[] = []
 constructor(private booksService:BooksService){}
   ngOnInit(): void{
     // this.booksService.getAllBooks().subscribe(
@@ -25,5 +26,30 @@ constructor(private booksService:BooksService){}
       this.books  = data
     })
   }
+//Get Data from LocalStoredg
+  addToCart(event:any){
+    // console.log(event)
+    // JSON.stringify() // send data
+    // JSON.parse() // receive data
+
+    if("cart" in localStorage){
+      this.cartBooks = JSON.parse(localStorage.getItem("cart")!) //
+      // if the item exist or not
+      let exist = this.cartBooks.find(item => item.id== event.id)
+      if(exist){
+        alert("product is Already in your Cart")
+      } else{
+              //push data
+      this.cartBooks.push(event)
+      // send the updated array to localStorage
+      localStorage.setItem("cart", JSON.stringify(this.cartBooks))
+      }
+    } else{
+      this.cartBooks.push(event)
+      localStorage.setItem("cart", JSON.stringify(this.cartBooks))
+    }
+
+  }
+
 
 }

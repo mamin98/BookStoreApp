@@ -28,8 +28,8 @@
       *ngIf="addButton"
     >
       <button class="btn btn-danger">-</button>
-      <p class="quantity">1</p>
-      <button class="btn btn-success">+</button>
+      <input class="quantity" type="text" />
+      <button class="btn btn-success" (click)="add()">+</button>
     </div>
   </div>
 </div>

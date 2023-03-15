@@ -1,5 +1,5 @@
 <div class="books">
   <div class="card" *ngFor="let book of books">
-    <app-book [data]="book"></app-book>
+    <app-book [data]="book" (item)="addToCart($event)"></app-book>
   </div>
 </div>
