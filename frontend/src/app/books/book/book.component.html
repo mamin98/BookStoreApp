@@ -29,7 +29,9 @@
     >
       <button class="btn btn-danger">-</button>
       <input class="quantity" type="text" [(ngModel)]="amount" />
-      <button class="btn btn-success" (click)="add()">+</button>
+      <button class="btn btn-success" (click)="add(); addButton = false">
+        +
+      </button>
     </div>
   </div>
 </div>
