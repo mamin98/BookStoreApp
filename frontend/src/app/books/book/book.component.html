@@ -28,7 +28,7 @@
       *ngIf="addButton"
     >
       <button class="btn btn-danger">-</button>
-      <input class="quantity" type="text" />
+      <input class="quantity" type="text" [(ngModel)]="amount" />
       <button class="btn btn-success" (click)="add()">+</button>
     </div>
   </div>

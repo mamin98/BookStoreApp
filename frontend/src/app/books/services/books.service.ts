@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { IBooks } from '../IBooks';
 
 @Injectable({
@@ -15,11 +16,11 @@ export class BooksService {
   // }
 
   getAllBooks(){
-    return this.http.get('http://localhost:8114/api/Book')
+    return this.http.get(environment.baseApi +'Book')
 
   }
 
   getBooksID(id:any){
-    return this.http.get('http://localhost:8114/api/Book/' + id)
+    return this.http.get(environment.baseApi +'Book/' + id)
   }
 }

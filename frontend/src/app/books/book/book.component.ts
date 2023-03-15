@@ -11,7 +11,8 @@ export class BookComponent {
   //Send data from parent to chield
   @Output() item = new EventEmitter()
   addButton:boolean = false;
+  amount:number = 0
   add(){
-    this.item.emit(this.data)
+    this.item.emit({item:this.data, quantity:this.amount})
   }
 }

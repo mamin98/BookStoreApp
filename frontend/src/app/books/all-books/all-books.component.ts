@@ -35,7 +35,7 @@ constructor(private booksService:BooksService){}
     if("cart" in localStorage){
       this.cartBooks = JSON.parse(localStorage.getItem("cart")!) //
       // if the item exist or not
-      let exist = this.cartBooks.find(item => item.id== event.id)
+      let exist = this.cartBooks.find(item => item.item.id== event.item.id)
       if(exist){
         alert("product is Already in your Cart")
       } else{
