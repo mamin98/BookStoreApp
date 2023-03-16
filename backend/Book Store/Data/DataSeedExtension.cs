@@ -1,11 +1,21 @@
 ﻿using Book_Store.Models;
-
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store.Data
 {
     public static class DataSeedExtension
     {
+        // seed dummy data for Identity Roles
+        public static void SeedRoles(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<IdentityRole>().HasData
+                (
+                    new IdentityRole() { Name = "Administrator", ConcurrencyStamp = "1", NormalizedName = "ADMINISTRATOR" },
+                    new IdentityRole() { Name = "User", ConcurrencyStamp = "2", NormalizedName = "USER" }
+
+                );
+        }
 
         public static void Seed(this ModelBuilder modelbuilder)
         {

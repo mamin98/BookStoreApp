@@ -5,7 +5,7 @@ using Book_Store.Repository.CustomerCart_Repo;
 using Book_Store.Repository.Orders_Repo;
 using Book_Store.Repository.Publisher_Repo;
 using Book_Store.Repository.Types_Repo;
-
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store
@@ -26,6 +26,9 @@ namespace Book_Store
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Cs"));
             });
+
+            // Add identity service to work on users & admins, and declare which store you used
+            builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<BookStoreContext>();
 
             //Auto Mapper Registeration
             builder.Services.AddAutoMapper(typeof(Program));
