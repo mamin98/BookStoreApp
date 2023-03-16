@@ -4,6 +4,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Book_Store.Controllers
 {
@@ -12,15 +16,17 @@ namespace Book_Store.Controllers
     public class AccountController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly IConfiguration _config;
 
         // declare Dependency Injecktion "DI"
-        public AccountController(UserManager<AppUser> userManager)
+        public AccountController(UserManager<AppUser> userManager, IConfiguration config)
         {
             _userManager = userManager;
+            _config = config;
         }
 
 
-        [HttpGet("register")] // api/account/register
+        [HttpPost("register")] // api/account/register
         public async Task<IActionResult> Register(UserRegisterDto userDto) // RegisterUserDto it's class have registration data
         {
             if(ModelState.IsValid)
@@ -50,5 +56,7 @@ namespace Book_Store.Controllers
             // if model is invalid
             return BadRequest(ModelState);
         }
+
+       
     }
 }

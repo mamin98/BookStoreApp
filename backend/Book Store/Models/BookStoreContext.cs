@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store.Models
 {
-    public class BookStoreContext: IdentityDbContext //DbContext
+    public class BookStoreContext: IdentityDbContext<AppUser> //DbContext
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Book> Books { get; set; }
