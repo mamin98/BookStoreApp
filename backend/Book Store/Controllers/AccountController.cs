@@ -16,12 +16,15 @@ namespace Book_Store.Controllers
     public class AccountController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _config;
 
         // declare Dependency Injecktion "DI"
-        public AccountController(UserManager<AppUser> userManager, IConfiguration config)
+        public AccountController(UserManager<AppUser> userManager,
+            RoleManager<IdentityRole> roleManager, IConfiguration config)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
             _config = config;
         }
 
@@ -128,6 +131,51 @@ namespace Book_Store.Controllers
                 signingCredentials: signincred
                 );
             return token;
+        }
+
+
+
+        // add role for admins==> when make a registeration
+        [HttpPost("role")]
+        public async Task<IActionResult> AddRole([FromForm] UserRegisterDto userDto, string role)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                AppUser user = new AppUser();
+                user.UserName = userDto.userName;
+                user.Email = userDto.email;
+                user.PasswordHash = userDto.password;
+
+                // check if role exist in database or not
+                if (await _roleManager.RoleExistsAsync(role))
+                {
+                    IdentityResult result = await _userManager.CreateAsync(user, userDto.password);
+
+                    if (result.Succeeded)
+                    {
+                        //add role to the user "Admin"
+                        //// AddToRolesAsync==> take AppUser & string "Roles"
+                        await _userManager.AddToRoleAsync(user, role);
+
+                        return Ok($"Registered Successfully, and your rols is {role}."); // or Accepted();
+                    }
+                    else
+                    {
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                    }
+                }
+                else
+                {
+                    return BadRequest("This Role Doesn't Exist.");
+                }
+
+            }
+            return BadRequest(ModelState);
         }
     }
 }
