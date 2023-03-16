@@ -1,4 +1,6 @@
-﻿namespace Book_Store.DTOs.BookDTOs
+﻿using Book_Store.Models;
+
+namespace Book_Store.DTOs.BookDTOs
 {
     public class HomeBookDto
     {
@@ -11,5 +13,9 @@
         public decimal Price { get; set; }
 
         public int Quantity { get; set; }
+
+        public string AuthorName { get; set; }
+
+        public string Category { get; set; }
     }
 }
