@@ -57,6 +57,77 @@ namespace Book_Store.Controllers
             return BadRequest(ModelState);
         }
 
-       
+        // check account valid or not
+        [HttpPost("login")]  // api/account/login
+        public async Task<IActionResult> Login(UserLoginDto userDto)
+        {
+            if (ModelState.IsValid)
+            {
+                // check if user is exist
+                AppUser user = await _userManager.FindByNameAsync(userDto.userName);
+
+                // if user name is founded
+                if (user != null)
+                {
+                    // talk password of User Login dto and hash password, compare by user  
+                    bool foundUser = await _userManager.CheckPasswordAsync(user, userDto.password);
+
+                    if (foundUser)
+                    {
+                        // claims => Token
+                        var claims = new List<Claim>();
+
+                        // to add claim ==> define type of claim and assign value 
+                        claims.Add(new Claim(ClaimTypes.Name, user.UserName));
+
+                        // to make token is unique
+                        claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
+
+                        // get Roles 
+                        var roles = await _userManager.GetRolesAsync(user);
+                        foreach (var role in roles)
+                        {
+                            // if this claimm "role" is exist will put it in array
+                            claims.Add(new Claim(ClaimTypes.Role, role));
+                        }
+
+                        // get JWT Token
+                        var _TokenData = TokenData(claims);
+
+                        // to return token
+                        return Ok(new
+                        {
+                            // create Token or write Token
+                            // give me instance of JwtSecurityTokenHandler
+                            Token = new JwtSecurityTokenHandler().WriteToken(_TokenData),
+                            Expiration = _TokenData.ValidTo
+                        });
+                    }
+                }
+                // user don't have valid account
+                return Unauthorized();
+            }
+            // user don't have valid account
+            return Unauthorized();
+        }
+
+        // get token data
+        private JwtSecurityToken TokenData(List<Claim> claims)
+        {
+            // get security key
+            SecurityKey secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Secret"]));
+            // handle signature
+            SigningCredentials signincred = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+
+            // represent Token not create
+            JwtSecurityToken token = new JwtSecurityToken(
+                issuer: _config["JWT:ValidIssuer"],   //"http://localhost:8114/" url web api "Provider"
+                audience: _config["JWT:ValidAudience"], //"http://localhost:4200/" url angular "Consumer"
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(30),
+                signingCredentials: signincred
+                );
+            return token;
+        }
     }
 }
