@@ -19,7 +19,7 @@ namespace Book_Store.Controllers
             mapper = _mapper;
         }
 
-        [HttpGet("{page:int}", Name = "HomePage")]
+        [HttpGet("home/{page:int}", Name = "HomePage")]
         public IActionResult GetAll(int page)
         {
             var OnePageBooks = 8f;
@@ -32,6 +32,15 @@ namespace Book_Store.Controllers
                 book_Repo.GetAll()
                 .Skip((page - 1) * (int)OnePageBooks)
                 .Take((int)OnePageBooks)
+                .Select(b => new HomeBookDto
+                {
+                    AuthorName = b.Author.FirstName + " " + b.Author.LastName,
+                    Category = b.BookType.Name,
+                    ID = b.Id,
+                    Image = b.Image,
+                    Price = b.Price,
+                    Title = b.Title
+                })
                 .ToList();
 
             var HomeBooks = new PagingBooksDto
@@ -41,12 +50,10 @@ namespace Book_Store.Controllers
                 TotalPages = (int)PagesCount
             };
 
-            //var MappedBooks = mapper.Map<List<HomeBookDto>>(Books);
-
             return Ok(HomeBooks);
         }
 
-        [HttpGet("{id}", Name ="BookRoute")]
+        [HttpGet("{id:int}", Name ="BookRoute")]
         public IActionResult GetById(int id)
         {
             var book = book_Repo.GetByIdInclude(id);
