@@ -19,38 +19,59 @@ namespace Book_Store.Controllers
             mapper = _mapper;
         }
 
-        [HttpGet("home/{page:int}", Name = "HomePage")]
-        public IActionResult GetAll(int page)
+        [HttpGet("books", Name = "HomePage")]
+        public IActionResult GetAll([FromQuery]int? page)
         {
-            var OnePageBooks = 8f;
-            var PagesCount = Math.Ceiling(book_Repo.GetAll().Count / OnePageBooks);
+            if (page != null)
+            {
+                var OnePageBooks = 8f;
+                var PagesCount = Math.Ceiling(book_Repo.GetAll().Count / OnePageBooks);
 
-            if (page > PagesCount)
-                return NotFound();
+                if (page > PagesCount)
+                    return NotFound();
 
-            var books =
+                var books =
+                    book_Repo.GetAll()
+                    .Skip((int)((page - 1) * (int)OnePageBooks))
+                    .Take((int)OnePageBooks)
+                    .Select(b => new HomeBookDto
+                    {
+                        AuthorName = b.Author.FirstName + " " + b.Author.LastName,
+                        Category = b.BookType.Name,
+                        PublisherName = b.Publisher.Name,
+                        ID = b.Id,
+                        Image = b.Image,
+                        Price = b.Price,
+                        Title = b.Title,
+                        Quantity = b.QuantityInStock
+                    })
+                    .ToList();
+
+                var HomeBooks = new PagingBooksDto
+                {
+                    Books = books,
+                    CurrentPage = (int)page,
+                    TotalPages = (int)PagesCount
+                };
+
+                return Ok(HomeBooks);
+            }
+
+            var allBooks =
                 book_Repo.GetAll()
-                .Skip((page - 1) * (int)OnePageBooks)
-                .Take((int)OnePageBooks)
                 .Select(b => new HomeBookDto
                 {
                     AuthorName = b.Author.FirstName + " " + b.Author.LastName,
                     Category = b.BookType.Name,
+                    PublisherName = b.Publisher.Name,
                     ID = b.Id,
                     Image = b.Image,
                     Price = b.Price,
-                    Title = b.Title
-                })
-                .ToList();
+                    Title = b.Title,
+                    Quantity = b.QuantityInStock
+                }).ToList();
 
-            var HomeBooks = new PagingBooksDto
-            {
-                Books = books,
-                CurrentPage = page,
-                TotalPages = (int)PagesCount
-            };
-
-            return Ok(HomeBooks);
+            return Ok(allBooks);
         }
 
         [HttpGet("{id:int}", Name ="BookRoute")]
