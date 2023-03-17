@@ -16,7 +16,9 @@ namespace Book_Store.Repository.Types_Repo
         // All Types
         public List<Types> GetAll()
         {
-            return context.Types.ToList();
+            return context.Types
+                .Include(t => t.Books)
+                .ToList();
         }
 
         // Type by Id
