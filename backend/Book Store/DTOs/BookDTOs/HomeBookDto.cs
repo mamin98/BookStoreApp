@@ -16,6 +16,8 @@ namespace Book_Store.DTOs.BookDTOs
 
         public string AuthorName { get; set; }
 
+        public string PublisherName { get; set; }
+
         public string Category { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace Book_Store.Repository.Books_Repo
             return context.Books
                 .Include(b => b.Author)
                 .Include(b => b.BookType)
+                .Include(b => b.Publisher)
                 .ToList();
         }
 
