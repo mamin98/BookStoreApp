@@ -20,7 +20,7 @@ export class BooksService {
 
   }
   getBooksID(id:any){
-    return this.http.get(environment.baseApi +'Book/books/' + id)
+    return this.http.get(environment.baseApi +'Book/' + id)
   }
 
   GetAllCategories(){
