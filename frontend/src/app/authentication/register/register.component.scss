@@ -1,3 +1,28 @@
+
+.user-header{
+  text-align: center;
+  background-color: #fff;
+  width: 200px;
+  margin: 20px auto;
+  border-radius: 10px;
+  padding: 8px;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  &::after{
+    position: absolute;
+    content: "";
+    width: 4px;
+    height: 53px;
+    background-color: green;
+    top: -21px;
+    z-index: -1;
+  }
+  img{
+    width: 30px;
+  }
+}
+
 .reg-page{
   .form-signup{
     display: flex;
