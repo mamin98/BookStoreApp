@@ -2,12 +2,12 @@ import { AbstractControl } from '@angular/forms';
 
 export function confirmPassValidator(control: AbstractControl) {
   const password = control.get('password');
-  const confirmPass = control.get('confirmPass');
+  const confirmpassword = control.get('confirmpassword');
 
-  if (password?.pristine || confirmPass?.pristine) {
+  if (password?.pristine || confirmpassword?.pristine) {
     return null;
   } else {
-    return password && confirmPass && password.value !== confirmPass.value
+    return password && confirmpassword && password.value !== confirmpassword.value
       ? { misMatch: true }
       : null;
   }
