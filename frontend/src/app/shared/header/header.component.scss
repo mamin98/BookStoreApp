@@ -1,5 +1,16 @@
 .site-header{
   background-color: #212529;
+.container{
+  .logo{
+    width: 100%;
+    img{
+      width: 50px;
+      @media (max-width:771px) {
+        display: none;
+      }
+    }
+  }
+  align-items: center;
   a{
     color: #999;
     transition: ease-in-out color .15s;
@@ -29,4 +40,5 @@
       }
     }
   }
+}
 }
