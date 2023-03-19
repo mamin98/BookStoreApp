@@ -36,7 +36,8 @@ namespace Book_Store.Controllers
             {
                 // create function don't take Dto, it's only take model so:
                 AppUser user = new AppUser();
-                user.UserName = userDto.userName;
+                user.UserName = userDto.username;
+                user.PhoneNumber = userDto.phone;
                 user.Email = userDto.email;
                 user.PasswordHash = userDto.password;
 
@@ -46,7 +47,9 @@ namespace Book_Store.Controllers
                 
                 if (result.Succeeded)
                 {
-                    return Ok("Registered Successfully.");    //Accepted();
+                    string msg = "Registered Successfully.";
+                    return Ok(new { msg });
+                    //return Accepted();
                 }
                 else
                 {
@@ -67,7 +70,7 @@ namespace Book_Store.Controllers
             if (ModelState.IsValid)
             {
                 // check if user is exist
-                AppUser user = await _userManager.FindByNameAsync(userDto.userName);
+                AppUser user = await _userManager.FindByNameAsync(userDto.username);
 
                 // if user name is founded
                 if (user != null)
@@ -144,7 +147,7 @@ namespace Book_Store.Controllers
             {
 
                 AppUser user = new AppUser();
-                user.UserName = userDto.userName;
+                user.UserName = userDto.username;
                 user.Email = userDto.email;
                 user.PasswordHash = userDto.password;
 

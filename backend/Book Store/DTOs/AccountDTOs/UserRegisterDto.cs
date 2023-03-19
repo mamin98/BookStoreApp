@@ -6,7 +6,7 @@ namespace Book_Store.DTOs.AccountDTOs
     {
         [Required]
         [MinLength(3)]
-        public string userName { get; set; }
+        public string username { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]
@@ -18,6 +18,8 @@ namespace Book_Store.DTOs.AccountDTOs
 
         [Required]
         [Compare("password")]
-        public string confirmPassword { get; set; }
+        public string confirmpassword { get; set; }
+
+        public string phone { get; set; }
     }
 }

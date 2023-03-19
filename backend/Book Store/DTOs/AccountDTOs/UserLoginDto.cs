@@ -5,7 +5,7 @@ namespace Book_Store.DTOs.AccountDTOs
     public class UserLoginDto
     {
         [Required]
-        public string userName { get; set; }
+        public string username { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
