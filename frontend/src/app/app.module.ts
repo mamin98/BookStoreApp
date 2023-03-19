@@ -16,6 +16,7 @@ import { CustomValidateComponent } from './authentication/custom-validate/custom
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { BookComponent } from './books/book/book.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BookComponent } from './books/book/book.component';
     CustomValidateComponent,
     LoginComponent,
     RegisterComponent,
-    BookComponent
+    BookComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

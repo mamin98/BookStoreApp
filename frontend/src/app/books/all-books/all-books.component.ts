@@ -10,6 +10,7 @@ export class AllBooksComponent implements OnInit{
 books:any=[];
 addButton:boolean = false;
 cartBooks:any[] = []
+loading:boolean = false; // this for spinner
 constructor(private booksService:BooksService){}
   ngOnInit(): void{
     // this.booksService.getAllBooks().subscribe(
@@ -22,8 +23,10 @@ constructor(private booksService:BooksService){}
 
   }
   getAllBooks(){
+    this.loading = true; //  spinner open
     this.booksService.getAllBooks().subscribe((data:any) => {
       this.books  = data
+      this.loading = false // spinner closed when
     })
   }
 //Get Data from localStorage

@@ -1,4 +1,4 @@
-<div class="books">
+<div class="books" *ngIf="!loading">
   <div class="card" *ngFor="let book of books">
     <app-book [data]="book" (item)="addToCart($event)"></app-book>
   </div>
@@ -6,3 +6,8 @@
 
 
  <!-- this is for Test -->
+ <!-- show the spinner if the loading is true -->
+<div class="text-center w-100" *ngIf="loading" style="margin: 100px auto;
+">
+<app-spinner></app-spinner>
+</div>
