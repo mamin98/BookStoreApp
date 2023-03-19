@@ -13,7 +13,7 @@ import { Login } from '../login';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  loginModel: Login = new Login('', ''); // for form driven template
+  
 
   // loginForm = new FormGroup({
   //   email : new FormControl(''),
