@@ -1,3 +1,6 @@
+
+
+
 <div class="books" *ngIf="!loading">
   <div class="card" *ngFor="let book of books">
     <app-book [data]="book" (item)="addToCart($event)"></app-book>

@@ -16,11 +16,11 @@ export class BooksService {
   // }
 
   getAllBooks(){
-    return this.http.get(environment.baseApi +'Book')
+    return this.http.get(environment.baseApi +'books')
 
   }
  //
   getBooksID(id:any){
-    return this.http.get(environment.baseApi +'Book/' + id)
+    return this.http.get(environment.baseApi +'books/' + id)
   }
 }
