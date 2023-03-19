@@ -9,24 +9,31 @@
     border-radius: 10px;
   "
 >
-  Posts details
+  Book details
 </h2>
 
-<div class="container d-flex">
-  <div class="card" style="width: 18rem">
-    <div class="card-body">
-      <img
-        [src]="book.image"
-        class="card-img-top"
-        alt="..."
-        style="height: 180px"
-      />
-      <div class="card-body">
-        <p>{{ book.id }}</p>
-        <p>{{ book.title }}</p>
-        <p>{{ book.price }}</p>
-        <p>{{ book.quantity }}</p>
+  <div class="box">
+    <div class="card mb-3" style="max-width: 540px">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img [src]="book.image" class="card-img-top" alt="..." />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <p class="card-text">
+              {{ book.category }}
+            </p>
+            <p class="card-text">
+                {{book.publisherName}}
+                {{ book.category }}
+            </p>
+            <p class="card-text">
+              <small>{{ book.category }}</small>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
+
   </div>
-</div>
