@@ -6,8 +6,13 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
     grid-gap: 1rem;
-    .card{
-          box-shadow: 2px -1px 11px 0px rgb(0 0 0 / 75%);
+    .card-b{
+      background-color: #ffffff;
+      border-radius: 10px 10px 10px 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 15px #ddd;
+      transition: transform 0.3s, box-shadow 0.3s;
+      max-width: 100%;
 
       .box{
         .c-body{

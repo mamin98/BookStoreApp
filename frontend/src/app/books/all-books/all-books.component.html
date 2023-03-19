@@ -1,8 +1,16 @@
-
-
+<div class="my-2 w-25">
+  <label for="" class="m-1">Categories :</label>
+  <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" (change)="filter($event)">
+    <option value="All" selected>All</option>
+    <option value="{{option.name}}" *ngFor="let option of Categories">{{option.name}}</option>
+    <!-- <option value="1">One</option>
+    <option value="2">Tw</option>
+    <option value="3">Three</option> -->
+  </select>
+</div>
 
 <div class="books" *ngIf="!loading">
-  <div class="card" *ngFor="let book of books">
+  <div class="card-b" *ngFor="let book of books">
     <app-book [data]="book" (item)="addToCart($event)"></app-book>
   </div>
 </div>

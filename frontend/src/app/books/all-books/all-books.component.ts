@@ -8,6 +8,7 @@ import { BooksService } from '../services/books.service';
 })
 export class AllBooksComponent implements OnInit{
 books:any=[];
+Categories:any=[];
 addButton:boolean = false;
 cartBooks:any[] = []
 loading:boolean = false; // this for spinner
@@ -20,6 +21,8 @@ constructor(private booksService:BooksService){}
     // )
     // any thing return observable we can make subscribe
     this.getAllBooks();
+    this.getCategories();
+
 
   }
   getAllBooks(){
@@ -53,6 +56,26 @@ constructor(private booksService:BooksService){}
     }
 
   }
+  //Get All Categories In Select Option
+  getCategories(){
+    this.loading = true; //  spinner open
+    this.booksService.GetAllCategories().subscribe((data:any) => {
+      console.log(data)
+      this.Categories  = data
+      this.loading = false // spinner closed when
+    })
+  }
 
+  filter(event:any){
+    let value = event.target.value
+    console.log(value)
+    this.GetBooksCategory(value)
+  }
 
+  //GetBooksCategory After Selected
+  GetBooksCategory(key:string){
+    this.booksService.getBooksByCategory(key).subscribe((res:any) => {
+      this.books = res
+    })
+  }
 }

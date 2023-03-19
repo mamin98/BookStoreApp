@@ -16,11 +16,18 @@ export class BooksService {
   // }
 
   getAllBooks(){
-    return this.http.get(environment.baseApi +'books')
+    return this.http.get(environment.baseApi +'Book/books')
 
   }
- //
   getBooksID(id:any){
-    return this.http.get(environment.baseApi +'books/' + id)
+    return this.http.get(environment.baseApi +'Book/books/' + id)
+  }
+
+  GetAllCategories(){
+    return this.http.get(environment.baseApi +'Types')
+  }
+
+  getBooksByCategory(key:string){
+    return this.http.get(environment.baseApi +'Types/' + key)
   }
 }
