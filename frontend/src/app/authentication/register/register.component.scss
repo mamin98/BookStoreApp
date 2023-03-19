@@ -5,13 +5,33 @@
     gap: 10px;
     width: 50%;
       margin: 1px auto;
-
+      @media (max-width:991px ){
+        width: 100%;
+      }
   }
   .img{
-    width: 50%;
+    position: relative;
+    width: 100%;
+    transition: 0.3s;
+    animation: goUpDown 2s linear infinite;
+    -webkit-animation: goUpDown 2s linear infinite;
+    animation-direction: alternate;
     img{
       width: 100%;
 
     }
+    @media (max-width:991px ){
+      display:none
+    }
+  }
+
+}
+
+@keyframes goUpDown {
+  from {
+    bottom: 60px;
+  }
+  to {
+    bottom: 100px;
   }
 }
