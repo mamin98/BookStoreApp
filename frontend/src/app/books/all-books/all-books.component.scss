@@ -1,3 +1,14 @@
+.category-select{
+  h3{
+    background-color: #ef5553;
+    padding: 3px;
+    text-align: center;
+    color: #fff;
+    border-radius: 4px;
+    // transform: perspective(5px) scale(1) rotateX(-2deg);
+    margin-bottom: 0;
+  }
+}
 
 .books{
   flex-wrap: wrap;
@@ -23,7 +34,9 @@
           padding: 10px;
         }
       }
-
+      &:hover {
+        transform: translateY(-10px);
+      }
     }
 }
 

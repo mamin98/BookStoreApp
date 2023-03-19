@@ -73,8 +73,8 @@ constructor(private booksService:BooksService){}
   }
 
   //GetBooksCategory After Selected
-  GetBooksCategory(key:string){
-    this.booksService.getBooksByCategory(key).subscribe((res:any) => {
+  GetBooksCategory(id:string){
+    this.booksService.getBooksByCategory(id).subscribe((res:any) => {
       this.books = res
     })
   }

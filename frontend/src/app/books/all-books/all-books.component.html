@@ -1,11 +1,8 @@
-<div class="my-2 w-25">
-  <label for="" class="m-1">Categories :</label>
+<div class="my-2 w-25 category-select">
+  <h3>Categories :</h3>
   <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" (change)="filter($event)">
     <option value="All" selected>All</option>
     <option value="{{option.name}}" *ngFor="let option of Categories">{{option.name}}</option>
-    <!-- <option value="1">One</option>
-    <option value="2">Tw</option>
-    <option value="3">Three</option> -->
   </select>
 </div>
 
@@ -16,7 +13,6 @@
 </div>
 
 
- <!-- this is for Test -->
  <!-- show the spinner if the loading is true -->
 <div class="text-center w-100" *ngIf="loading" style="margin: 100px auto;
 ">
