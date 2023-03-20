@@ -56,15 +56,21 @@ export class AllBooksComponent implements OnInit {
   getCategories() {
     this.loading = true; //  spinner open
     this.booksService.getAllCategories().subscribe((data: any) => {
-      this.categories = data;
+      this.Categories = data;
       // console.log('this.Categories : ', this.categories );
       this.loading = false; // spinner closed when
     });
   }
 
-  // FilterCategory(event:any){
-  //   let value = event.target.value
-  // console.log(value);
-  // }
+  FilterCategory(event:any){
+    let value = event.target.value
+  console.log(value);
+  this.getBooksCategory(value);
+  }
 
+  getBooksCategory(id:any){
+    this.booksService.getBooksByCategory(id).subscribe((res:any) => {
+      this.books = res
+    })
+  }
 }
