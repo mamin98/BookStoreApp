@@ -31,9 +31,9 @@
     a{
       position: relative;
       span:after{
-        content: "0";
+        content: "";
         position: absolute;
-        color: red;
+        // color: rgb(11, 10, 10);
         font-weight: bold;
         top: 0;
         left: 32px;
@@ -41,4 +41,13 @@
     }
   }
 }
+}
+.count{
+  color: red;
+  position: absolute;
+  left: 30px;
+  top: -5px;
+  font-weight: bold;
+  font-size: 21px;
+
 }
