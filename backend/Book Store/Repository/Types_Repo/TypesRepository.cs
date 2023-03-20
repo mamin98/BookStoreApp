@@ -39,7 +39,7 @@ namespace Book_Store.Repository.Types_Repo
                     .Select(b => new HomeBookDto
                     {
                         AuthorName = b.Author.FirstName + " " + b.Author.LastName,
-                        Category = b.BookType.Name,
+                        //Category = b.BookType.Name,
                         PublisherName = b.Publisher.Name,
                         ID = b.Id,
                         Image = b.Image,
