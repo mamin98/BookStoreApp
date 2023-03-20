@@ -22,7 +22,8 @@
     }
 }
 
-.reg-page{
+.log-page{
+  align-items: center;
   .form-login{
     display: flex;
     flex-direction: column;
@@ -34,7 +35,12 @@
       }
   }
   .img{
+    position: relative;
     width: 50%;
+    transition: 0.3s;
+    animation: goUpDown 2s linear infinite;
+    -webkit-animation: goUpDown 2s linear infinite;
+    animation-direction: alternate;
     img{
       width: 100%;
 
@@ -42,5 +48,15 @@
     @media (max-width:991px ){
       display:none
     }
+  }
+}
+
+
+@keyframes goUpDown {
+  from {
+    bottom: 60px;
+  }
+  to {
+    bottom: 100px;
   }
 }
