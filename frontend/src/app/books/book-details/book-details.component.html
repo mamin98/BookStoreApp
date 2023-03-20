@@ -1,16 +1,7 @@
-<h2
-  class="user-header"
-  style="
-    text-align: center;
-    text-align: center;
-    background-color: #eee;
-    width: 200px;
-    margin: 15px AUTO;
-    border-radius: 10px;
-  "
->
-  Book details
-</h2>
+<div class="user-header d-flex">
+  <img src="../../../assets/imgs/book.png" alt="">
+ <h4>Book Details</h4>
+</div>
 
   <div class="box">
     <div class="card mb-3" style="max-width: 540px">
@@ -18,20 +9,36 @@
         <div class="col-md-4">
           <img [src]="book.image" class="card-img-top" alt="..." />
         </div>
-        <div class="col-md-8">
+        <div class="col-md-4">
           <div class="card-body">
             <h5 class="card-title">{{ book.title }}</h5>
+            <span>Best Seller</span>
             <p class="card-text">
               {{ book.category }}
             </p>
-            <p class="card-text">
-                {{book.publisherName}}
-                {{ book.category }}
-            </p>
-            <p class="card-text">
-              <small>{{ book.category }}</small>
-            </p>
+            <p class="card-text"> authorName : {{book.authorName}}</p>
+            <p class="card-text">{{book.bookType}}</p>
+
+            <div class="btn">
+              <a href="#"><button class="btn btn-primary">Pref Order</button></a>
+            </div>
+            <!-- <div class="rating d-flex">
+              <div class="rate-icon">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+              <p>20,13</p>
+            </div> -->
           </div>
+
+        </div>
+        <div class="col-md-4 Description">
+          <p>The tears. The tantrums. The total meltdowns. Does your daily life as a mom leave you drained? Discouraged? Maybe even resentful? You're not alone.
+            In parenting, hard comes with the territory. We've been conditioned to believe that anything this difficult isn't worth doing, and the best we can hope for is to simply endure our children's difficult stages without losing our minds in the process.
+            God has a different perspective. What if the everyday trials of motherhood were intended to grow you into who he created you to be? To root out your impatience and self-indulgence? To grow your capacity for empathy and tenacity? To make you more creative? To drive you closer to Jesus for your ultimate benefit?
+            You have a choice to make when it comes to how you view hard. When you choose God's way, you'll discover grace, purpose, and hope in any circumstance you face.</p>
         </div>
       </div>
     </div>
