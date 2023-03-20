@@ -14,7 +14,7 @@ export class AllBooksComponent implements OnInit {
   constructor(private booksService: BooksService, private router: Router) {}
 
   books: Book[] = [];
-  // Categories: Category[] = [];
+  Categories: Category[] = [];
   addButton: boolean = false;
   cartBooks: any[] = [];
   loading: boolean = false; // this for spinner
