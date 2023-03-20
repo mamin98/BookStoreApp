@@ -1,14 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IBooks } from '../IBooks';
 import { ApiPaths } from 'src/app/enums/api-paths';
+import { Book } from 'src/app/model/Book';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BooksService {
+  private selectedItemsCount = new BehaviorSubject<number>(0);
+  selectedItemsCount$ = this.selectedItemsCount.asObservable();
   // baseUrl:string="/assets/data/books.json"
   constructor(private http:HttpClient) { }
 
@@ -16,8 +19,13 @@ export class BooksService {
   //   return this.http.get<IBooks[]>(this.baseUrl);
   // }
 
+  setCount(count: number) {
+    console.log('count: ', count);
+    this.selectedItemsCount.next(count);
+  }
+
   getAllBooks(){
-    return this.http.get(environment.baseApi + ApiPaths.AllBooks)
+    return this.http.get<Book[]>(environment.baseApi + ApiPaths.AllBooks)
 
   }
   getBooksID(id:any){

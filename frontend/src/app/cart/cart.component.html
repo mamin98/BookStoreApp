@@ -14,12 +14,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of cartBooks">
-        <td data-th="Product">
+
+<ng-container *ngIf="chosenCartItems$ | async as selectedItems">
+  <tr *ngFor="let item of selectedItems">
+    <td data-th="Product">
           <div class="row d-flex" style="flex-direction: column-reverse">
             <div class="col-sm-2 hidden-xs">
               <img
-                src="{{ item.item.image }}"
+                src="{{ item.imageSrc }}"
                 alt="..."
                 class="img-responsive"
                 style="height: 100px; border-radius: 10px; width: 161px"
@@ -27,12 +29,12 @@
             </div>
             <div class="col-sm-10">
               <h4 style="font-size: 18px; color: blue" class="nomargin">
-                {{ item.item.title }}
+                {{ item.name }}
               </h4>
             </div>
           </div>
         </td>
-        <td data-th="Price">{{ item.item.price }} $</td>
+        <td data-th="Price">{{ item.price | currency }} $</td>
         <td data-th="Quantity" class="d-flex gap-2">
           <button class="btn btn-success">+</button>
           <input
@@ -45,12 +47,13 @@
           <button class="btn btn-danger">-</button>
         </td>
         <td data-th="Subtotal" class="text-center">
-          {{ item.item.price * item.quantity }} $
+          {{ item.price * item.quantity }} $
         </td>
         <td>
-          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-danger" (click)="removeItemFromCart(item)">Delete</button>
         </td>
       </tr>
+    </ng-container>
     </tbody>
     <tfoot>
       <tr>
@@ -61,7 +64,7 @@
         </td>
         <td colspan="2" class="hidden-xs"></td>
         <td class="hidden-xs text-center">
-          <strong>Total : {{ total }} $</strong>
+          <!-- <strong>Total : {{ total }} $</strong> -->
         </td>
         <td>
           <a href="#" class="btn btn-success d-flex" style="gap: 10px;
@@ -73,5 +76,7 @@
       </tr>
     </tfoot>
   </table>
+<button (click)="toCheckoutPage()">Confirm my Orders</button>
+
 </div>
 

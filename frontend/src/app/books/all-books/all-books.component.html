@@ -8,26 +8,27 @@ Books by Category:
 
 <div class="my-2 w-25 category-select">
   <h3>Categories :</h3>
-  <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" (change)="filter($event)">
+  <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
     <option value="All" selected>All</option>
     <option value="{{option.id}}" *ngFor="let option of Categories">{{option.name}}</option>
   </select>
 </div>
+<!-- TEST ADD TO CARD -->
+<div class="cart-icon" (click)="goToCart()">
+  <h2>Take me to Cart page</h2>
+  <i class="fa fa-shopping-cart"></i>
+  <!-- <ng-container *ngIf="selectedItems$ | async as item">
+    
+  </ng-container> -->
+  <span class="cart-count">{{ selectedItemsCount }}</span>
+</div>
 
 <div class="books" *ngIf="!loading">
   <div class="card-b" *ngFor="let book of books">
-    <app-book [data]="book" (item)="addToCart($event)"></app-book>
+    <app-book [product]="book" ></app-book>
   </div>
 </div>
 
-<!-- pagination -->
-<div class="pagination">
-  <button class="btn active">1</button>
-  <button class="btn">2</button>
-  <button class="btn">3</button>
-  <button class="btn">4</button>
-  <button class="btn">5</button>
-</div>
 
  <!-- show the spinner if the loading is true -->
 <div class="text-center w-100" *ngIf="loading" style="margin: 100px auto;
