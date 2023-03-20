@@ -1,4 +1,5 @@
-﻿using Book_Store.Models;
+﻿using Book_Store.DTOs.TypeDTOs;
+using Book_Store.Models;
 
 namespace Book_Store.Repository.Types_Repo
 {
@@ -8,6 +9,7 @@ namespace Book_Store.Repository.Types_Repo
         void Edit(Types type, int id);
         List<Types> GetAll();
         Types GetById(int id);
+        TypeDto GetByIdInclude(int id);
         void Insert(Types book);
     }
 }
