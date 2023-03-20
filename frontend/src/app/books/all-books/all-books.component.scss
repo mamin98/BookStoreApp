@@ -1,5 +1,4 @@
 .category-select{
-  h3{
     background-color: #ef5553;
     padding: 3px;
     text-align: center;
@@ -9,6 +8,7 @@
     width: 93px;
     font-size: 15px;
     margin-bottom: 15px;
+    margin-top: 10px;
     position: relative;
     animation: cssAnimation_0 1524ms infinite ease-out;
     &::after{
@@ -18,12 +18,25 @@
       height: 45px;
       left: 2px;
       background-color: green;
-      top: 10px;
+      top: 25px;
       z-index: -1;
     }
   }
-}
 
+.category{
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  span{
+    background-color: var(--bs-cyan);
+    padding: 5px;
+    border-radius: 4px;
+    &:hover{
+      background-color: #ef5553;
+      color: #fff;
+    }
+  }
+}
 .books{
   flex-wrap: wrap;
     // gap: 20px;

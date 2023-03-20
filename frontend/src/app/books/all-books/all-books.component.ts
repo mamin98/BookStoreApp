@@ -14,32 +14,32 @@ export class AllBooksComponent implements OnInit {
   constructor(private booksService: BooksService, private router: Router) {}
 
   books: Book[] = [];
-  Categories: Category[] = [];
+  // Categories: Category[] = [];
   addButton: boolean = false;
   cartBooks: any[] = [];
   loading: boolean = false; // this for spinner
 
   booksByCategory!: Book[];
-  // categories: any = this.getCategories();
+  categories: any = this.getCategories();
 
   ngOnInit(): void {
     this.getAllBooks();
-    //  this.getCategories();
+    this.getCategories();
   }
 
   goToCart() {
     this.router.navigate(['/cart']);
   }
 
-  // handleSelectedCategory(id: number) {
-  //   console.log('works');
-  //   let res = this.categories.find((category: Category) => {
-  //     return category.id === id;
-  //   }
-  //   );
-  //   this.booksByCategory = res.books
-  //   console.log('this.categories: ', this.categories);
-  // }
+  handleSelectedCategory(id: number) {
+    console.log('works');
+    let res = this.categories.find((category: Category) => {
+      return category.id === id;
+    }
+    );
+    this.booksByCategory = res.books
+    console.log('this.categories: ', this.categories);
+  }
 
   getAllBooks() {
     this.loading = true; //  spinner open
@@ -49,13 +49,22 @@ export class AllBooksComponent implements OnInit {
     });
   }
 
-  // //Get All Categories In Select Option
-  // getCategories() {
-  //   this.loading = true; //  spinner open
-  //   this.booksService.getAllCategories().subscribe((data: any) => {
-  //     this.Categories = data;
-  //     // console.log('this.Categories : ', this.categories );
-  //     this.loading = false; // spinner closed when
-  //   });
+
+
+
+  // Get All Categories In Select Option
+  getCategories() {
+    this.loading = true; //  spinner open
+    this.booksService.getAllCategories().subscribe((data: any) => {
+      this.categories = data;
+      // console.log('this.Categories : ', this.categories );
+      this.loading = false; // spinner closed when
+    });
+  }
+
+  // FilterCategory(event:any){
+  //   let value = event.target.value
+  // console.log(value);
   // }
+
 }
