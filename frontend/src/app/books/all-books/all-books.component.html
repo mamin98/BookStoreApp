@@ -1,10 +1,22 @@
-<!-- <div class="my-2 w-25 category-select">
+<!-- TEST Category -->
+<!-- <div *ngFor="let item of categories">
+  <h2 (click)="handleSelectedCategory(item.id)">{{ item.name }}</h2>
+
+</div>
+
+<select>
+  <option (click)="handleSelectedCategory(item.id)" value="{{item.id}}" *ngFor="let item of categories">{{ item.name }}</option>
+</select>
+Books by Category:
+{{ booksByCategory | json }} -->
+
+<div class="my-2 w-25 category-select">
   <h3>Categories :</h3>
   <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" (change)="filter($event)">
     <option value="All" selected>All</option>
-    <option value="{{option.name}}" *ngFor="let option of Categories">{{option.name}}</option>
+    <option value="{{option.name}}" *ngFor="let option of categories">{{option.name}}</option>
   </select>
-</div> -->
+</div>
 
 <div class="books" *ngIf="!loading">
   <div class="card-b" *ngFor="let book of books">
@@ -19,12 +31,6 @@
 <app-spinner></app-spinner>
 </div>
 
-<!-- TEST Category -->
-<div *ngFor="let item of categories">
-  <h2 (click)="handleSelectedCategory(item.id)">{{ item.name }}</h2>
-</div>
 
-Books by Category:
-{{ booksByCategory | json }}
 
 

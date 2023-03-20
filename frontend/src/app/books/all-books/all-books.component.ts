@@ -26,7 +26,7 @@ export class AllBooksComponent implements OnInit {
     //   }
     // )
     // any thing return observable we can make subscribe
-    // this.getAllBooks();
+    this.getAllBooks();
     // this.getCategories();
   }
 
@@ -39,15 +39,15 @@ export class AllBooksComponent implements OnInit {
     this.booksByCategory = res.books
     console.log('this.categories: ', this.categories);
   }
-   
 
-  // getAllBooks(){
-  //   this.loading = true; //  spinner open
-  //   this.booksService.getAllBooks().subscribe((data:any) => {
-  //     this.books  = data
-  //     this.loading = false // spinner closed when
-  //   })
-  // }
+
+  getAllBooks(){
+    this.loading = true; //  spinner open
+    this.booksService.getAllBooks().subscribe((data:any) => {
+      this.books  = data
+      this.loading = false // spinner closed when
+    })
+  }
   //Get Data from localStorage
   addToCart(event: any) {
     // console.log(event)
@@ -82,16 +82,16 @@ export class AllBooksComponent implements OnInit {
   }
 
 
-  // filter(event:any){
-  //   let value = event.target.value
-  //   console.log(value)
-  //   this.GetBooksCategory(value)
-  // }
+  filter(event:any){
+    let value = event.target.value
+    console.log(value)
+    this.GetBooksCategory(value)
+  }
 
-  //GetBooksCategory After Selected
-  // GetBooksCategory(id:string){
-  //   this.booksService.getBooksByCategory(id).subscribe((res:any) => {
-  //     this.books = res
-  //   })
-  // }
+  // GetBooksCategory After Selected
+  GetBooksCategory(keyword:string){
+    this.booksService.getBooksByCategory(keyword).subscribe((res:any) => {
+      this.books = res
+    })
+  }
 }

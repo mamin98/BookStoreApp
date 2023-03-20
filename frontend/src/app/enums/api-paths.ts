@@ -1,5 +1,5 @@
 export enum ApiPaths {
   AllBooks = 'Book/books',
-  OneBook = 'books/',
+  OneBook = 'Book/',
   Categories = 'Types',
 }

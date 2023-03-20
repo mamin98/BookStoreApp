@@ -27,8 +27,8 @@ export class BooksService {
   getAllCategories(){
     return this.http.get(environment.baseApi + ApiPaths.Categories)
   }
-
-  // getBooksByCategory(id:string){
-  //   return this.http.get(environment.baseApi +'Types/' + id)
-  // }
+//=======================================
+  getBooksByCategory(keyword:string){
+    return this.http.get(environment.baseApi +ApiPaths.Categories + keyword)
+  }
 }
