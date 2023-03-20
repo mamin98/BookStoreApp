@@ -90,32 +90,36 @@
         >doesn't match password!</small>
     </div>
 
+    <div class="buttons">
+
+
     <div *ngIf=" service.regform.invalid; then thenBlock; else elseBlock"></div>
-            <ng-template #thenBlock>
-              <input type="submit" disabled
-              class="btn btn-success button-color"
-               value="Register"
-               style="width: 55%; font-weight: 600;"
-                />
-            </ng-template>
 
-            <ng-template #elseBlock>
-              <input type="submit"
-              class="btn btn-success"
-               value="Register"
-               style="width: 55%; font-weight: 600;"
-              />
-            </ng-template>
+      <ng-template #thenBlock>
+        <input type="submit" disabled
+        class="btn btn-success button-color"
+         value="Register"
+         style="width: 55%; font-weight: 600;"
+          />
+      </ng-template>
 
-            <div class="text-muted"
-             style=" margin-top: 1%; margin-left: 45%;"
-             >
-              Already have account 
-              <a class="text-decoration-none"
-                 routerLink="/login"
-                >login
-              </a>
-            </div>
+      <ng-template #elseBlock>
+        <input type="submit"
+        class="btn btn-success"
+         value="Register"
+         style="width: 55%; font-weight: 600;"
+        />
+      </ng-template>
+
+      <div class="text-muted">
+        Already have account
+        <a class="text-decoration-none"
+           routerLink="/login"
+          >login
+        </a>
+      </div>
+    </div>
+
   </form>
   <div class="img">
     <img src="../././../../assets/imgs/chilling.png" alt="" />
