@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Book } from 'src/app/model/Book';
 import { Category } from 'src/app/model/Category';
 import { BooksService } from '../services/books.service';
-import { Book } from 'src/app/model/Book';
 
 @Component({
   selector: 'app-all-books',
@@ -9,83 +10,52 @@ import { Book } from 'src/app/model/Book';
   styleUrls: ['./all-books.component.scss'],
 })
 export class AllBooksComponent implements OnInit {
+  selectedItemsCount: number = 0;
+  constructor(private booksService: BooksService, private router: Router) {}
+
   books: Book[] = [];
   Categories: Category[] = [];
   addButton: boolean = false;
   cartBooks: any[] = [];
   loading: boolean = false; // this for spinner
-  constructor(private booksService: BooksService) {}
 
   booksByCategory!: Book[];
-  categories: any = this.getCategories();
+  // categories: any = this.getCategories();
 
   ngOnInit(): void {
     this.getAllBooks();
-   this.getCategories();
+    //  this.getCategories();
   }
 
-  handleSelectedCategory(id: number) {
-    console.log('works');
-    let res = this.categories.find((category: Category) => {
-      return category.id === id;
-    }
-    );
-    this.booksByCategory = res.books
-    console.log('this.categories: ', this.categories);
+  goToCart() {
+    this.router.navigate(['/cart']);
   }
 
+  // handleSelectedCategory(id: number) {
+  //   console.log('works');
+  //   let res = this.categories.find((category: Category) => {
+  //     return category.id === id;
+  //   }
+  //   );
+  //   this.booksByCategory = res.books
+  //   console.log('this.categories: ', this.categories);
+  // }
 
-  getAllBooks(){
+  getAllBooks() {
     this.loading = true; //  spinner open
-    this.booksService.getAllBooks().subscribe((data:any) => {
-      this.books  = data
-      this.loading = false // spinner closed when
-    })
-  }
-  //Get Data from localStorage
-  addToCart(event: any) {
-    // console.log(event)
-    // JSON.stringify() // send data
-    // JSON.parse() // receive data
-
-    if ('cart' in localStorage) {
-      this.cartBooks = JSON.parse(localStorage.getItem('cart')!); //
-      // if the item exist or not
-      let exist = this.cartBooks.find((item) => item.item.id == event.item.id);
-      if (exist) {
-        alert('product is Already in your Cart');
-      } else {
-        //push data
-        this.cartBooks.push(event);
-        // send the updated array to localStorage
-        localStorage.setItem('cart', JSON.stringify(this.cartBooks));
-      }
-    } else {
-      this.cartBooks.push(event);
-      localStorage.setItem('cart', JSON.stringify(this.cartBooks));
-    }
-  }
-  //Get All Categories In Select Option
-  getCategories() {
-    this.loading = true; //  spinner open
-    this.booksService.getAllCategories().subscribe((data: any) => {
-      this.Categories = data;
-      // console.log('this.Categories : ', this.categories );
+    this.booksService.getAllBooks().subscribe((data: any) => {
+      this.books = data;
       this.loading = false; // spinner closed when
     });
   }
 
-
-  filter(event:any){
-    let value = event.target.value
-    console.log(value)
-    this.GetBooksCategory(value)
-  }
-
-  // GetBooksCategory After Selected
-  GetBooksCategory(id:any){
-    this.booksService.getBooksByCategory(id).subscribe((res:any) => {
-      this.books = res
-    })
-  }
+  // //Get All Categories In Select Option
+  // getCategories() {
+  //   this.loading = true; //  spinner open
+  //   this.booksService.getAllCategories().subscribe((data: any) => {
+  //     this.Categories = data;
+  //     // console.log('this.Categories : ', this.categories );
+  //     this.loading = false; // spinner closed when
+  //   });
+  // }
 }
