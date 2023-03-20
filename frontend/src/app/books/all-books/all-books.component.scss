@@ -59,3 +59,18 @@
     background-color: rgba(100, 93, 201, 0.86);
   }
 }
+      // pagination
+      .pagination{
+        justify-content: center;
+        border: 1px solid #ddd;
+        width: 200px;
+        margin: 1px auto;
+        .btn {
+          &:hover{
+            background-color: #ddd;
+          }
+          .active{
+            background-color: #ddd;
+          }
+      }
+    }
