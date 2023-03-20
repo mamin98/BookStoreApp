@@ -42,31 +42,40 @@
       </div>
     </div>
 
-    <div *ngIf=" service.logform.invalid; then thenBlock; else elseBlock"></div>
-        <ng-template #thenBlock>
-          <input type="submit" disabled
-          class="btn btn-danger button-color"
-          value="Login"
-          style="width: 35%;  font-weight: 600;"
-          >
-        </ng-template>
-
-        <ng-template #elseBlock>
-          <input type="submit"
-          class="btn btn-success"
-          value="Login"
-          style="width: 35%;  font-weight: 600;">
-        </ng-template>
-
-        <div class="text-muted" 
-             style=" margin-top: -7%; margin-left: 40%;"
-        >
-             Don't have account?
-          <a  class="text-decoration-none"
-              routerLink="/register"
-            > Register
-          </a>
+    <div class="buttons">
+          <div *ngIf=" service.logform.invalid; then thenBlock; else elseBlock"></div>
+          <div class="box">
+            <ng-template #thenBlock>
+              <input type="submit" disabled
+              class="btn btn-danger button-color"
+              value="Login"
+              style="width: 35%;  font-weight: 600;"
+              >
+            </ng-template>
+          </div>
+          <div class="box">
+            <ng-template #elseBlock>
+              <input type="submit"
+              class="btn btn-success"
+              value="Login"
+              style="width: 35%;  font-weight: 600;">
+            </ng-template>
+          </div>
+          <div class="box">
+            <div class="text-muted">
+            Don't have account?
+         <a  class="text-decoration-none"
+             routerLink="/register"
+           > Register
+         </a>
+       </div>
+          </div>
         </div>
+
+
+
+
+
 
   </form>
   <div class="img">
