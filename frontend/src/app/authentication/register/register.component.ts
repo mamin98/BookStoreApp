@@ -1,41 +1,55 @@
-import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { confirmPassValidator } from '../custom-validate/confirmPass.validator';
-import { Register } from '../register';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsersService } from '../service/users.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent {
-  constructor(private fb: FormBuilder) {}
+export class RegisterComponent implements OnInit {
 
-  regForm = this.fb.group(
-    {
-      username: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmPass: ['', Validators.required],
-    },
-    { validator: [confirmPassValidator] }
-  );
+  constructor(public service: UsersService,
+    private router: Router) {
+  }
+
+  ngOnInit(): void {
+
+  }
 
   get username() {
-    return this.regForm.get('username');
+    return this.service.regform.get('username');
+  }
+  get phone() {
+    return this.service.regform.get('phone');
   }
   get email() {
-    return this.regForm.get('email');
+    return this.service.regform.get('email');
   }
   get password() {
-    return this.regForm.get('password');
+    return this.service.regform.get('password');
   }
-  get confirmPass() {
-    return this.regForm.get('confirmPass');
+  get confirmpassword() {
+    return this.service.regform.get('confirmpassword');
   }
+
+
+  register(): void {
+    var regData = this.service.regform;
+    if (regData.valid) {
+      console.log(regData.value);
+      this.service.Register().subscribe(
+        {
+          next: () => {
+            this.service.regform.reset();
+            this.router.navigate(['login'])
+          },
+          error: (errMsg: any) => { console.log(errMsg?.error.message) }
+        });
+    }
+    else {
+      console.log("Form Data is Invalid.")
+    }
+  }
+
 }

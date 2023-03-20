@@ -1,9 +1,10 @@
 ﻿using Book_Store.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store.Models
 {
-    public class BookStoreContext: DbContext
+    public class BookStoreContext: IdentityDbContext<AppUser> //DbContext
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Book> Books { get; set; }
@@ -25,6 +26,9 @@ namespace Book_Store.Models
 
             // seed dummy data
             modelBuilder.Seed();
+
+            // seed dummy data for Identity Roles
+            modelBuilder.SeedRoles();
         }
     }
 }

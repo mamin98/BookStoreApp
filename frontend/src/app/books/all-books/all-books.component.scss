@@ -1,3 +1,28 @@
+.category-select{
+  h3{
+    background-color: #ef5553;
+    padding: 3px;
+    text-align: center;
+    color: #fff;
+    border-radius: 4px;
+    margin-bottom: 0;
+    width: 93px;
+    font-size: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    animation: cssAnimation_0 1524ms infinite ease-out;
+    &::after{
+      position: absolute;
+      content: "";
+      width: 3px;
+      height: 45px;
+      left: 2px;
+      background-color: green;
+      top: 10px;
+      z-index: -1;
+    }
+  }
+}
 
 .books{
   flex-wrap: wrap;
@@ -6,8 +31,13 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
     grid-gap: 1rem;
-    .card{
-          box-shadow: 2px -1px 11px 0px rgb(0 0 0 / 75%);
+    .card-b{
+      background-color: #ffffff;
+      border-radius: 10px 10px 10px 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 15px #ddd;
+      transition: transform 0.3s, box-shadow 0.3s;
+      max-width: 100%;
 
       .box{
         .c-body{
@@ -18,7 +48,29 @@
           padding: 10px;
         }
       }
-
+      &:hover {
+        transform: translateY(-10px);
+      }
     }
 }
 
+@keyframes cssAnimation_0 {
+  to {
+    background-color: rgba(100, 93, 201, 0.86);
+  }
+}
+      // pagination
+      .pagination{
+        justify-content: center;
+        border: 1px solid #ddd;
+        width: 200px;
+        margin: 1px auto;
+        .btn {
+          &:hover{
+            background-color: #ddd;
+          }
+          .active{
+            background-color: #ddd;
+          }
+      }
+    }

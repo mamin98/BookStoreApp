@@ -1,5 +1,16 @@
 .site-header{
-  background-color: black;
+  background-color: #212529;
+.container{
+  .logo{
+    width: 100%;
+    img{
+      width: 60px;
+      @media (max-width:771px) {
+        display: none;
+      }
+    }
+  }
+  align-items: center;
   a{
     color: #999;
     transition: ease-in-out color .15s;
@@ -9,11 +20,10 @@
     padding: 0px 23px;
     &:hover{
       color: var(--bs-link-color);
-
       border: 1px solid #999;
-      outline: 1px solid #999;
       color: #fff;
       border-radius: 3px;
+      box-shadow: inset -13px 0px 0px 0px rgba(245, 6, 6, 0.3);
     }
   }
   .cart{
@@ -29,4 +39,5 @@
       }
     }
   }
+}
 }

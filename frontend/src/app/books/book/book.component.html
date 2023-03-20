@@ -2,13 +2,19 @@
   <img
     [src]="data.image"
     class="card-img-top"
-    style="height: 230px"
+    style="height: 200px"
     routerLink="/bookDetails/{{ data.id }}"
   />
   <div class="c-body">
     <p class="title">{{ data.title }}</p>
-    <!-- <p>books on store is {{ data.quantity }} book</p> -->
-    <p class="price">{{ data.price }}$</p>
+  </div>
+  <div class="c-body d-flex" style="justify-content: space-between;">
+    <a href="#" class="description" >{{ data.authorName }}</a>
+    <p class="" style="color: #ef5050;">{{ data.category }}</p>
+  </div>
+  <div class="c-body" style="border-bottom: 2px solid var(--bs-gray-500);">
+    <p class="price" style="font-weight: bold;
+    color: red;">{{ data.price }}$</p>
   </div>
   <div class="info">
     <div class="button">
@@ -35,3 +41,6 @@
     </div>
   </div>
 </div>
+
+
+

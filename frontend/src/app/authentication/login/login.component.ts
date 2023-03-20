@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { Login } from '../login';
+import { Router } from '@angular/router';
+import { UsersService } from '../service/users.service';
 
 @Component({
   selector: 'app-login',
@@ -13,24 +8,26 @@ import { Login } from '../login';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  loginModel: Login = new Login('', ''); // for form driven template
 
-  // loginForm = new FormGroup({
-  //   email : new FormControl(''),
-  //   password : new FormControl('')
-  // });
+  constructor(public service: UsersService, private router: Router) { }
 
-  constructor(private fb: FormBuilder) {}
-
-  loginForm = this.fb.group({
-    email: ['', Validators.required],
-    password: ['', Validators.required],
-  });
-
-  get email() {
-    return this.loginForm.get('email');
+  get username() {
+    return this.service.logform.get('username');
   }
   get password() {
-    return this.loginForm.get('password');
+    return this.service.logform.get('password');
   }
+
+  login() {
+    var loginData = this.service.logform
+    if (loginData.valid) {
+      console.log(loginData.value);
+      this.service.Login().subscribe((data: any) => {
+        console.log(data);
+        this.router.navigate(['home-allBooks'])
+      }
+      )
+    }
+  }
+
 }

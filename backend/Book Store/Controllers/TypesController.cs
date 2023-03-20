@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Book_Store.DTOs.BookDTOs;
 using Book_Store.DTOs.TypeDTOs;
 using Book_Store.Models;
+using Book_Store.Repository.Books_Repo;
 using Book_Store.Repository.Types_Repo;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,18 +13,50 @@ namespace Book_Store.Controllers
     public class TypesController : ControllerBase
     {
         private readonly ITypesRepository type_Repo;
+        private readonly IBookRepository book_Repo;
         private readonly IMapper mapper;
 
-        public TypesController(ITypesRepository type_Repo, IMapper mapper)
+        public TypesController(ITypesRepository type_Repo, IMapper mapper, IBookRepository book_Repo)
         {
             this.type_Repo = type_Repo;
             this.mapper = mapper;
+            this.book_Repo = book_Repo;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var Types = type_Repo.GetAll();
+            var Types =
+                type_Repo.GetAll()
+                .Select(t => new TypeDto
+                {
+                    Id = t.Id,
+                    Name = t.Name,
+                    Books = book_Repo.GetAll()
+                    .Where(b => b.TypeId == t.Id)
+                    .Select(b => new HomeBookDto 
+                    {
+                        AuthorName = b.Author.FirstName + " " + b.Author.LastName,
+                        Category = b.BookType.Name,
+                        PublisherName = b.Publisher.Name,
+                        ID = b.Id,
+                        Image = b.Image,
+                        Price = b.Price,
+                        Title = b.Title,
+                        Quantity = b.QuantityInStock
+                    }).ToList()
+                    //t.Books.Select(b => new HomeBookDto
+                    //{
+                    //    ID = b.Id,
+                    //    AuthorName = b.Author.FirstName + " " + b.Author.LastName,
+                    //    Category = b.BookType.Name,
+                    //    PublisherName = b.Publisher.Name,
+                    //    Image = b.Image,
+                    //    Price = b.Price,
+                    //    Title = b.Title,
+                    //    Quantity = b.QuantityInStock
+                    //}).ToList() //mapper.Map<List<HomeBookDto>>(t.Books)
+                }).ToList();
 
             return Ok(Types);
         }

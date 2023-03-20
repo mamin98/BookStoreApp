@@ -2,3 +2,18 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+body{
+  background-color: #eee !important;
+
+}
+.button-color {background:  linear-gradient(
+    to right,
+    #ff5678,
+    #198754
+  )
+}
+
+:root {
+    --maincolor: #2E294E;
+    --secondarycolor:#fff;
+  }

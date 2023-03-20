@@ -1,52 +1,63 @@
-<h2
-  class="user-header"
-  style="
-    text-align: center;
-    text-align: center;
-    background-color: #eee;
-    width: 200px;
-    margin: 15px AUTO;
-    border-radius: 10px;
-  "
->
-  Log In
-</h2>
+<div class="user-header d-flex">
+  <img src="../../../assets/imgs/book.png" alt="">
+ <h4>Log In</h4>
+</div>
 <br />
-<div class="reg-page d-flex gap-5">
-  <form [formGroup]="loginForm" class="form-login pt-5 pb-5">
+<div class="log-page d-flex gap-5">
+  <form [formGroup]="service.logform" class="form-login pt-5 pb-5" (ngSubmit)="login()">
     <div class="form-group">
-      <label for="email">Email : </label>
+
       <input
-        type="email"
+        type="text"
         class="form-control"
-        [class.is-invalid]="email?.invalid && email?.touched"
-        formControlName="email"
-        name="email"
+        [class.is-invalid]="username?.invalid && username?.touched"
+        formControlName="username"
+        name="username"
+        placeholder="username"
       />
-      <div *ngIf="email?.invalid && email?.touched">
-        <small class="text-danger" *ngIf="email?.errors?.['required']"
-          >Email Is required !</small
-        >
+      <div *ngIf="username?.invalid && username?.touched">
+        <small class="text-danger" *ngIf="username?.errors?.['required']"
+          >username is required!</small>
+          <small class="text-danger" *ngIf="username?.errors?.['pattern']">
+            username must contains only capital,
+             and small characters</small>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="pass">Password : </label>
+
       <input
         type="password"
         class="form-control"
         [class.is-invalid]="password?.invalid && password?.touched"
         formControlName="password"
         name="password"
+
+        placeholder="password"
       />
       <div *ngIf="password?.invalid && password?.touched">
         <small class="text-danger" *ngIf="password?.errors?.['required']"
-          >Password Is required !</small
+          >password is required!</small
         >
       </div>
     </div>
 
-    <input type="submit" class="btn btn-success" value="Login" />
+    <div *ngIf=" service.logform.invalid; then thenBlock; else elseBlock"></div>
+        <ng-template #thenBlock>
+          <input type="submit" disabled
+          class="btn btn-danger button-color"
+          value="Login"
+          style="width: 35%;  font-weight: 600;"
+          >
+        </ng-template>
+
+        <ng-template #elseBlock>
+          <input type="submit"
+          class="btn btn-success"
+          value="Login"
+          style="width: 35%;  font-weight: 600;">
+        </ng-template>
+
   </form>
   <div class="img">
     <img src="../././../../assets/imgs/sitting-reading.png" alt="" />

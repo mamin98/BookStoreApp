@@ -1,10 +1,8 @@
-﻿using Book_Store.Models;
-
-namespace Book_Store.DTOs.BookDTOs
+﻿namespace Book_Store.DTOs.BookDTOs
 {
     public class PagingBooksDto
     {
-        public List<Book> Books { get; set; } = new List<Book>();
+        public List<HomeBookDto> Books { get; set; } = new List<HomeBookDto>();
 
         public int CurrentPage { get; set; }
 

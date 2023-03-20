@@ -15,10 +15,13 @@ namespace Book_Store.Repository.Books_Repo
         // All Books
         public List<Book> GetAll()
         {
-            return context.Books.ToList();
+            return context.Books
+                .Include(b => b.Author)
+                .Include(b => b.BookType)
+                .Include(b => b.Publisher)
+                .ToList();
         }
 
-        
         public Book GetByIdInclude(int id)
         {
             return context.Books.Include(b => b.Author)
@@ -32,7 +35,6 @@ namespace Book_Store.Repository.Books_Repo
         {
             return context.Books.AsNoTracking().FirstOrDefault(b => b.Id == id);
         }
-
 
         // Add new Book
         public void Insert(Book book)
@@ -52,7 +54,6 @@ namespace Book_Store.Repository.Books_Repo
 
             context.SaveChanges();
         }
-
 
         // Delete Book 
         public void Delete(int id)

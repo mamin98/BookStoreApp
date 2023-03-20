@@ -2,12 +2,14 @@
 using Book_Store.DTOs.PublisherDTOs;
 using Book_Store.Models;
 using Book_Store.Repository.Publisher_Repo;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Book_Store.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles ="Administrator")]
     public class PublishersController : ControllerBase
     {
         private readonly IPublisherRepository publisher_Repo;
