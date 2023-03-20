@@ -60,4 +60,10 @@ export class UsersService {
     return this.http.post<Register>(this.registerPath, jsonObj);
   }
 
+
+  SaveToken_InLocalStorage(token: string) 
+  {
+    localStorage.setItem('token', token);
+  }
+
 }
