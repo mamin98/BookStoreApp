@@ -24,7 +24,7 @@ export class LoginComponent {
       console.log(loginData.value);
       this.service.Login().subscribe((data: any) => {
         console.log(data);
-        this.service.SaveToken_InLocalStorage(data['token'])
+        this.service.saveToken_InLocalStorage(data['token'])
         this.router.navigate(['home-allBooks'])
       }
       )
