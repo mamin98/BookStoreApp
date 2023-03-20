@@ -45,17 +45,6 @@ namespace Book_Store.Controllers
                         Title = b.Title,
                         Quantity = b.QuantityInStock
                     }).ToList()
-                    //t.Books.Select(b => new HomeBookDto
-                    //{
-                    //    ID = b.Id,
-                    //    AuthorName = b.Author.FirstName + " " + b.Author.LastName,
-                    //    Category = b.BookType.Name,
-                    //    PublisherName = b.Publisher.Name,
-                    //    Image = b.Image,
-                    //    Price = b.Price,
-                    //    Title = b.Title,
-                    //    Quantity = b.QuantityInStock
-                    //}).ToList() //mapper.Map<List<HomeBookDto>>(t.Books)
                 }).ToList();
 
             return Ok(Types);
@@ -64,7 +53,8 @@ namespace Book_Store.Controllers
         [HttpGet("{id}", Name = "GetType")]
         public IActionResult GetById(int id)
         {
-            var type = type_Repo.GetById(id);
+            var type =
+                type_Repo.GetByIdInclude(id);
 
             if (type == null)
             {
