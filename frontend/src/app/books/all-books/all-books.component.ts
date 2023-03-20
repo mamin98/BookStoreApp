@@ -9,8 +9,8 @@ import { Book } from 'src/app/model/Book';
   styleUrls: ['./all-books.component.scss'],
 })
 export class AllBooksComponent implements OnInit {
-  books: any = [];
-  Categories: any = [];
+  books: Book[] = [];
+  Categories: Category[] = [];
   addButton: boolean = false;
   cartBooks: any[] = [];
   loading: boolean = false; // this for spinner
@@ -20,14 +20,8 @@ export class AllBooksComponent implements OnInit {
   categories: any = this.getCategories();
 
   ngOnInit(): void {
-    // this.booksService.getAllBooks().subscribe(
-    //   data=>{
-    //     this.books=data;
-    //   }
-    // )
-    // any thing return observable we can make subscribe
     this.getAllBooks();
-    // this.getCategories();
+   this.getCategories();
   }
 
   handleSelectedCategory(id: number) {
@@ -75,7 +69,7 @@ export class AllBooksComponent implements OnInit {
   getCategories() {
     this.loading = true; //  spinner open
     this.booksService.getAllCategories().subscribe((data: any) => {
-      this.categories = data;
+      this.Categories = data;
       // console.log('this.Categories : ', this.categories );
       this.loading = false; // spinner closed when
     });
@@ -89,8 +83,8 @@ export class AllBooksComponent implements OnInit {
   }
 
   // GetBooksCategory After Selected
-  GetBooksCategory(keyword:string){
-    this.booksService.getBooksByCategory(keyword).subscribe((res:any) => {
+  GetBooksCategory(id:any){
+    this.booksService.getBooksByCategory(id).subscribe((res:any) => {
       this.books = res
     })
   }
