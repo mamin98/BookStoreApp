@@ -1,9 +1,20 @@
-<p>checkout works!</p>
+<!-- <p>checkout works!</p> -->
 
 <!-- <ng-container *ngIf="purchaseActionResponse"> -->
-  <h2>{{ purchaseActionResponse }}</h2>
-<!-- </ng-container> -->
+  <!-- <h2>{{ purchaseActionResponse }}</h2>
+</ng-container> -->
 
-<button (click)="confirmOrder()">Confirm Order</button>
+<!-- <button (click)="confirmOrder()">Confirm Order</button>
 
-<button (click)="toProductsPage()">take me to products page</button>
+<button (click)="toProductsPage()">take me to products page</button>-->
+
+<section class="component">
+  <div class="credit-card">
+    <h2>{{ purchaseActionResponse }}</h2>
+    <form>
+      <button (click)="confirmOrder()" type="submit" class="valid-button btn btn-info">CONFIRM ORDER</button>
+      <button (click)="toProductsPage()" type="submit" class="valid-button btn btn-info" routerLink="/home-allBooks">Take me to Books Page</button>
+
+    </form>
+  </div>
+</section>

@@ -8,8 +8,17 @@
     <a class="py-2  d-md-inline-block" routerLink="/home-allBooks"
     >Books</a
   >
-  <a class="py-2  d-md-inline-block" routerLink="/login">Login</a>
+  
+  <div *ngIf="userService.isAuthenticated(); then auth; else unauth"></div>
+  <ng-template #unauth>
+    <a class="py-2  d-md-inline-block" routerLink="/login">Login</a>
   <a class="py-2  d-md-inline-block" routerLink="/register">Register</a>
+  </ng-template>
+  
+  <ng-template #auth>
+    <a class="py-2  d-md-inline-block" routerLink="/login" (click)="userService.removeToken()">Logout</a>
+  </ng-template>
+
   <!-- <a class="py-2 d-none d-md-inline-block" href="#">Support</a> -->
   <!-- <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a> -->
       <div class="cart d-flex">

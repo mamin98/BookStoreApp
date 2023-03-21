@@ -20,13 +20,14 @@
     </p>
   </div>
   <div class="info">
-    <div class="button">
+    <div class="button" *ngIf="!addButton" (click)="addButton = true">
       <a class="btn btn-success" (click)="addToCart(product)">
         <i class="fa-solid fa-cart-shopping"></i>
       </a>
     </div>
 
     <div
+    *ngIf="addButton"
       class="d-flex select-quantity"
       style="justify-content: space-between; gap: 40px"
     >

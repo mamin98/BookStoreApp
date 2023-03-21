@@ -1,0 +1,51 @@
+.component {
+  position: relative;
+  width: 30%;
+  margin: 5rem auto;
+  padding: 1rem;
+
+  box-shadow: 2px 2px 10px #454545;
+  background-color: #FFFFFF;
+
+  text-align: center;
+}
+
+.valid-button {
+	border: 0;
+	padding: 1rem 2rem;
+	background-color: rgba(4,99,128,0.9);
+	color: #EFECCA;
+	font-weight:bold;
+	margin-top:2rem;
+  box-shadow: 1px 1px 1px black;
+}
+
+.valid-button:hover {
+  background-color: rgba(4,99,128,1);
+  box-shadow: none;
+}
+
+.total {
+  position: absolute;
+  top: 3em;
+  left: -8em;
+  z-index: -1;
+
+  background: #002F2F;
+  color: #A7A37E;
+
+  width: 100px;
+  transform: rotate(-35deg);
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:center;
+  align-items:center;
+  padding-right: 2rem;
+
+  box-shadow: 1px 1px 5px black;
+}
+
+.total p {
+  font-size: 1.5rem;
+}
+

@@ -36,7 +36,7 @@
   }
   .img{
     position: relative;
-    width: 100%;
+    width: 50%;
     transition: 0.3s;
     animation: goUpDown 2s linear infinite;
     -webkit-animation: goUpDown 2s linear infinite;
@@ -51,7 +51,11 @@
   }
 
 }
-
+.buttons{
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 @keyframes goUpDown {
   from {
     bottom: 60px;

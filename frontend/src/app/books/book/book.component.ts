@@ -12,7 +12,7 @@ export class BookComponent {
   quantity: number = 0;
 
   @Input() product!: Book;
-
+addButton:boolean = false;
   constructor(
     private cartService: CartService,
     private booksService: BooksService

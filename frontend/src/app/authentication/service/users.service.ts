@@ -60,4 +60,29 @@ export class UsersService {
     return this.http.post<Register>(this.registerPath, jsonObj);
   }
 
+
+  saveToken_InLocalStorage(token: string) 
+  {
+    localStorage.setItem('token', token);
+  }
+
+
+  getToken_fromLocalStorage() 
+  {
+    return localStorage.getItem('token');
+  }
+  
+  removeToken(){
+    return localStorage.removeItem('token');
+  }
+
+  isAuthenticated(){
+    if(this.getToken_fromLocalStorage()){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  
+
 }

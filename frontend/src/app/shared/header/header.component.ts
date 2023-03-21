@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from 'src/app/authentication/service/users.service';
 import { BooksService } from 'src/app/books/services/books.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { BooksService } from 'src/app/books/services/books.service';
 })
 export class HeaderComponent implements OnInit {
   selectedCount!: number;
-  constructor(private bookService: BooksService) {}
+  constructor(private bookService: BooksService, public userService: UsersService) {}
 
   ngOnInit(): void {
     this.bookService.selectedItemsCount$.subscribe((count) => {
