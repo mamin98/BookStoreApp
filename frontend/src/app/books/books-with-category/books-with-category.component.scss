@@ -1,0 +1,16 @@
+.container{
+  flex-wrap: wrap;
+  margin: 60px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 1rem;
+
+  .box{
+    background-color: #ffffff;
+    border-radius: 10px 10px 10px 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px #ddd;
+    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 100%;
+  }
+}

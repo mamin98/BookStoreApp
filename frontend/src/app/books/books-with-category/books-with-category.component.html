@@ -3,7 +3,9 @@
 
   <div class="container">
     <ng-container *ngFor="let book of books">
-      <app-book [product]="book"></app-book>
-    </ng-container>
+        <div class="box">
+        <app-book [product]="book"></app-book>
+      </div>
+      </ng-container>
   </div>
 </ng-container>
