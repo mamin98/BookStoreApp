@@ -7,9 +7,6 @@ export class AuthorizeService {
 
   constructor() { }
 
-  ISloggedIn()
-  {
-    return !!localStorage.getItem('token');
-  }
+  
   
 }
