@@ -158,5 +158,6 @@ export class CartService {
   public clearCart = () => {
     this.selectedCartItems$.next([]);
     this.localStore.clearData();
+    this.selectedItemsCount.next(0);
   };
 }
