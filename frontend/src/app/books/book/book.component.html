@@ -2,38 +2,38 @@
   <img
     [src]="product.image"
     class="card-img-top"
-    style="height: 200px"
+    style="height: 200px; cursor: pointer; padding: 3%"
     routerLink="/bookDetails/{{ product.id }}"
   />
   <div class="c-body">
     <p class="title">{{ product.title }}</p>
   </div>
   <div class="c-body d-flex" style="justify-content: space-between">
-    <p class="description" style="color: blue; text-decoration: underline">
+    <p class="description" style="text-decoration: underline">
       {{ product.authorName }}
     </p>
-    <p class="" style="color: #ef5050">{{ product.category }}</p>
+    <p class="text-muted">{{ product.category }}</p>
   </div>
   <div class="c-body" style="border-bottom: 2px solid var(--bs-gray-500)">
-    <p class="price" style="font-weight: bold; color: red">
+    <p class="price" style="font-size: 25px; font-weight: bold; color: #eecb1d">
       {{ product.price }}$
     </p>
   </div>
   <div class="info">
     <div class="button" *ngIf="!addButton" (click)="addButton = true">
-      <a class="btn btn-success" (click)="addToCart(product)">
+      <a class="btn btn-success clk" (click)="addToCart(product)">
         <i class="fa-solid fa-cart-shopping"></i>
       </a>
     </div>
 
     <div
-    *ngIf="addButton"
+      *ngIf="addButton"
       class="d-flex select-quantity"
       style="justify-content: space-between; gap: 40px"
     >
       <button class="btn btn-danger" (click)="decrementQuantity()">-</button>
       <!-- <input  [(ngModel)]="quantity" /> -->
-      <span class="quantity" type="text" >{{ quantity }}</span>
+      <span class="quantity" type="text">{{ quantity }}</span>
       <button class="btn btn-success" (click)="incrementQuantity()">+</button>
     </div>
   </div>

@@ -1,32 +1,39 @@
 <nav class="site-header sticky-top py-1">
   <div class="container d-flex flex-column flex-md-row justify-content-between">
-    <div class="logo">
-        <img src="./../../../assets/imgs/artificial-intelligence.png" alt="">
+    <div class="logo" routerLink="/home-allBooks">
+      <img
+        src="./../../../assets/imgs/artificial-intelligence.png"
+        alt="logo"
+        style="width: 65px; margin: 10px; cursor: pointer"
+      />
     </div>
     <div class="links d-flex">
-          <!-- <a class="py-2 d-none d-md-inline-block" href="#">Tour</a> -->
-    <a class="py-2  d-md-inline-block" routerLink="/home-allBooks"
-    >Books</a
-  >
-  
-  <div *ngIf="userService.isAuthenticated(); then auth; else unauth"></div>
-  <ng-template #unauth>
-    <a class="py-2  d-md-inline-block" routerLink="/login">Login</a>
-  <a class="py-2  d-md-inline-block" routerLink="/register">Register</a>
-  </ng-template>
-  
-  <ng-template #auth>
-    <a class="py-2  d-md-inline-block" routerLink="/login" (click)="userService.removeToken()">Logout</a>
-  </ng-template>
+      <!-- <a class="py-2 d-none d-md-inline-block" href="#">Tour</a> -->
+      <a class="py-2 d-md-inline-block" routerLink="/home-allBooks">Books</a>
 
-  <!-- <a class="py-2 d-none d-md-inline-block" href="#">Support</a> -->
-  <!-- <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a> -->
+      <div *ngIf="userService.isAuthenticated(); then auth; else unauth"></div>
+      <ng-template #unauth>
+        <a class="py-2 d-md-inline-block" routerLink="/login">Login</a>
+        <a class="py-2 d-md-inline-block" routerLink="/register">Register</a>
+      </ng-template>
+
+      <ng-template #auth>
+        <a
+          class="py-2 d-md-inline-block"
+          routerLink="/login"
+          (click)="userService.removeToken()"
+          >Logout</a
+        >
+      </ng-template>
+
+      <!-- <a class="py-2 d-none d-md-inline-block" href="#">Support</a> -->
+      <!-- <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a> -->
       <div class="cart d-flex">
-        <a class="py-2  d-md-inline-block" routerLink="/cart">
-      <i class="fa-solid fa-cart-arrow-down fa-lg"></i>
-      <span class="count">{{selectedItemsCount$ | async}}</span>
-    </a>
-  </div>
+        <a class="py-2 d-md-inline-block" routerLink="/cart">
+          <i class="fa-solid fa-cart-arrow-down fa-lg"></i>
+          <span class="count">{{ selectedItemsCount$ | async }}</span>
+        </a>
+      </div>
     </div>
   </div>
 </nav>
