@@ -1,19 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
-body{
+@import "bootstrap/scss/bootstrap";
+body {
   background-color: #eee !important;
-
 }
-.button-color {background:  linear-gradient(
-    to right,
-    #ff5678,
-    #198754
-  )
+.button-color {
+  background: linear-gradient(to right, #ff5678, #198754);
 }
 
 :root {
-    --maincolor: #2E294E;
-    --secondarycolor:#fff;
-  }
+  --maincolor: #2e294e;
+  --secondarycolor: #fff;
+}
