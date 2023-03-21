@@ -31,15 +31,16 @@ export class AllBooksComponent implements OnInit {
     this.router.navigate(['/cart']);
   }
 
-  handleSelectedCategory(id: number) {
-    console.log('works');
-    let res = this.categories.find((category: Category) => {
-      return category.id === id;
-    }
-    );
-    this.booksByCategory = res.books
-    console.log('this.categories: ', this.categories);
-  }
+  // handleSelectedCategory(id: number) {
+  //   console.log('works');
+  //   let res = this.categories.find((category: Category) => {
+  //     return category.id === id;
+  //   }
+
+  //   );
+  //   this.booksByCategory = res.books
+  //   console.log('this.categories: ', this.categories);
+  // }
 
   getAllBooks() {
     this.loading = true; //  spinner open
@@ -57,7 +58,7 @@ export class AllBooksComponent implements OnInit {
     this.loading = true; //  spinner open
     this.booksService.getAllCategories().subscribe((data: any) => {
       this.Categories = data;
-      // console.log('this.Categories : ', this.categories );
+      console.log('this.Categories : ', data );
       this.loading = false; // spinner closed when
     });
   }
@@ -65,12 +66,15 @@ export class AllBooksComponent implements OnInit {
   FilterCategory(event:any){
     let value = event.target.value
   console.log(value);
-  this.getBooksCategory(value);
+  // this.getBooksCategory(value);
+  this.booksService.getBooksByCategory(value).subscribe((res:any) => {
+    this.booksByCategory = res
+  })
   }
 
-  getBooksCategory(id:any){
-    this.booksService.getBooksByCategory(id).subscribe((res:any) => {
-      this.books = res
-    })
-  }
+  // getBooksCategory(id:any){
+  //   this.booksService.getBooksByCategory(id).subscribe((res:any) => {
+  //     this.booksByCategory = res
+  //   })
+  // }
 }
