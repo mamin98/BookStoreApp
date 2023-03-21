@@ -6,5 +6,5 @@ export interface Book {
   quantity: number;
   authorName: string;
   publisherName: string;
-  category: string;
+  category?: string;
 }

@@ -24,7 +24,7 @@
       <div class="cart d-flex">
         <a class="py-2  d-md-inline-block" routerLink="/cart">
       <i class="fa-solid fa-cart-arrow-down fa-lg"></i>
-      <span class="count">{{selectedCount}}</span>
+      <span class="count">{{selectedItemsCount$ | async}}</span>
     </a>
   </div>
     </div>

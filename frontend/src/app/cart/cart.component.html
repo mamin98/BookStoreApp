@@ -36,15 +36,16 @@
         </td>
         <td data-th="Price">{{ item.price | currency }} $</td>
         <td data-th="Quantity" class="d-flex gap-2">
-          <button class="btn btn-success">+</button>
-          <input
+          <button class="btn btn-success" (click)="incrementQuantity(item)">+</button>
+          <!-- <input
             type="number"
             class="form-control text-center"
             [(ngModel)]="item.quantity"
             value="1"
             style="width: 100px"
-          />
-          <button class="btn btn-danger">-</button>
+          /> -->
+          <span class="form-control text-center">{{item.quantity}}</span>
+          <button class="btn btn-danger" (click)="decrementQuantity(item)">-</button>
         </td>
         <td data-th="Subtotal" class="text-center">
           {{ item.price * item.quantity }} $
