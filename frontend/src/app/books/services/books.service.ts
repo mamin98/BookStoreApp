@@ -10,8 +10,6 @@ import { Book } from 'src/app/model/Book';
   providedIn: 'root'
 })
 export class BooksService {
-  private selectedItemsCount = new BehaviorSubject<number>(0);
-  selectedItemsCount$ = this.selectedItemsCount.asObservable();
   // baseUrl:string="/assets/data/books.json"
   constructor(private http:HttpClient) { }
 
@@ -19,10 +17,6 @@ export class BooksService {
   //   return this.http.get<IBooks[]>(this.baseUrl);
   // }
 
-  setCount(count: number) {
-    console.log('count: ', count);
-    this.selectedItemsCount.next(count);
-  }
 
   getAllBooks(){
     return this.http.get<Book[]>(environment.baseApi + ApiPaths.AllBooks)

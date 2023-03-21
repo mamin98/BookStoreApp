@@ -19,13 +19,23 @@ export class CartComponent {
 
   // add to card incrementing quantity by 1
   // notify updateCart func with increment type
-  incrementQuantity = (item: CartedItem) =>
-    this.quantity++ && this.updateCart(item, CartAction.Increment);
+  incrementQuantity = (item: CartedItem) => {
+    console.log('item: ', item);
+    this.quantity++;
+    this.updateCart(item, CartAction.Increment);
+
+    // notify quantity count observer for header cart update
+    this.cartService.updateQuantityCount(CartAction.Increment);
+  };
 
   // decrement item quantity from card
   // notify updateCart func with increment type
-  decrementQuantity = (item: CartedItem) =>
+  decrementQuantity = (item: CartedItem) => {
     this.updateCart(item, CartAction.Decrement);
+
+    // notify quantity count observer for header cart update
+    this.cartService.updateQuantityCount(CartAction.Decrement);
+  };
 
   updateCart(item: CartedItem, type: CartAction) {
     this.cartService
