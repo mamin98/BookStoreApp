@@ -1,0 +1,9 @@
+<ng-container *ngIf="books$ | async as books">
+  <ng-container *ngIf="books.length > 0"> </ng-container>
+
+  <div class="container">
+    <ng-container *ngFor="let book of books">
+      <app-book [product]="book"></app-book>
+    </ng-container>
+  </div>
+</ng-container>

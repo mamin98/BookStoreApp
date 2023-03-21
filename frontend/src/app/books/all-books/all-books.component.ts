@@ -31,50 +31,36 @@ export class AllBooksComponent implements OnInit {
     this.router.navigate(['/cart']);
   }
 
-  // handleSelectedCategory(id: number) {
-  //   console.log('works');
-  //   let res = this.categories.find((category: Category) => {
-  //     return category.id === id;
-  //   }
-
-  //   );
-  //   this.booksByCategory = res.books
-  //   console.log('this.categories: ', this.categories);
-  // }
+  handleSelectedCategory(event: Event) {
+    const target = event.target as HTMLButtonElement;
+    const categoryId = Number(target.value);
+    // Navigate to books with category component with the selected id
+    this.router.navigate(['/home-allBooks/categories', categoryId]);
+  }
 
   getAllBooks() {
     this.loading = true; //  spinner open
-    this.booksService.getAllBooks().subscribe((data: any) => {
+    this.booksService.getAllBooks().subscribe((data: Book[]) => {
       this.books = data;
-      this.loading = false; // spinner closed when
+      this.loading = false;
     });
   }
-
-
-
 
   // Get All Categories In Select Option
   getCategories() {
     this.loading = true; //  spinner open
-    this.booksService.getAllCategories().subscribe((data: any) => {
+    this.booksService.getAllCategories().subscribe((data: Category[]) => {
       this.Categories = data;
-      console.log('this.Categories : ', data );
       this.loading = false; // spinner closed when
     });
   }
 
-  FilterCategory(event:any){
-    let value = event.target.value
-  console.log(value);
-  // this.getBooksCategory(value);
-  this.booksService.getBooksByCategory(value).subscribe((res:any) => {
-    this.booksByCategory = res
-  })
-  }
-
-  // getBooksCategory(id:any){
-  //   this.booksService.getBooksByCategory(id).subscribe((res:any) => {
-  //     this.booksByCategory = res
-  //   })
+  // FilterCategory(event:any){
+  //   let value = event.target.value
+  // console.log(value);
+  // // this.getBooksCategory(value);
+  // this.booksService.getBooksByCategory(value).subscribe((res:any) => {
+  //   this.booksByCategory = res
+  // })
   // }
 }
