@@ -180,5 +180,22 @@ namespace Book_Store.Controllers
             }
             return BadRequest(ModelState);
         }
+
+
+        [HttpGet("profile")]
+        public async Task<IActionResult> GetUserData()
+        {
+            string username = User.FindFirstValue(ClaimTypes.Name);
+
+            AppUser userData = await _userManager.FindByNameAsync(username);
+
+            return Ok( new UserRegisterDto
+            {
+                username = userData.UserName,
+                email = userData.Email,
+                phone = userData.PhoneNumber,
+                //password = userData.PasswordHash
+            });
+        }
     }
 }
