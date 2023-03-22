@@ -20,7 +20,7 @@ export class CheckoutComponent {
   };
 
   purchaseActionResponse!: string;
-
+  showImg:boolean = false;
   constructor(
     private cartService: CartService,
     private http: HttpClient,
@@ -64,7 +64,6 @@ export class CheckoutComponent {
           console.log('Checkout successful:', res.message);
           this.purchaseActionResponse = res.message;
           console.log('this.purchaseActionResponse: ', this.purchaseActionResponse);
-
           // clear cart after successful purchase
           this.cartService.clearCart();
 

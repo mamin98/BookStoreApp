@@ -3,6 +3,7 @@ import { CartService } from 'src/app/cart/service/cart.service';
 import { CartAction } from 'src/app/enums/card-action';
 import { Book } from 'src/app/model/Book';
 
+
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',

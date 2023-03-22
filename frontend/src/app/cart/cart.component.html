@@ -2,6 +2,7 @@
   href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
   rel="stylesheet"
 />
+<!-- Start Cart Selected-->
 <div class="carts">
   <ng-container *ngIf="chosenCartItems$ | async as selectedItems">
     <ng-container
@@ -92,8 +93,9 @@
     </ng-container>
   </ng-container>
 </div>
+<!-- End Cart Selected-->
 
-
+<!-- Start When empty-->
 <ng-template #cartIsEmptyMessage>
   <div class="container-fluid" style="margin-top: 80px">
     <div class="row">
@@ -124,3 +126,4 @@
     </div>
   </div>
 </ng-template>
+<!-- Start When empty-->
