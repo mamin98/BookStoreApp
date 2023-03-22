@@ -8,7 +8,7 @@
     <ng-container
       *ngIf="(chosenCartItems$ | async)?.length !== 0; else cartIsEmptyMessage"
     >
-      <table id="cart" class="table  table-condensed">
+      <table id="cart" class="table table-condensed">
         <thead>
           <tr>
             <th style="width: 50%">Your Books</th>
@@ -38,10 +38,11 @@
               </div>
             </td>
             <td data-th="Price">{{ item.price | currency }}</td>
-            <td data-th="Quantity" class="d-flex gap-2" style="margin-top: 50px;
-            border-bottom: 0;">
-
-
+            <td
+              data-th="Quantity"
+              class="d-flex gap-2"
+              style="margin-top: 50px; border-bottom: 0"
+            >
               <button class="btn btn-danger" (click)="decrementQuantity(item)">
                 -
               </button>
@@ -64,10 +65,18 @@
           <ng-container *ngIf="chosenCartItems$ | async as selectedItems">
             <tr>
               <td>
-                <a href="#" class="btn btn-warning" routerLink="/home-allBooks"
-                style="background-color: transparent;"
-                  ><i class="fa fa-angle-left"></i> Continue Shopping</a
-                >
+                <a
+                  href="#"
+                  class="btn btn-danger back-btn"
+                  style="
+                    margin-left: 1%;
+                    margin-bottom: 1%;
+                    color: rgb(255, 254, 171);
+                    border: none;
+                  "
+                  routerLink="/home-allBooks"
+                  ><i class="fa fa-angle-left"></i> Continue Shopping
+                </a>
               </td>
               <td colspan="2" class="hidden-xs"></td>
               <td class="hidden-xs text-center">
@@ -79,7 +88,7 @@
                     [disabled]="selectedItems.length === 0"
                     (click)="toCheckoutPage()"
                     class="btn btn-success"
-                    style="width: 161px;"
+                    style="width: 161px"
                   >
                     Confirm my Orders
                   </button>
@@ -104,21 +113,29 @@
           <div class="card-header">
             <h5>Cart</h5>
           </div>
-          <div class="card-body cart" style="margin-top: 50px;">
+          <div class="card-body cart" style="margin-top: 50px">
             <div class="col-sm-12 empty-cart-cls text-center">
               <!-- CART IMAGE -->
               <img
-              src="https://i.imgur.com/dCdflKN.png"
+                src="https://i.imgur.com/dCdflKN.png"
                 width="150"
                 height="150"
                 class="img-fluid mb-4 mr-4"
               />
               <h2 class=""><strong>Your Cart is Empty</strong></h2>
               <p>Add something to make me happy :</p>
-              <a href="#" class="mt-5 btn btn-warning" routerLink="/home-allBooks"
-              style="background-color: transparent;"
-                  ><i class="fa fa-angle-left"></i> Continue Shopping</a
-                >
+              <a
+                href="#"
+                class="btn btn-danger back-btn"
+                style="
+                  margin-left: 1%;
+                  margin-bottom: 1%;
+                  color: rgb(255, 254, 171);
+                  border: none;
+                "
+                routerLink="/home-allBooks"
+                ><i class="fa fa-angle-left"></i> Continue Shopping
+              </a>
             </div>
           </div>
         </div>
@@ -126,4 +143,4 @@
     </div>
   </div>
 </ng-template>
-<!-- Start When empty-->
+<!-- Start When empty  -->

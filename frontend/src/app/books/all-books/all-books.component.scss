@@ -40,22 +40,19 @@
     box-shadow: 0 2px 15px #ddd;
     transition: transform 0.3s, box-shadow 0.3s;
     max-width: 100%;
-      .c-body {
-        padding: 5px 13px;
-      }
-      .info {
-        padding: 20x;
-      }
-
+    .c-body {
+      padding: 5px 13px;
+    }
+    .info {
+      padding: 20x;
+    }
 
     &:hover {
       transform: translateY(-10px);
     }
   }
-
 }
 // ENd home Books
-
 
 //Start pagination
 .pagination {
