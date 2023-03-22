@@ -46,7 +46,7 @@ export class CartComponent {
           if (type === CartAction.Increment) {
             this.cartService.addToCart(product, product.quantity + 1);
           }
-          if (type === CartAction.Decrement && product.quantity > 1) {
+          if (type === CartAction.Decrement && product.quantity >= 1) {
             this.cartService.addToCart(product, product.quantity - 1);
           }
         }
