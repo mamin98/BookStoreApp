@@ -1,4 +1,5 @@
-<div class="box">
+<!-- Start Home Childe books -->
+<!-- <div class="box"> -->
   <img
     [src]="product.image"
     class="card-img-top"
@@ -6,7 +7,7 @@
     routerLink="/bookDetails/{{ product.id }}"
   />
   <div class="c-body">
-    <p class="title">{{ product.title }}</p>
+    <h3 class="title">{{ product.title }}</h3>
   </div>
   <div class="c-body d-flex" style="justify-content: space-between">
     <p class="description" style="text-decoration: underline">
@@ -14,8 +15,8 @@
     </p>
     <p class="text-muted">{{ product.category }}</p>
   </div>
-  <div class="c-body" style="border-bottom: 2px solid var(--bs-gray-500)">
-    <p class="price" style="font-size: 25px; font-weight: bold; color: #eecb1d">
+  <div class="c-body" style="border-bottom: 2px solid var(--bs-gray-500);margin-top: 33px;">
+    <p class="price">
       {{ product.price }}$
     </p>
   </div>
@@ -37,4 +38,5 @@
       <button class="btn btn-success" (click)="incrementQuantity()">+</button>
     </div>
   </div>
-</div>
+<!-- </div> -->
+<!-- Start Home Childe books -->

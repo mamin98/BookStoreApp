@@ -1,3 +1,4 @@
+// Start Header
 .user-header {
   text-align: center;
   background-color: #fff;
@@ -21,6 +22,7 @@
     width: 30px;
   }
 }
+// End Header
 
 .box {
   .card {
@@ -47,13 +49,14 @@
             border: none;
           }
         }
-        .rating {
-          margin-top: 20px;
-          .rate-icon {
-            .fa-star,
-            .fa-star-half-stroke {
-              color: #ff9800;
-            }
+        .select-quantity{
+          span{
+            border: 1px solid #982020;
+            padding: 10px;
+            height: 37px;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
           }
         }
       }

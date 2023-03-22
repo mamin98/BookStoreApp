@@ -1,48 +1,44 @@
-.box {
-  .c-body {
-    padding: 5px 13px;
-    .title {
-      // padding: 10px;
-      font-weight: bold;
-      font-size: 22px;
-    }
-    .price {
-      // width: 61px;
-      // text-align: center;
-      // padding: 5px;
-    }
-  }
 
-  .info {
-    padding: 10px;
-    .button {
-      display: flex;
-      justify-content: space-around;
+  .c-body {
+      padding: 5px 13px;
+      .title {
+        font-weight: bold;
+        font-size: 22px;
+      }
+      .price {
+        font-size: 25px;
+        font-weight: bold;
+        color: #eecb1d
+      }
     }
-    .select-quantity {
-      .quantity {
-        background: #607d8b;
-        /* padding: 10px; */
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        text-align: center;
+
+    .info {
+      padding: 20px;
+      margin-top: 20px;
+      .button {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-weight: bold;
+        justify-content: space-around;
       }
-      button {
-        font-size: 20px;
-        font-weight: bold;
+      .select-quantity {
+        .quantity {
+          background: #607d8b;
+          /* padding: 10px; */
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          font-weight: bold;
+        }
+        button {
+          font-size: 20px;
+          font-weight: bold;
+        }
       }
     }
-  }
-  &:hover {
-    transform: translateY(-10px);
-  }
-}
 
 .clk {
   background-color: #ef5553 !important;

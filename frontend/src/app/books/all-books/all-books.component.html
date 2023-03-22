@@ -1,3 +1,4 @@
+<!--Start Select Category -->
 <div class="my-2 w-25 category-select">
   <h3>Categories :</h3>
   <select
@@ -11,7 +12,9 @@
     </option>
   </select>
 </div>
+<!--End Select Category -->
 
+ <!-- Start Home parent books -->
 <div class="books" *ngIf="!loading">
   <div
     class="card-b"
@@ -20,12 +23,17 @@
     <app-book [product]="book"></app-book>
   </div>
 </div>
+ <!-- End Home parent books -->
 
+ <!-- Start Spinner loading -->
 <!-- show the spinner if the loading is true -->
 <div class="text-center w-100" *ngIf="loading" style="margin: 100px auto">
   <app-spinner></app-spinner>
 </div>
+ <!-- End Spinner loading -->
 
+ <!-- Start pagination -->
 <div class="d-flex justify-content-center pagination">
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
+ <!-- End pagination -->
