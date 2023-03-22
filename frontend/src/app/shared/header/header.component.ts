@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit{
     this.cartService.selectedItemsCount$;
     
     account_data: any = {};
+    
     constructor(
     private cartService: CartService,
     public userService: UsersService
