@@ -18,7 +18,7 @@
       </ng-template>
 
       <ng-template #auth>
-        <a class="py-2  d-md-inline-block" >{{account_data.username}}</a>
+        <a class="py-2 d-md-inline-block">{{ account_data.username }}</a>
         <a
           class="py-2 d-md-inline-block"
           routerLink="/login"
@@ -32,7 +32,9 @@
       <div class="cart d-flex">
         <a class="py-2 d-md-inline-block" routerLink="/cart">
           <i class="fa-solid fa-cart-arrow-down fa-lg"></i>
-          <span class="count">{{ selectedItemsCount$ | async }}</span>
+          <ng-container *ngIf="selectedItemsCount$ | async as count">
+            <span class="count" *ngIf="count > 0">{{ count }}</span>
+          </ng-container>
         </a>
       </div>
     </div>

@@ -3,80 +3,125 @@
   rel="stylesheet"
 />
 <div class="carts">
-  <table id="cart" class="table table-hover table-condensed">
-    <thead>
-      <tr>
-        <th style="width: 50%">Your Books</th>
-        <th style="width: 10%">Price</th>
-        <th style="width: 8%">Quantity</th>
-        <th style="width: 22%" class="text-center">Subtotal</th>
-        <th style="width: 10%"></th>
-      </tr>
-    </thead>
-    <tbody>
-
-<ng-container *ngIf="chosenCartItems$ | async as selectedItems">
-  <tr *ngFor="let item of selectedItems">
-    <td data-th="Product">
-          <div class="row d-flex" style="flex-direction: column-reverse">
-            <div class="col-sm-2 hidden-xs">
-              <img
-                src="{{ item.imageSrc }}"
-                alt="..."
-                class="img-responsive"
-                style="height: 100px; border-radius: 10px; width: 161px"
-              />
-            </div>
-            <div class="col-sm-10">
-              <h4 style="font-size: 18px; color: blue" class="nomargin">
-                {{ item.name }}
-              </h4>
-            </div>
-          </div>
-        </td>
-        <td data-th="Price">{{ item.price | currency }} $</td>
-        <td data-th="Quantity" class="d-flex gap-2">
-          <button class="btn btn-success" (click)="incrementQuantity(item)">+</button>
-          <!-- <input
+  <ng-container *ngIf="chosenCartItems$ | async as selectedItems">
+    <ng-container
+      *ngIf="(chosenCartItems$ | async)?.length !== 0; else cartIsEmptyMessage"
+    >
+      <table id="cart" class="table table-hover table-condensed">
+        <thead>
+          <tr>
+            <th style="width: 50%">Your Books</th>
+            <th style="width: 10%">Price</th>
+            <th style="width: 8%">Quantity</th>
+            <th style="width: 22%" class="text-center">Subtotal</th>
+            <th style="width: 10%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of selectedItems">
+            <td data-th="Product">
+              <div class="row d-flex" style="flex-direction: column-reverse">
+                <div class="col-sm-2 hidden-xs">
+                  <img
+                    src="{{ item.imageSrc }}"
+                    alt="..."
+                    class="img-responsive"
+                    style="height: 100px; border-radius: 10px; width: 161px"
+                  />
+                </div>
+                <div class="col-sm-10">
+                  <h4 style="font-size: 18px; color: blue" class="nomargin">
+                    {{ item.name }}
+                  </h4>
+                </div>
+              </div>
+            </td>
+            <td data-th="Price">{{ item.price | currency }}</td>
+            <td data-th="Quantity" class="d-flex gap-2">
+              <button class="btn btn-success" (click)="incrementQuantity(item)">
+                +
+              </button>
+              <!-- <input
             type="number"
             class="form-control text-center"
             [(ngModel)]="item.quantity"
             value="1"
             style="width: 100px"
           /> -->
-          <span class="form-control text-center">{{item.quantity}}</span>
-          <button class="btn btn-danger" (click)="decrementQuantity(item)">-</button>
-        </td>
-        <td data-th="Subtotal" class="text-center">
-          {{ item.price * item.quantity }} $
-        </td>
-        <td>
-          <button class="btn btn-danger" (click)="removeItemFromCart(item)">Delete</button>
-        </td>
-      </tr>
+              <span class="form-control text-center">{{ item.quantity }}</span>
+              <button class="btn btn-danger" (click)="decrementQuantity(item)">
+                -
+              </button>
+            </td>
+            <td data-th="Subtotal" class="text-center">
+              {{ item.price * item.quantity | currency }}
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="removeItemFromCart(item)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <ng-container *ngIf="chosenCartItems$ | async as selectedItems">
+            <tr>
+              <td>
+                <a href="#" class="btn btn-warning" routerLink="/home-allBooks"
+                  ><i class="fa fa-angle-left"></i> Continue Shopping</a
+                >
+              </td>
+              <td colspan="2" class="hidden-xs"></td>
+              <td class="hidden-xs text-center">
+                <!-- <strong>Total : {{ total }} $</strong> -->
+              </td>
+              <td>
+                <a>
+                  <button
+                    [disabled]="selectedItems.length === 0"
+                    (click)="toCheckoutPage()"
+                    class="btn btn-success"
+                  >
+                    Confirm my Orders
+                  </button>
+                  <!-- <i class="fa fa-angle-right"></i> -->
+                </a>
+              </td>
+            </tr>
+          </ng-container>
+        </tfoot>
+      </table>
     </ng-container>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td>
-          <a href="#" class="btn btn-warning" routerLink="/home-allBooks"
-            ><i class="fa fa-angle-left"></i> Continue Shopping</a
-          >
-        </td>
-        <td colspan="2" class="hidden-xs"></td>
-        <td class="hidden-xs text-center">
-          <!-- <strong>Total : {{ total }} $</strong> -->
-        </td>
-        <td>
-          <a>
-            <button (click)="toCheckoutPage()" class="btn btn-success">Confirm my Orders</button>
-            <!-- <i class="fa fa-angle-right"></i> -->
-        </a>
-        </td>
-      </tr>
-    </tfoot>
-  </table>
-<!-- <button (click)="toCheckoutPage()">Confirm my Orders</button> -->
-
+  </ng-container>
 </div>
 
+
+<ng-template #cartIsEmptyMessage>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h5>Cart</h5>
+          </div>
+          <div class="card-body cart">
+            <div class="col-sm-12 empty-cart-cls text-center">
+              <!-- CART IMAGE -->
+              <img
+                src=""
+                width="150"
+                height="150"
+                class="img-fluid mb-4 mr-4"
+              />
+              <h2 class="text-bg-dark"><strong>Your Cart is Empty</strong></h2>
+            
+              <a href="#" class="mt-5 btn btn-warning" routerLink="/home-allBooks"
+                  ><i class="fa fa-angle-left"></i> Continue Shopping</a
+                >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
