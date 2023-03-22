@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { CartService } from 'src/app/cart/service/cart.service';
 import { CartAction } from 'src/app/enums/card-action';
 import { Book } from 'src/app/model/Book';
-import { BooksService } from '../services/books.service';
 
 @Component({
   selector: 'app-book',
@@ -14,10 +13,7 @@ export class BookComponent {
 
   @Input() product!: Book;
   addButton: boolean = false;
-  constructor(
-    private cartService: CartService,
-    private booksService: BooksService
-  ) {}
+  constructor(private cartService: CartService) {}
 
   // add to card incrementing quantity by 1
   incrementQuantity = () => {

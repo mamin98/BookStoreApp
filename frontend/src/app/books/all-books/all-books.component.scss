@@ -1,4 +1,5 @@
-.category-select{
+.category-select {
+  h3 {
     background-color: #ef5553;
     padding: 3px;
     text-align: center;
@@ -10,8 +11,8 @@
     margin-bottom: 15px;
     margin-top: 10px;
     position: relative;
-    animation: cssAnimation_0 1524ms infinite ease-out;
-    &::after{
+    // animation: cssAnimation_0 1524ms infinite ease-out;
+    &::after {
       position: absolute;
       content: "";
       width: 3px;
@@ -22,53 +23,56 @@
       z-index: -1;
     }
   }
-
-.category{
-  display: flex;
-  gap: 10px;
-  cursor: pointer;
-  span{
-    background-color: var(--bs-cyan);
-    padding: 5px;
-    border-radius: 4px;
-    &:hover{
-      background-color: #ef5553;
-      color: #fff;
-    }
-  }
 }
-.books{
+// .category{
+//   display: flex;
+//   gap: 10px;
+//   cursor: pointer;
+//   span{
+//     background-color: var(--bs-cyan);
+//     padding: 5px;
+//     border-radius: 4px;
+//     &:hover{
+//       background-color: #ef5553;
+//       color: #fff;
+//     }
+//   }
+// }
+.books {
   flex-wrap: wrap;
-    // gap: 20px;
-    margin: 60px auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 1rem;
-    .card-b{
-      background-color: #ffffff;
-      border-radius: 10px 10px 10px 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 15px #ddd;
-      transition: transform 0.3s, box-shadow 0.3s;
-      max-width: 100%;
+  // gap: 20px;
+  margin: 60px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 1rem;
+  .card-b {
+    background-color: #ffffff;
+    border-radius: 10px 10px 10px 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px #ddd;
+    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 100%;
 
-      .box{
-        .c-body{
-          padding: 5px 13px;
-
-        }
-        .info{
-          padding: 10px;
-        }
+    .box {
+      .c-body {
+        padding: 5px 13px;
       }
-      &:hover {
-        transform: translateY(-10px);
+      .info {
+        padding: 10px;
       }
     }
-}
-
-@keyframes cssAnimation_0 {
-  to {
-    background-color: rgba(100, 93, 201, 0.86);
+    &:hover {
+      transform: translateY(-10px);
+    }
   }
 }
+
+.pagination {
+  margin-top: 15% !important;
+}
+
+// @keyframes cssAnimation_0 {
+//   to {
+//     background-color: rgba(100, 93, 201, 0.86);
+//   }
+// }

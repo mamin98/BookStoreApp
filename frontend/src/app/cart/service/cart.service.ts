@@ -157,6 +157,8 @@ export class CartService {
 
   public clearCart = () => {
     this.selectedCartItems$.next([]);
-    this.localStore.clearData();
+    this.localStore.DeleteData(this.cartItemsKey);
+    this.localStore.DeleteData(this.selectedItemsCountKey);
+    this.selectedItemsCount.next(0);
   };
 }

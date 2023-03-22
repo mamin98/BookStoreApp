@@ -1,0 +1,19 @@
+<ng-container *ngIf="books$ | async as books">
+  <ng-container *ngIf="books.length > 0"> </ng-container>
+
+  <div class="container">
+    <ng-container
+      *ngFor="
+        let book of books | paginate : { itemsPerPage: 8, currentPage: p }
+      "
+    >
+      <div class="box">
+        <app-book [product]="book"></app-book>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="d-flex justify-content-center pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</ng-container>

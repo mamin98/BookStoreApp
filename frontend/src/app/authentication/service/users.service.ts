@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -14,6 +14,8 @@ export class UsersService {
 
   private loginPath = environment.baseApi+'account/login';
   private registerPath = environment.baseApi+'account/register';
+  private profilePath = environment.baseApi+'account/profile'
+
 
   regform!: FormGroup;
   logform!: FormGroup;
@@ -84,5 +86,12 @@ export class UsersService {
     }
   }
   
+  accountProfile(){
+    const headers = new HttpHeaders()
+    // connection-Tupe, app/json 'Bearer token' ==> like in postman
+    .set('Authorization', `Bearer ${this.getToken_fromLocalStorage()}`);
+
+    return this.http.get(this.profilePath, {headers});
+  }
 
 }

@@ -16,6 +16,8 @@ import { CartComponent } from './cart/cart.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { BooksWithCategoryComponent } from './books/books-with-category/books-with-category.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
     RegisterComponent,
     BookComponent,
     SpinnerComponent,
+    BooksWithCategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,9 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   ],
+  exports: [NgxPaginationModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,36 +1,40 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { IBooks } from '../IBooks';
+import { Observable, map } from 'rxjs';
 import { ApiPaths } from 'src/app/enums/api-paths';
 import { Book } from 'src/app/model/Book';
+import { Category } from 'src/app/model/Category';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BooksService {
   // baseUrl:string="/assets/data/books.json"
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // getAllBooks():Observable<IBooks[]>{
   //   return this.http.get<IBooks[]>(this.baseUrl);
   // }
 
-
-  getAllBooks(){
-    return this.http.get<Book[]>(environment.baseApi + ApiPaths.AllBooks)
-
+  getAllBooks() {
+    return this.http.get<Book[]>(environment.baseApi + ApiPaths.AllBooks);
   }
-  getBooksID(id:any){
-    return this.http.get(environment.baseApi + ApiPaths.OneBook + id)
+  getBooksID(id: number) {
+    return this.http.get(environment.baseApi + ApiPaths.OneBook + id);
   }
 
-  getAllCategories(){
-    return this.http.get(environment.baseApi + ApiPaths.Categories)
+  getAllCategories() {
+    return this.http.get<Category[]>(environment.baseApi + ApiPaths.Categories);
   }
-//=======================================
-  getBooksByCategory(id:any){
-    return this.http.get(environment.baseApi + ApiPaths.Categories  + id)
+
+  getBooksByCategory(id: number): Observable<Book[]> {
+    return this.http.get<Book[]>(environment.baseApi + ApiPaths.Categories + id).pipe(
+      // todo: response type
+      map((response: any) => {
+        return response.books;
+      })
+    );
   }
+
 }

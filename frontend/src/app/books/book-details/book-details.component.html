@@ -1,46 +1,79 @@
 <div class="user-header d-flex">
-  <img src="../../../assets/imgs/book.png" alt="">
- <h4>Book Details</h4>
+  <img src="../../../assets/imgs/book.png" alt="" />
+  <h4>Book Details</h4>
 </div>
 
-  <div class="box">
-    <div class="card mb-3" style="max-width: 540px">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img [src]="book.image" class="card-img-top" alt="..." />
-        </div>
-        <div class="col-md-4">
-          <div class="card-body">
-            <h5 class="card-title">{{ book.title }}</h5>
-            <span>Best Seller</span>
+<div class="cont d-flex justify-content-center">
+  <div class="card mb-3" style="max-width: 75%">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img
+          [src]="book.image"
+          class="card-img"
+          style="padding: 15%"
+          alt="..."
+        />
+        <a
+          href="#"
+          class="btn btn-danger back-btn"
+          style="
+            margin-left: 17%;
+            margin-bottom: 10%;
+            color: rgb(255, 254, 171);
+          "
+          routerLink="/home-allBooks"
+          ><i class="fa fa-angle-left"></i> More Books
+        </a>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <div class="title">
+            <h5 class="card-title display-6 fw-bolder">{{ book.title }}</h5>
             <p class="card-text">
-              {{ book.category }}
+              <small class="text-muted">{{ book.category }}</small>
             </p>
-            <p class="card-text"> authorName : {{book.authorName}}</p>
-            <p class="card-text">{{book.bookType}}</p>
-
-            <div class="btn">
-              <a href="#"><button class="btn btn-primary">Pref Order</button></a>
-            </div>
-            <!-- <div class="rating d-flex">
-              <div class="rate-icon">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star-half-stroke"></i>
-              </div>
-              <p>20,13</p>
-            </div> -->
           </div>
 
-        </div>
-        <div class="col-md-4 Description">
-          <p>The tears. The tantrums. The total meltdowns. Does your daily life as a mom leave you drained? Discouraged? Maybe even resentful? You're not alone.
-            In parenting, hard comes with the territory. We've been conditioned to believe that anything this difficult isn't worth doing, and the best we can hope for is to simply endure our children's difficult stages without losing our minds in the process.
-            God has a different perspective. What if the everyday trials of motherhood were intended to grow you into who he created you to be? To root out your impatience and self-indulgence? To grow your capacity for empathy and tenacity? To make you more creative? To drive you closer to Jesus for your ultimate benefit?
-            You have a choice to make when it comes to how you view hard. When you choose God's way, you'll discover grace, purpose, and hope in any circumstance you face.</p>
+          <div class="infoo">
+            <div class="sub-info">
+              <span class="subtitle">Author : </span>{{ book.authorName }}
+            </div>
+            <div class="sub-info">
+              <span class="subtitle">Publisher : </span>{{ book.publisherName }}
+            </div>
+
+            <div class="fs-5 mb-5">
+              <h5 class="price">$ {{ book.price }}</h5>
+            </div>
+          </div>
+
+          <hr class="hr-text" data-content="About The Book" />
+          <p class="card-text" style="margin-bottom: 20px">
+            Some book info (metadata) is required and will be filled in by
+            default when you create your book. Required metadata allows
+            Pressbooks to build your book’s home page, automatically generate
+            the cover, title page, and copyright notice in your book exports,
+            and meet the metadata requirements of ebook sellers for your EPUB
+            exports. In general, we recommend adding as much information as you
+            can when creating your book.
+          </p>
+
+          <!-- <div
+            *ngIf="addButton"
+            class="d-flex select-quantity"
+            style="justify-content: space-between; gap: 40px"
+          >
+            <button class="btn btn-danger" (click)="decrementQuantity()">
+              -
+            </button>
+            
+            <span class="quantity" type="text">{{ quantity }}</span>
+            <button class="btn btn-success" (click)="incrementQuantity()">
+              +
+            </button>
+          </div> -->
         </div>
       </div>
     </div>
-
   </div>
+</div>
