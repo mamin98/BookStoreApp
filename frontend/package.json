@@ -23,12 +23,13 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "jquery": "^3.6.4",
+    "ngx-pagination": "^6.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^15.2.2",
+    "@angular-devkit/build-angular": "^15.2.4",
     "@angular/cli": "~15.1.6",
     "@angular/compiler-cli": "^15.1.0",
     "@angular/localize": "^15.1.0",

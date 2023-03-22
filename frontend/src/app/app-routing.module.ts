@@ -10,10 +10,17 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { BooksWithCategoryComponent } from './books/books-with-category/books-with-category.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home-allBooks', pathMatch: 'full' },
   { path: 'home-allBooks', component: AllBooksComponent },
-  { path: 'home-allBooks/categories/:categoryId', component: BooksWithCategoryComponent },
+  {
+    path: 'home-allBooks/categories/:categoryId',
+    component: BooksWithCategoryComponent,
+  },
   { path: 'bookDetails/:id', component: BookDetailsComponent },
-{ path: 'cart', component: CartComponent/*, canActivate:[AuthorizeService]*/ },
+  {
+    path: 'cart',
+    component: CartComponent /*, canActivate:[AuthorizeService]*/,
+  },
   // authentication Paths
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

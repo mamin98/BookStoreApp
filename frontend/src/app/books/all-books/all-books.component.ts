@@ -22,6 +22,8 @@ export class AllBooksComponent implements OnInit {
   booksByCategory!: Book[];
   categories: any = this.getCategories();
 
+  p: number = 1;
+
   ngOnInit(): void {
     this.getAllBooks();
     this.getCategories();
