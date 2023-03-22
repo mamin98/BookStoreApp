@@ -17,7 +17,7 @@ export class BookComponent {
 
   // add to card incrementing quantity by 1
   incrementQuantity = () => {
-    this.quantity++;
+    this.quantity += 1;
     this.addToCart(this.product);
     // notify quantity count observer for header cart update
     this.cartService.updateQuantityCount(CartAction.Increment);

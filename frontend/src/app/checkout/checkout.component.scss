@@ -1,13 +1,27 @@
 .component {
   position: relative;
-  width: 30%;
+  width: 50%;
+  height: 300px;
   margin: 5rem auto;
   padding: 1rem;
-
   box-shadow: 2px 2px 10px #454545;
   background-color: #FFFFFF;
-
   text-align: center;
+  // display: flex;
+  // flex-direction: column-reverse;
+  .credit-card{
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    .confirmed{
+      h2{
+        color: green;
+        &::after{
+
+        }
+      }
+    }
+  }
 }
 
 .valid-button {
@@ -24,28 +38,3 @@
   background-color: rgba(4,99,128,1);
   box-shadow: none;
 }
-
-.total {
-  position: absolute;
-  top: 3em;
-  left: -8em;
-  z-index: -1;
-
-  background: #002F2F;
-  color: #A7A37E;
-
-  width: 100px;
-  transform: rotate(-35deg);
-  display:flex;
-  flex-wrap: wrap;
-  justify-content:center;
-  align-items:center;
-  padding-right: 2rem;
-
-  box-shadow: 1px 1px 5px black;
-}
-
-.total p {
-  font-size: 1.5rem;
-}
-
