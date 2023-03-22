@@ -27,8 +27,11 @@ export class CartService {
 
   // selected items by user subject meant for syncing cart header (cart count)
   private selectedItemsCount = new BehaviorSubject<number>(0);
-  allSelectedQuantity: number = 0;
   selectedItemsCount$ = this.selectedItemsCount.asObservable();
+
+  // local reference for totaling selected cart quantity of carts quantities
+  // used instead of selected count observable for needed initial value
+  allSelectedQuantity: number = 0;
 
   constructor(
     private productService: BooksService,
@@ -38,11 +41,23 @@ export class CartService {
     const localItemsData = this.localStore.getData(this.cartItemsKey);
 
     if (localItemsData) {
-      const selectedCartItems = JSON.parse(localItemsData) as SelectedItem[];
-      this.selectedCartItems = selectedCartItems;
-      this.selectedCartItems$.next(selectedCartItems);
+      // allSelectedQuantity
+      const selectedStorageCartItems = JSON.parse(
+        localItemsData
+      ) as SelectedItem[];
+      this.selectedCartItems = selectedStorageCartItems;
+      this.selectedCartItems$.next(selectedStorageCartItems);
+      this.allSelectedQuantity = selectedStorageCartItems.reduce(
+        (acc, curr) => acc + curr.quantity,
+        0
+      );
+      localStore.saveData(
+        this.selectedItemsCountKey,
+        this.allSelectedQuantity.toString()
+      );
     }
-    // quantity - local storage setup
+
+    // quantity - local storage sync
     const selectedItemsCount = Number(
       localStorage.getItem(this.selectedItemsCountKey)
     );
@@ -50,16 +65,13 @@ export class CartService {
       this.selectedItemsCount.next(selectedItemsCount);
       this.allSelectedQuantity = selectedItemsCount;
     }
-    this.selectedItemsCount.subscribe((count: number) => {
-      localStore.saveData(this.selectedItemsCountKey, count.toString());
-      this.allSelectedQuantity = count;
-    });
   }
 
-  updateQuantityCount(cardAction: CartAction) {
-    cardAction === CartAction.Increment
-      ? (this.allSelectedQuantity += 1)
-      : (this.allSelectedQuantity -= 1);
+  updateQuantityCount(cartAction: CartAction) {
+    if (cartAction === CartAction.Increment) this.allSelectedQuantity += 1;
+
+    if (cartAction === CartAction.Decrement)
+      this.allSelectedQuantity > 1 ? (this.allSelectedQuantity -= 1) : null;
 
     this.selectedItemsCount.next(this.allSelectedQuantity);
   }
@@ -147,18 +159,32 @@ export class CartService {
     );
     if (index !== -1) {
       this.selectedCartItems.splice(index, 1);
-      this.selectedCartItems$.next(this.selectedCartItems);
+
       // subscribe to changes of user selected products & update local storage
+      this.selectedCartItems$.next(this.selectedCartItems);
       this.selectedCartItems$.subscribe((items) => {
+        // sync carted items with local storage
         localStorage.setItem(this.cartItemsKey, JSON.stringify(items));
+
+        this.allSelectedQuantity = this.selectedCartItems.reduce(
+          (acc, curr) => acc + curr.quantity,
+          0
+        );
+        this.selectedItemsCount.next(this.allSelectedQuantity);
+
+        // sync quantity with local storage
+        this.localStore.saveData(
+          this.selectedItemsCountKey,
+          this.allSelectedQuantity.toString()
+        );
       });
     }
   }
 
   public clearCart = () => {
     this.selectedCartItems$.next([]);
-    this.localStore.DeleteData(this.cartItemsKey);
-    this.localStore.DeleteData(this.selectedItemsCountKey);
+    this.localStore.deleteData(this.cartItemsKey);
+    this.localStore.deleteData(this.selectedItemsCountKey);
     this.selectedItemsCount.next(0);
   };
 }
