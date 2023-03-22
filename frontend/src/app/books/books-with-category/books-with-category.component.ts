@@ -10,6 +10,8 @@ import { BooksService } from '../services/books.service';
   styleUrls: ['./books-with-category.component.scss'],
 })
 export class BooksWithCategoryComponent {
+  p: number = 1;
+
   constructor(
     private route: ActivatedRoute,
     private booksService: BooksService
