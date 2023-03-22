@@ -1,80 +1,77 @@
-
-  .c-body {
-      padding: 5px 13px;
-      .title {
-        font-weight: bold;
-        font-size: 13px;
-      }
-      .price {
-        font-size: 21px;
-        font-weight: bold;
-        color: #eecb1d;
-        margin-top: 18px;
-      }
-      // Start ToolTip
-      .view-details{
-        position: relative;
-        span{
-          visibility: hidden;
-          width: 120px;
-          background-color: var(--bs-gray-600);
-          color: #fff;
-          text-align: center;
-          border-radius: 4px;
-          padding: 1px 4px;
-          position: absolute;
-          top: -25px;
-          left: -48px;
-          transition: 0.1s;
-        }
-        &:hover span{
-          visibility: visible;
-        }
-      }
-      // End ToolTip
-
+.c-body {
+  padding: 5px 13px;
+  .title {
+    font-weight: bold;
+    font-size: 13px;
+  }
+  .price {
+    font-size: 21px;
+    font-weight: bold;
+    color: #eecb1d;
+    margin-top: 18px;
+  }
+  // Start ToolTip
+  .view-details {
+    position: relative;
+    span {
+      visibility: hidden;
+      width: 120px;
+      background-color: var(--bs-gray-600);
+      color: #fff;
+      text-align: center;
+      border-radius: 4px;
+      padding: 1px 4px;
+      position: absolute;
+      top: -25px;
+      left: -48px;
+      transition: 0.1s;
     }
+    &:hover span {
+      visibility: visible;
+    }
+  }
+  // End ToolTip
+}
 // Start Buttons
-    .info {
-      padding: 20px;
+.info {
+  padding: 20px;
 
-      .button {
-        display: flex;
-        justify-content: space-around;
- 
-        .clk {
-          background-color: #ef5553 !important;
-          border: none;
-          transition: 0.3s;
-        }
-        .clk:hover {
-          background-color: #e9ecef !important;
-          
-        }
-        .clk:hover .fa-cart-shopping{
-          color:green;
-          z-index:2
-        }
-      }
-      .select-quantity {
-        .quantity {
-          background: #607d8b;
-          border-radius: 50%;
-          width: 50px;
-          height: 50px;
-          text-align: center;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #fff;
-          font-weight: bold;
-        }
-        button {
-          font-size: 20px;
-          font-weight: bold;
-        }
-      }
+  .button {
+    display: flex;
+    justify-content: space-around;
+
+    .clk {
+      background-color: #ef5553 !important;
+      border: none;
+      transition: 0.3s;
     }
+    .clk:hover {
+      background-color: #a51e1c !important;
+    }
+    .clk:hover .fa-cart-shopping {
+      color: #ffe669;
+      z-index: 2;
+    }
+  }
+  .select-quantity {
+    .quantity {
+      background: #607d8b;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: bold;
+    }
+    button {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+}
 
 // End Buttons
 
@@ -83,4 +80,3 @@
     transform: translateX(10px);
   }
 }
-

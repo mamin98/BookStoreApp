@@ -23,6 +23,7 @@
             margin-left: 17%;
             margin-bottom: 10%;
             color: rgb(255, 254, 171);
+            border: none;
           "
           routerLink="/home-allBooks"
           ><i class="fa fa-angle-left"></i> More Books
@@ -66,18 +67,25 @@
           <!--Start Button Select Quantity books-->
           <div
             class="d-flex select-quantity"
-            style="gap: 40px;align-items: center;"
+            style="gap: 40px; align-items: center"
           >
             <button class="btn btn-danger" (click)="decrementQuantity()">
               -
             </button>
 
-            <span style="border: 1px solid #b9d106;
-            padding: 10px;
-            height: 37px;
-            display: flex;
-            align-items: center;
-            border-radius: 10px;" class="quantity" type="text">{{ quantity }}</span>
+            <span
+              style="
+                border: 1px solid #b9d106;
+                padding: 10px;
+                height: 37px;
+                display: flex;
+                align-items: center;
+                border-radius: 10px;
+              "
+              class="quantity"
+              type="text"
+              >{{ quantity }}</span
+            >
             <button class="btn btn-success" (click)="incrementQuantity()">
               +
             </button>
@@ -85,7 +93,6 @@
         </div>
       </div>
       <!--Start Cart info-->
-
     </div>
   </div>
 </div>
