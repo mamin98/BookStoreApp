@@ -186,16 +186,21 @@ namespace Book_Store.Controllers
         public async Task<IActionResult> GetUserData()
         {
             string username = User.FindFirstValue(ClaimTypes.Name);
-
-            AppUser userData = await _userManager.FindByNameAsync(username);
-
-            return Ok( new UserRegisterDto
+            if (username != null)
             {
-                username = userData.UserName,
-                email = userData.Email,
-                phone = userData.PhoneNumber,
-                //password = userData.PasswordHash
-            });
+                AppUser userData = await _userManager.FindByNameAsync(username);
+                var userRloe = User.FindFirstValue(ClaimTypes.Role);
+                return Ok(new
+                {
+                    username = userData.UserName,
+                    email = userData.Email,
+                    phone = userData.PhoneNumber,
+                    role = userRloe
+                    //password = userData.PasswordHash
+                });
+            }
+
+            return Ok("invalid username");
         }
     }
 }
