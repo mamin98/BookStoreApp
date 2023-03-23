@@ -39,6 +39,10 @@
         <small class="text-danger" *ngIf="password?.errors?.['required']"
           >password is required!</small
         >
+        <small class="text-danger" *ngIf="password?.errors?.['pattern']"
+          >password must contains only capital,small characters and numbers
+          </small
+        >
       </div>
     </div>
 

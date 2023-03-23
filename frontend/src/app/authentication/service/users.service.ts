@@ -37,7 +37,7 @@ export class UsersService {
     // Login Form
     this.logform = this.formbuilder.group({
       username: ['', [Validators.required, Validators.pattern("[a-zA-Z_]+")]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.pattern('[^(?=.[a-z])(?=.[A-Z])(?=.*\d).{6,15}]')]]
     });
 
 
