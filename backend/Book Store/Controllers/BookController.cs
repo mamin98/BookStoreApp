@@ -71,7 +71,8 @@ namespace Book_Store.Controllers
                     Image = b.Image,
                     Price = b.Price,
                     Title = b.Title,
-                    Quantity = b.QuantityInStock
+                    Quantity = b.QuantityInStock,
+                    Ratings = b.AverageRatings
                 }).ToList();
 
             return Ok(allBooks);

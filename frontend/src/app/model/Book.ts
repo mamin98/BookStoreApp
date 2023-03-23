@@ -7,4 +7,5 @@ export interface Book {
   authorName: string;
   publisherName: string;
   category?: string;
+  rating: number
 }
