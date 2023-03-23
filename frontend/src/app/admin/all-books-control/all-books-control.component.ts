@@ -37,16 +37,6 @@ export class AllBooksControlComponent {
     this.getCategories();
   }
 
-  goToCart() {
-    this.router.navigate(['/cart']);
-  }
-
-  handleSelectedCategory(event: Event) {
-    const target = event.target as HTMLButtonElement;
-    const categoryId = Number(target.value);
-    // Navigate to books with category component with the selected id
-    this.router.navigate(['/home-allBooks/categories', categoryId]);
-  }
 
   getAllBooks() {
     this.loading = true; //  spinner open
@@ -86,5 +76,17 @@ export class AllBooksControlComponent {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  // Delete Book 
+  Delete(id:any){
+    this.service.DeleteBook(id).subscribe((res:any)=>{
+      
+      if(confirm("Opps! Book Will be delete")){this.getAllBooks()}
+      else{
+        alert("Well, Book not deleted")
+      }
+          
+    })
   }
 }

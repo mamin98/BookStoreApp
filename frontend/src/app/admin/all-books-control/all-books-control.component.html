@@ -74,7 +74,7 @@
             <td data-th="Price">{{ item.price | currency }}</td>
 
             <td>
-              <button class="btn btn-danger" style="margin-top: 10%">
+              <button class="btn btn-danger" style="margin-top: 10%" (click)="Delete(item.id)">
                 Delete
               </button>
             </td>

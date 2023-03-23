@@ -10,15 +10,16 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AdminService {
+
+  deletePath: string= environment.baseApi+ApiPaths.OneBook;
   constructor(private http: HttpClient) {}
 
-  // getAllBooks():Observable<IBooks[]>{
-  //   return this.http.get<IBooks[]>(this.baseUrl);
-  // }
+  
 
   getAllBooks() {
     return this.http.get<Book[]>(environment.baseApi + ApiPaths.AllBooks);
   }
+  
   getBooksID(id: number) {
     return this.http.get(environment.baseApi + ApiPaths.OneBook + id);
   }
@@ -36,5 +37,10 @@ export class AdminService {
           return response.books;
         })
       );
+  }
+
+  // Delete Book by id
+  DeleteBook(id:any){
+    return this.http.delete(this.deletePath+ id);
   }
 }
