@@ -1,4 +1,5 @@
 ﻿using Book_Store.Models;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,6 +38,7 @@ namespace Book_Store.Data
                         Isbn = BooksDummyData.Isbns[new Random().Next(BooksDummyData.Isbns.Length)],
                         PublicationDate = new DateOnly(2023, 1, 1).AddDays(new Random().Next(0, 365)),
                         Image = BooksDummyData.Images[i],
+                        AverageRatings = BooksDummyData.AverageRatings[new Random().Next(BooksDummyData.AverageRatings.Length)]
                     });
             }
 

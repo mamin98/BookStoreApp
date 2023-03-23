@@ -107,4 +107,12 @@ public static class BooksDummyData
             return publisherIds;
         }
     }
+    public static float[] AverageRatings
+    {
+        get
+        {
+            float[] averageRatings = { 2.2f, 3.5f, 4.1f, 4.9f, 3.2f };
+            return averageRatings;
+        }
+    }
 }

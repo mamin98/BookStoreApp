@@ -9,6 +9,7 @@ namespace Book_Store.Models
         public string Isbn { get; set; }
         public decimal Price { get; set; }
         public int QuantityInStock { get; set; } = 1000;
+        public float AverageRatings { get; set; }
         public DateOnly? PublicationDate { get; set; }
 
         // upload image, when create add book
@@ -36,6 +37,6 @@ namespace Book_Store.Models
         public Types BookType { get; set; }
 
         public List<OrderItem> Items { get; set; }
-
+        public IEnumerable<Rating> Ratings { get; set; } = null!;
     }
 }

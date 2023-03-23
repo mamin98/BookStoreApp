@@ -4,6 +4,7 @@ using Book_Store.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Book_Store.Migrations
 {
     [DbContext(typeof(BookStoreContext))]
-    partial class BookStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20230323013921_AddRatingsEntity")]
+    partial class AddRatingsEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -175,9 +178,6 @@ namespace Book_Store.Migrations
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
-                    b.Property<float>("AverageRatings")
-                        .HasColumnType("real");
-
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
@@ -225,585 +225,546 @@ namespace Book_Store.Migrations
                         {
                             Id = 1,
                             AuthorId = 1,
-                            AverageRatings = 4.1f,
                             Image = "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=912&q=80",
                             IsRecommended = false,
-                            Isbn = "Not Enabled",
-                            Price = 11m,
-                            PublicationDate = new DateOnly(2023, 4, 23),
-                            PublisherId = 4,
+                            Isbn = "978-1639363490",
+                            Price = 30m,
+                            PublicationDate = new DateOnly(2023, 12, 11),
+                            PublisherId = 5,
                             QuantityInStock = 1000,
-                            Title = "The Great Gatsby",
+                            Title = "The Adventure Trail",
                             TypeId = 2
                         },
                         new
                         {
                             Id = 2,
-                            AuthorId = 6,
-                            AverageRatings = 3.5f,
+                            AuthorId = 7,
                             Image = "https://m.media-amazon.com/images/I/41GaGSSHKTL._SX320_BO1,204,203,200_.jpg",
                             IsRecommended = false,
-                            Isbn = "978-1606795842",
-                            Price = 23m,
-                            PublicationDate = new DateOnly(2023, 5, 22),
-                            PublisherId = 1,
+                            Isbn = "Not Enabled",
+                            Price = 20m,
+                            PublicationDate = new DateOnly(2023, 5, 9),
+                            PublisherId = 6,
                             QuantityInStock = 1000,
-                            Title = "How Innovation Works",
-                            TypeId = 2
+                            Title = "Epic Journeys: 245 Life-Changing Adventures",
+                            TypeId = 3
                         },
                         new
                         {
                             Id = 3,
-                            AuthorId = 4,
-                            AverageRatings = 2.2f,
+                            AuthorId = 6,
                             Image = "https://m.media-amazon.com/images/I/41z4GO8gcsL.jpg",
                             IsRecommended = false,
-                            Isbn = "Not Enabled",
-                            Price = 23m,
-                            PublicationDate = new DateOnly(2023, 4, 21),
-                            PublisherId = 5,
+                            Isbn = "978-0008339074",
+                            Price = 40m,
+                            PublicationDate = new DateOnly(2023, 8, 18),
+                            PublisherId = 6,
                             QuantityInStock = 1000,
-                            Title = "To Kill a Mockingbird",
-                            TypeId = 1
+                            Title = "A Staged Death",
+                            TypeId = 2
                         },
                         new
                         {
                             Id = 4,
-                            AuthorId = 2,
-                            AverageRatings = 4.9f,
+                            AuthorId = 3,
                             Image = "https://m.media-amazon.com/images/I/41seRojoMXL._SX323_BO1,204,203,200_.jpg",
                             IsRecommended = false,
                             Isbn = "Not Enabled",
-                            Price = 40m,
-                            PublicationDate = new DateOnly(2023, 6, 19),
-                            PublisherId = 3,
+                            Price = 11m,
+                            PublicationDate = new DateOnly(2023, 1, 29),
+                            PublisherId = 2,
                             QuantityInStock = 1000,
-                            Title = "The Lord of the Rings",
-                            TypeId = 4
+                            Title = "Lost Cities, Ancient Tombs",
+                            TypeId = 1
                         },
                         new
                         {
                             Id = 5,
-                            AuthorId = 5,
-                            AverageRatings = 4.9f,
+                            AuthorId = 1,
                             Image = "https://m.media-amazon.com/images/I/51tugIa7u6L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
                             IsRecommended = false,
-                            Isbn = "978-1639363490",
-                            Price = 20m,
-                            PublicationDate = new DateOnly(2023, 7, 21),
-                            PublisherId = 3,
+                            Isbn = "978-1606795842",
+                            Price = 11m,
+                            PublicationDate = new DateOnly(2023, 10, 13),
+                            PublisherId = 1,
                             QuantityInStock = 1000,
-                            Title = "Daqui a cinco anos",
-                            TypeId = 2
+                            Title = "How Innovation Works",
+                            TypeId = 1
                         },
                         new
                         {
                             Id = 6,
                             AuthorId = 1,
-                            AverageRatings = 3.2f,
                             Image = "https://m.media-amazon.com/images/I/51FXbqQ04JL._SX382_BO1,204,203,200_.jpg",
                             IsRecommended = false,
                             Isbn = "978-0008339074",
-                            Price = 11m,
-                            PublicationDate = new DateOnly(2023, 7, 14),
-                            PublisherId = 1,
+                            Price = 40m,
+                            PublicationDate = new DateOnly(2023, 11, 7),
+                            PublisherId = 4,
                             QuantityInStock = 1000,
-                            Title = "In Five Years",
-                            TypeId = 2
+                            Title = "Life on the Edge of Adventure and Motherhood",
+                            TypeId = 1
                         },
                         new
                         {
                             Id = 7,
-                            AuthorId = 3,
-                            AverageRatings = 3.5f,
+                            AuthorId = 4,
                             Image = "https://m.media-amazon.com/images/I/41fiHlc4I-L.jpg",
                             IsRecommended = false,
                             Isbn = "Not Enabled",
                             Price = 23m,
-                            PublicationDate = new DateOnly(2023, 8, 2),
-                            PublisherId = 4,
+                            PublicationDate = new DateOnly(2023, 5, 6),
+                            PublisherId = 3,
                             QuantityInStock = 1000,
-                            Title = "Destinations of a Lifetime",
-                            TypeId = 2
+                            Title = "The Hitchhiker's Guide to the Galaxy",
+                            TypeId = 4
                         },
                         new
                         {
                             Id = 8,
                             AuthorId = 7,
-                            AverageRatings = 2.2f,
                             Image = "https://m.media-amazon.com/images/I/51+SWKopXhL.jpg",
                             IsRecommended = false,
-                            Isbn = "978-1426220616",
-                            Price = 11m,
-                            PublicationDate = new DateOnly(2023, 12, 20),
-                            PublisherId = 1,
+                            Isbn = "978-0008339074",
+                            Price = 4m,
+                            PublicationDate = new DateOnly(2023, 9, 17),
+                            PublisherId = 4,
                             QuantityInStock = 1000,
                             Title = "Pride and Prejudice",
-                            TypeId = 3
+                            TypeId = 2
                         },
                         new
                         {
                             Id = 9,
-                            AuthorId = 2,
-                            AverageRatings = 3.5f,
+                            AuthorId = 7,
                             Image = "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
                             IsRecommended = false,
-                            Isbn = "Not Enabled",
-                            Price = 4m,
-                            PublicationDate = new DateOnly(2023, 4, 7),
-                            PublisherId = 5,
+                            Isbn = "978-1639363490",
+                            Price = 40m,
+                            PublicationDate = new DateOnly(2023, 5, 26),
+                            PublisherId = 6,
                             QuantityInStock = 1000,
-                            Title = "The Adventure Trail",
-                            TypeId = 1
+                            Title = "Life on the Edge of Adventure and Motherhood",
+                            TypeId = 2
                         },
                         new
                         {
                             Id = 10,
                             AuthorId = 4,
-                            AverageRatings = 4.9f,
                             Image = "https://images.unsplash.com/photo-1592496431122-2349e0fbc666?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=912&q=80",
                             IsRecommended = false,
-                            Isbn = "978-0008339074",
-                            Price = 23m,
-                            PublicationDate = new DateOnly(2023, 8, 19),
-                            PublisherId = 7,
+                            Isbn = "Not Enabled",
+                            Price = 40m,
+                            PublicationDate = new DateOnly(2023, 6, 16),
+                            PublisherId = 4,
                             QuantityInStock = 1000,
-                            Title = "One Hundred Years of Solitude",
+                            Title = "Lost Cities, Ancient Tombs",
                             TypeId = 3
                         },
                         new
                         {
                             Id = 11,
-                            AuthorId = 1,
-                            AverageRatings = 4.9f,
-                            Image = "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=912&q=80",
-                            IsRecommended = false,
-                            Isbn = "978-1606795842",
-                            Price = 30m,
-                            PublicationDate = new DateOnly(2023, 1, 30),
-                            PublisherId = 5,
-                            QuantityInStock = 1000,
-                            Title = "How Innovation Works",
-                            TypeId = 3
-                        },
-                        new
-                        {
-                            Id = 12,
-                            AuthorId = 7,
-                            AverageRatings = 4.1f,
-                            Image = "https://m.media-amazon.com/images/I/41GaGSSHKTL._SX320_BO1,204,203,200_.jpg",
-                            IsRecommended = false,
-                            Isbn = "978-0008339074",
-                            Price = 23m,
-                            PublicationDate = new DateOnly(2023, 10, 9),
-                            PublisherId = 3,
-                            QuantityInStock = 1000,
-                            Title = "The Psychology of Money",
-                            TypeId = 4
-                        },
-                        new
-                        {
-                            Id = 13,
                             AuthorId = 5,
-                            AverageRatings = 3.2f,
-                            Image = "https://m.media-amazon.com/images/I/41z4GO8gcsL.jpg",
+                            Image = "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=912&q=80",
                             IsRecommended = false,
                             Isbn = "978-1639363490",
-                            Price = 40m,
-                            PublicationDate = new DateOnly(2023, 1, 21),
+                            Price = 30m,
+                            PublicationDate = new DateOnly(2023, 8, 17),
                             PublisherId = 5,
-                            QuantityInStock = 1000,
-                            Title = "1984",
-                            TypeId = 4
-                        },
-                        new
-                        {
-                            Id = 14,
-                            AuthorId = 3,
-                            AverageRatings = 3.5f,
-                            Image = "https://m.media-amazon.com/images/I/41seRojoMXL._SX323_BO1,204,203,200_.jpg",
-                            IsRecommended = false,
-                            Isbn = "978-1606795842",
-                            Price = 30m,
-                            PublicationDate = new DateOnly(2023, 4, 20),
-                            PublisherId = 7,
-                            QuantityInStock = 1000,
-                            Title = "1984",
-                            TypeId = 2
-                        },
-                        new
-                        {
-                            Id = 15,
-                            AuthorId = 6,
-                            AverageRatings = 4.1f,
-                            Image = "https://m.media-amazon.com/images/I/51tugIa7u6L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-                            IsRecommended = false,
-                            Isbn = "Not Enabled",
-                            Price = 30m,
-                            PublicationDate = new DateOnly(2023, 11, 8),
-                            PublisherId = 4,
-                            QuantityInStock = 1000,
-                            Title = "The Great Gatsby",
-                            TypeId = 2
-                        },
-                        new
-                        {
-                            Id = 16,
-                            AuthorId = 5,
-                            AverageRatings = 3.2f,
-                            Image = "https://m.media-amazon.com/images/I/51FXbqQ04JL._SX382_BO1,204,203,200_.jpg",
-                            IsRecommended = false,
-                            Isbn = "978-0008339074",
-                            Price = 30m,
-                            PublicationDate = new DateOnly(2023, 7, 18),
-                            PublisherId = 1,
-                            QuantityInStock = 1000,
-                            Title = "The Hitchhiker's Guide to the Galaxy",
-                            TypeId = 3
-                        },
-                        new
-                        {
-                            Id = 17,
-                            AuthorId = 3,
-                            AverageRatings = 4.9f,
-                            Image = "https://m.media-amazon.com/images/I/41fiHlc4I-L.jpg",
-                            IsRecommended = false,
-                            Isbn = "Not Enabled",
-                            Price = 11m,
-                            PublicationDate = new DateOnly(2023, 3, 19),
-                            PublisherId = 2,
-                            QuantityInStock = 1000,
-                            Title = "The Psychology of Money",
-                            TypeId = 4
-                        },
-                        new
-                        {
-                            Id = 18,
-                            AuthorId = 1,
-                            AverageRatings = 4.1f,
-                            Image = "https://m.media-amazon.com/images/I/51+SWKopXhL.jpg",
-                            IsRecommended = false,
-                            Isbn = "978-1606795842",
-                            Price = 40m,
-                            PublicationDate = new DateOnly(2023, 7, 3),
-                            PublisherId = 1,
-                            QuantityInStock = 1000,
-                            Title = "Daqui a cinco anos",
-                            TypeId = 4
-                        },
-                        new
-                        {
-                            Id = 19,
-                            AuthorId = 2,
-                            AverageRatings = 3.5f,
-                            Image = "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-                            IsRecommended = false,
-                            Isbn = "978-1982137458",
-                            Price = 30m,
-                            PublicationDate = new DateOnly(2023, 8, 26),
-                            PublisherId = 8,
-                            QuantityInStock = 1000,
-                            Title = "One Hundred Years of Solitude",
-                            TypeId = 1
-                        },
-                        new
-                        {
-                            Id = 20,
-                            AuthorId = 2,
-                            AverageRatings = 2.2f,
-                            Image = "https://images.unsplash.com/photo-1592496431122-2349e0fbc666?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=912&q=80",
-                            IsRecommended = false,
-                            Isbn = "978-0008339074",
-                            Price = 30m,
-                            PublicationDate = new DateOnly(2023, 2, 27),
-                            PublisherId = 1,
-                            QuantityInStock = 1000,
-                            Title = "Daqui a cinco anos",
-                            TypeId = 2
-                        },
-                        new
-                        {
-                            Id = 21,
-                            AuthorId = 5,
-                            AverageRatings = 3.2f,
-                            Image = "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=912&q=80",
-                            IsRecommended = false,
-                            Isbn = "Not Enabled",
-                            Price = 4m,
-                            PublicationDate = new DateOnly(2023, 5, 25),
-                            PublisherId = 6,
-                            QuantityInStock = 1000,
-                            Title = "The Taming of the Shrew",
-                            TypeId = 4
-                        },
-                        new
-                        {
-                            Id = 22,
-                            AuthorId = 3,
-                            AverageRatings = 2.2f,
-                            Image = "https://m.media-amazon.com/images/I/41GaGSSHKTL._SX320_BO1,204,203,200_.jpg",
-                            IsRecommended = false,
-                            Isbn = "Not Enabled",
-                            Price = 30m,
-                            PublicationDate = new DateOnly(2023, 1, 3),
-                            PublisherId = 3,
-                            QuantityInStock = 1000,
-                            Title = "1984",
-                            TypeId = 3
-                        },
-                        new
-                        {
-                            Id = 23,
-                            AuthorId = 7,
-                            AverageRatings = 4.1f,
-                            Image = "https://m.media-amazon.com/images/I/41z4GO8gcsL.jpg",
-                            IsRecommended = false,
-                            Isbn = "978-1606795842",
-                            Price = 30m,
-                            PublicationDate = new DateOnly(2023, 1, 14),
-                            PublisherId = 8,
-                            QuantityInStock = 1000,
-                            Title = "How Innovation Works",
-                            TypeId = 1
-                        },
-                        new
-                        {
-                            Id = 24,
-                            AuthorId = 6,
-                            AverageRatings = 3.2f,
-                            Image = "https://m.media-amazon.com/images/I/41seRojoMXL._SX323_BO1,204,203,200_.jpg",
-                            IsRecommended = false,
-                            Isbn = "Not Enabled",
-                            Price = 30m,
-                            PublicationDate = new DateOnly(2023, 9, 13),
-                            PublisherId = 6,
-                            QuantityInStock = 1000,
-                            Title = "1984",
-                            TypeId = 4
-                        },
-                        new
-                        {
-                            Id = 25,
-                            AuthorId = 6,
-                            AverageRatings = 3.2f,
-                            Image = "https://m.media-amazon.com/images/I/51tugIa7u6L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-                            IsRecommended = false,
-                            Isbn = "978-1982137458",
-                            Price = 40m,
-                            PublicationDate = new DateOnly(2023, 2, 13),
-                            PublisherId = 3,
-                            QuantityInStock = 1000,
-                            Title = "Lost Cities, Ancient Tombs",
-                            TypeId = 1
-                        },
-                        new
-                        {
-                            Id = 26,
-                            AuthorId = 3,
-                            AverageRatings = 4.1f,
-                            Image = "https://m.media-amazon.com/images/I/51FXbqQ04JL._SX382_BO1,204,203,200_.jpg",
-                            IsRecommended = false,
-                            Isbn = "978-1982137458",
-                            Price = 4m,
-                            PublicationDate = new DateOnly(2023, 8, 10),
-                            PublisherId = 5,
-                            QuantityInStock = 1000,
-                            Title = "Lost Cities, Ancient Tombs",
-                            TypeId = 4
-                        },
-                        new
-                        {
-                            Id = 27,
-                            AuthorId = 1,
-                            AverageRatings = 4.9f,
-                            Image = "https://m.media-amazon.com/images/I/41fiHlc4I-L.jpg",
-                            IsRecommended = false,
-                            Isbn = "978-1639363490",
-                            Price = 11m,
-                            PublicationDate = new DateOnly(2023, 2, 28),
-                            PublisherId = 8,
-                            QuantityInStock = 1000,
-                            Title = "Daqui a cinco anos",
-                            TypeId = 4
-                        },
-                        new
-                        {
-                            Id = 28,
-                            AuthorId = 3,
-                            AverageRatings = 4.9f,
-                            Image = "https://m.media-amazon.com/images/I/51+SWKopXhL.jpg",
-                            IsRecommended = false,
-                            Isbn = "978-1982137458",
-                            Price = 11m,
-                            PublicationDate = new DateOnly(2023, 5, 4),
-                            PublisherId = 2,
-                            QuantityInStock = 1000,
-                            Title = "Destinations of a Lifetime",
-                            TypeId = 1
-                        },
-                        new
-                        {
-                            Id = 29,
-                            AuthorId = 5,
-                            AverageRatings = 4.1f,
-                            Image = "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-                            IsRecommended = false,
-                            Isbn = "978-1982137458",
-                            Price = 20m,
-                            PublicationDate = new DateOnly(2023, 9, 21),
-                            PublisherId = 2,
-                            QuantityInStock = 1000,
-                            Title = "The Adventure Trail",
-                            TypeId = 2
-                        },
-                        new
-                        {
-                            Id = 30,
-                            AuthorId = 5,
-                            AverageRatings = 4.1f,
-                            Image = "https://images.unsplash.com/photo-1592496431122-2349e0fbc666?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=912&q=80",
-                            IsRecommended = false,
-                            Isbn = "Not Enabled",
-                            Price = 11m,
-                            PublicationDate = new DateOnly(2023, 8, 2),
-                            PublisherId = 5,
-                            QuantityInStock = 1000,
-                            Title = "One Hundred Years of Solitude",
-                            TypeId = 1
-                        },
-                        new
-                        {
-                            Id = 31,
-                            AuthorId = 1,
-                            AverageRatings = 2.2f,
-                            Image = "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=912&q=80",
-                            IsRecommended = false,
-                            Isbn = "Not Enabled",
-                            Price = 30m,
-                            PublicationDate = new DateOnly(2023, 8, 18),
-                            PublisherId = 6,
                             QuantityInStock = 1000,
                             Title = "A Staged Death",
                             TypeId = 3
                         },
                         new
                         {
-                            Id = 32,
+                            Id = 12,
                             AuthorId = 5,
-                            AverageRatings = 4.1f,
                             Image = "https://m.media-amazon.com/images/I/41GaGSSHKTL._SX320_BO1,204,203,200_.jpg",
+                            IsRecommended = false,
+                            Isbn = "978-1606795842",
+                            Price = 30m,
+                            PublicationDate = new DateOnly(2023, 10, 10),
+                            PublisherId = 7,
+                            QuantityInStock = 1000,
+                            Title = "Daqui a cinco anos",
+                            TypeId = 1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            AuthorId = 4,
+                            Image = "https://m.media-amazon.com/images/I/41z4GO8gcsL.jpg",
+                            IsRecommended = false,
+                            Isbn = "978-1606795842",
+                            Price = 30m,
+                            PublicationDate = new DateOnly(2023, 10, 2),
+                            PublisherId = 4,
+                            QuantityInStock = 1000,
+                            Title = "Life on the Edge of Adventure and Motherhood",
+                            TypeId = 4
+                        },
+                        new
+                        {
+                            Id = 14,
+                            AuthorId = 4,
+                            Image = "https://m.media-amazon.com/images/I/41seRojoMXL._SX323_BO1,204,203,200_.jpg",
+                            IsRecommended = false,
+                            Isbn = "978-0008339074",
+                            Price = 23m,
+                            PublicationDate = new DateOnly(2023, 10, 28),
+                            PublisherId = 8,
+                            QuantityInStock = 1000,
+                            Title = "The Hitchhiker's Guide to the Galaxy",
+                            TypeId = 2
+                        },
+                        new
+                        {
+                            Id = 15,
+                            AuthorId = 4,
+                            Image = "https://m.media-amazon.com/images/I/51tugIa7u6L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
                             IsRecommended = false,
                             Isbn = "978-1639363490",
                             Price = 40m,
-                            PublicationDate = new DateOnly(2023, 7, 16),
+                            PublicationDate = new DateOnly(2023, 2, 7),
+                            PublisherId = 3,
+                            QuantityInStock = 1000,
+                            Title = "To Kill a Mockingbird",
+                            TypeId = 1
+                        },
+                        new
+                        {
+                            Id = 16,
+                            AuthorId = 2,
+                            Image = "https://m.media-amazon.com/images/I/51FXbqQ04JL._SX382_BO1,204,203,200_.jpg",
+                            IsRecommended = false,
+                            Isbn = "978-1982137458",
+                            Price = 4m,
+                            PublicationDate = new DateOnly(2023, 9, 30),
+                            PublisherId = 7,
+                            QuantityInStock = 1000,
+                            Title = "The Taming of the Shrew",
+                            TypeId = 2
+                        },
+                        new
+                        {
+                            Id = 17,
+                            AuthorId = 4,
+                            Image = "https://m.media-amazon.com/images/I/41fiHlc4I-L.jpg",
+                            IsRecommended = false,
+                            Isbn = "978-0008339074",
+                            Price = 40m,
+                            PublicationDate = new DateOnly(2023, 5, 29),
+                            PublisherId = 7,
+                            QuantityInStock = 1000,
+                            Title = "A Staged Death",
+                            TypeId = 1
+                        },
+                        new
+                        {
+                            Id = 18,
+                            AuthorId = 5,
+                            Image = "https://m.media-amazon.com/images/I/51+SWKopXhL.jpg",
+                            IsRecommended = false,
+                            Isbn = "Not Enabled",
+                            Price = 20m,
+                            PublicationDate = new DateOnly(2023, 12, 13),
+                            PublisherId = 5,
+                            QuantityInStock = 1000,
+                            Title = "A Staged Death",
+                            TypeId = 4
+                        },
+                        new
+                        {
+                            Id = 19,
+                            AuthorId = 6,
+                            Image = "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+                            IsRecommended = false,
+                            Isbn = "Not Enabled",
+                            Price = 20m,
+                            PublicationDate = new DateOnly(2023, 11, 1),
                             PublisherId = 4,
+                            QuantityInStock = 1000,
+                            Title = "The Taming of the Shrew",
+                            TypeId = 3
+                        },
+                        new
+                        {
+                            Id = 20,
+                            AuthorId = 6,
+                            Image = "https://images.unsplash.com/photo-1592496431122-2349e0fbc666?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=912&q=80",
+                            IsRecommended = false,
+                            Isbn = "Not Enabled",
+                            Price = 4m,
+                            PublicationDate = new DateOnly(2023, 4, 9),
+                            PublisherId = 8,
+                            QuantityInStock = 1000,
+                            Title = "The Adventure Trail",
+                            TypeId = 4
+                        },
+                        new
+                        {
+                            Id = 21,
+                            AuthorId = 3,
+                            Image = "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=912&q=80",
+                            IsRecommended = false,
+                            Isbn = "Not Enabled",
+                            Price = 11m,
+                            PublicationDate = new DateOnly(2023, 1, 16),
+                            PublisherId = 8,
                             QuantityInStock = 1000,
                             Title = "Harry Potter and the Philosopher's Stone",
                             TypeId = 1
                         },
                         new
                         {
-                            Id = 33,
-                            AuthorId = 3,
-                            AverageRatings = 2.2f,
-                            Image = "https://m.media-amazon.com/images/I/41z4GO8gcsL.jpg",
+                            Id = 22,
+                            AuthorId = 7,
+                            Image = "https://m.media-amazon.com/images/I/41GaGSSHKTL._SX320_BO1,204,203,200_.jpg",
                             IsRecommended = false,
-                            Isbn = "978-0008339074",
-                            Price = 11m,
-                            PublicationDate = new DateOnly(2023, 3, 11),
-                            PublisherId = 1,
-                            QuantityInStock = 1000,
-                            Title = "The Psychology of Money",
-                            TypeId = 4
-                        },
-                        new
-                        {
-                            Id = 34,
-                            AuthorId = 6,
-                            AverageRatings = 3.5f,
-                            Image = "https://m.media-amazon.com/images/I/41seRojoMXL._SX323_BO1,204,203,200_.jpg",
-                            IsRecommended = false,
-                            Isbn = "978-1982137458",
-                            Price = 23m,
-                            PublicationDate = new DateOnly(2023, 12, 2),
+                            Isbn = "978-1606795842",
+                            Price = 4m,
+                            PublicationDate = new DateOnly(2023, 1, 20),
                             PublisherId = 2,
                             QuantityInStock = 1000,
-                            Title = "The Great Gatsby",
-                            TypeId = 2
-                        },
-                        new
-                        {
-                            Id = 35,
-                            AuthorId = 6,
-                            AverageRatings = 3.2f,
-                            Image = "https://m.media-amazon.com/images/I/51tugIa7u6L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-                            IsRecommended = false,
-                            Isbn = "978-1982137458",
-                            Price = 4m,
-                            PublicationDate = new DateOnly(2023, 4, 30),
-                            PublisherId = 1,
-                            QuantityInStock = 1000,
-                            Title = "The Lord of the Rings",
-                            TypeId = 2
-                        },
-                        new
-                        {
-                            Id = 36,
-                            AuthorId = 6,
-                            AverageRatings = 3.5f,
-                            Image = "https://m.media-amazon.com/images/I/51FXbqQ04JL._SX382_BO1,204,203,200_.jpg",
-                            IsRecommended = false,
-                            Isbn = "978-1639363490",
-                            Price = 40m,
-                            PublicationDate = new DateOnly(2023, 2, 18),
-                            PublisherId = 4,
-                            QuantityInStock = 1000,
-                            Title = "In Five Years",
+                            Title = "Lost Cities, Ancient Tombs",
                             TypeId = 1
                         },
                         new
                         {
-                            Id = 37,
+                            Id = 23,
+                            AuthorId = 3,
+                            Image = "https://m.media-amazon.com/images/I/41z4GO8gcsL.jpg",
+                            IsRecommended = false,
+                            Isbn = "978-0008339074",
+                            Price = 11m,
+                            PublicationDate = new DateOnly(2023, 9, 20),
+                            PublisherId = 7,
+                            QuantityInStock = 1000,
+                            Title = "The Adventure Trail",
+                            TypeId = 4
+                        },
+                        new
+                        {
+                            Id = 24,
                             AuthorId = 4,
-                            AverageRatings = 2.2f,
+                            Image = "https://m.media-amazon.com/images/I/41seRojoMXL._SX323_BO1,204,203,200_.jpg",
+                            IsRecommended = false,
+                            Isbn = "978-1606795842",
+                            Price = 11m,
+                            PublicationDate = new DateOnly(2023, 4, 27),
+                            PublisherId = 2,
+                            QuantityInStock = 1000,
+                            Title = "To Kill a Mockingbird",
+                            TypeId = 1
+                        },
+                        new
+                        {
+                            Id = 25,
+                            AuthorId = 6,
+                            Image = "https://m.media-amazon.com/images/I/51tugIa7u6L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+                            IsRecommended = false,
+                            Isbn = "978-1982137458",
+                            Price = 11m,
+                            PublicationDate = new DateOnly(2023, 2, 8),
+                            PublisherId = 7,
+                            QuantityInStock = 1000,
+                            Title = "Lost Cities, Ancient Tombs",
+                            TypeId = 4
+                        },
+                        new
+                        {
+                            Id = 26,
+                            AuthorId = 1,
+                            Image = "https://m.media-amazon.com/images/I/51FXbqQ04JL._SX382_BO1,204,203,200_.jpg",
+                            IsRecommended = false,
+                            Isbn = "978-1426220616",
+                            Price = 40m,
+                            PublicationDate = new DateOnly(2023, 1, 2),
+                            PublisherId = 6,
+                            QuantityInStock = 1000,
+                            Title = "Life on the Edge of Adventure and Motherhood",
+                            TypeId = 3
+                        },
+                        new
+                        {
+                            Id = 27,
+                            AuthorId = 5,
                             Image = "https://m.media-amazon.com/images/I/41fiHlc4I-L.jpg",
                             IsRecommended = false,
-                            Isbn = "Not Enabled",
-                            Price = 20m,
-                            PublicationDate = new DateOnly(2023, 2, 9),
-                            PublisherId = 5,
+                            Isbn = "978-1426220616",
+                            Price = 4m,
+                            PublicationDate = new DateOnly(2023, 7, 9),
+                            PublisherId = 3,
                             QuantityInStock = 1000,
                             Title = "The Great Gatsby",
                             TypeId = 3
                         },
                         new
                         {
-                            Id = 38,
-                            AuthorId = 1,
-                            AverageRatings = 2.2f,
+                            Id = 28,
+                            AuthorId = 5,
                             Image = "https://m.media-amazon.com/images/I/51+SWKopXhL.jpg",
                             IsRecommended = false,
-                            Isbn = "Not Enabled",
+                            Isbn = "978-0008339074",
                             Price = 4m,
-                            PublicationDate = new DateOnly(2023, 3, 11),
+                            PublicationDate = new DateOnly(2023, 11, 8),
+                            PublisherId = 5,
+                            QuantityInStock = 1000,
+                            Title = "In Five Years",
+                            TypeId = 3
+                        },
+                        new
+                        {
+                            Id = 29,
+                            AuthorId = 5,
+                            Image = "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+                            IsRecommended = false,
+                            Isbn = "Not Enabled",
+                            Price = 11m,
+                            PublicationDate = new DateOnly(2023, 9, 24),
+                            PublisherId = 3,
+                            QuantityInStock = 1000,
+                            Title = "The Psychology of Money",
+                            TypeId = 3
+                        },
+                        new
+                        {
+                            Id = 30,
+                            AuthorId = 5,
+                            Image = "https://images.unsplash.com/photo-1592496431122-2349e0fbc666?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=912&q=80",
+                            IsRecommended = false,
+                            Isbn = "978-1426220616",
+                            Price = 11m,
+                            PublicationDate = new DateOnly(2023, 11, 10),
                             PublisherId = 1,
+                            QuantityInStock = 1000,
+                            Title = "To Kill a Mockingbird",
+                            TypeId = 2
+                        },
+                        new
+                        {
+                            Id = 31,
+                            AuthorId = 4,
+                            Image = "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=912&q=80",
+                            IsRecommended = false,
+                            Isbn = "978-1606795842",
+                            Price = 20m,
+                            PublicationDate = new DateOnly(2023, 7, 17),
+                            PublisherId = 2,
+                            QuantityInStock = 1000,
+                            Title = "One Hundred Years of Solitude",
+                            TypeId = 3
+                        },
+                        new
+                        {
+                            Id = 32,
+                            AuthorId = 6,
+                            Image = "https://m.media-amazon.com/images/I/41GaGSSHKTL._SX320_BO1,204,203,200_.jpg",
+                            IsRecommended = false,
+                            Isbn = "Not Enabled",
+                            Price = 23m,
+                            PublicationDate = new DateOnly(2023, 1, 25),
+                            PublisherId = 5,
+                            QuantityInStock = 1000,
+                            Title = "The Taming of the Shrew",
+                            TypeId = 3
+                        },
+                        new
+                        {
+                            Id = 33,
+                            AuthorId = 1,
+                            Image = "https://m.media-amazon.com/images/I/41z4GO8gcsL.jpg",
+                            IsRecommended = false,
+                            Isbn = "Not Enabled",
+                            Price = 30m,
+                            PublicationDate = new DateOnly(2023, 5, 21),
+                            PublisherId = 8,
+                            QuantityInStock = 1000,
+                            Title = "The Hitchhiker's Guide to the Galaxy",
+                            TypeId = 1
+                        },
+                        new
+                        {
+                            Id = 34,
+                            AuthorId = 6,
+                            Image = "https://m.media-amazon.com/images/I/41seRojoMXL._SX323_BO1,204,203,200_.jpg",
+                            IsRecommended = false,
+                            Isbn = "978-1639363490",
+                            Price = 40m,
+                            PublicationDate = new DateOnly(2023, 3, 8),
+                            PublisherId = 3,
+                            QuantityInStock = 1000,
+                            Title = "Epic Journeys: 245 Life-Changing Adventures",
+                            TypeId = 2
+                        },
+                        new
+                        {
+                            Id = 35,
+                            AuthorId = 7,
+                            Image = "https://m.media-amazon.com/images/I/51tugIa7u6L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+                            IsRecommended = false,
+                            Isbn = "978-1426220616",
+                            Price = 30m,
+                            PublicationDate = new DateOnly(2023, 3, 17),
+                            PublisherId = 7,
+                            QuantityInStock = 1000,
+                            Title = "Harry Potter and the Philosopher's Stone",
+                            TypeId = 3
+                        },
+                        new
+                        {
+                            Id = 36,
+                            AuthorId = 7,
+                            Image = "https://m.media-amazon.com/images/I/51FXbqQ04JL._SX382_BO1,204,203,200_.jpg",
+                            IsRecommended = false,
+                            Isbn = "978-1639363490",
+                            Price = 11m,
+                            PublicationDate = new DateOnly(2023, 12, 19),
+                            PublisherId = 3,
                             QuantityInStock = 1000,
                             Title = "How Innovation Works",
                             TypeId = 1
                         },
                         new
                         {
+                            Id = 37,
+                            AuthorId = 3,
+                            Image = "https://m.media-amazon.com/images/I/41fiHlc4I-L.jpg",
+                            IsRecommended = false,
+                            Isbn = "Not Enabled",
+                            Price = 4m,
+                            PublicationDate = new DateOnly(2023, 3, 21),
+                            PublisherId = 5,
+                            QuantityInStock = 1000,
+                            Title = "1984",
+                            TypeId = 1
+                        },
+                        new
+                        {
+                            Id = 38,
+                            AuthorId = 2,
+                            Image = "https://m.media-amazon.com/images/I/51+SWKopXhL.jpg",
+                            IsRecommended = false,
+                            Isbn = "978-1606795842",
+                            Price = 11m,
+                            PublicationDate = new DateOnly(2023, 8, 14),
+                            PublisherId = 5,
+                            QuantityInStock = 1000,
+                            Title = "In Five Years",
+                            TypeId = 2
+                        },
+                        new
+                        {
                             Id = 39,
-                            AuthorId = 1,
-                            AverageRatings = 3.2f,
+                            AuthorId = 3,
                             Image = "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
                             IsRecommended = false,
                             Isbn = "Not Enabled",
-                            Price = 20m,
-                            PublicationDate = new DateOnly(2023, 1, 11),
-                            PublisherId = 4,
+                            Price = 4m,
+                            PublicationDate = new DateOnly(2023, 3, 10),
+                            PublisherId = 6,
                             QuantityInStock = 1000,
-                            Title = "The Great Gatsby",
+                            Title = "The Adventure Trail",
                             TypeId = 3
                         });
                 });
@@ -1118,14 +1079,14 @@ namespace Book_Store.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c4ec6615-9b8a-4334-8cc1-671a6d9a463b",
+                            Id = "c63ec904-5b0f-42c9-bd9e-7ebc8c088e95",
                             ConcurrencyStamp = "1",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "ed4c74b7-e73f-4575-a27e-6a6c95a04394",
+                            Id = "d80028cc-4a97-4184-b0ed-7bae9fa66d29",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "USER"
