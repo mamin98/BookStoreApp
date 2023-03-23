@@ -12,11 +12,14 @@
       <table id="cart" class="table table-condensed">
         <thead>
           <tr>
-            <th style="width: 50%">All Books</th>
-            <th style="width: 10%">Price</th>
-            <th style="width: 8%">Quantity</th>
+            <th style="width: 20%">Image</th>
+            <th style="width: 15%">Name</th>
+            <th style="width: 15%">Author</th>
+            <th style="width: 15%">Publisher</th>
+            <th style="width: 15%">Category</th>
+            <th style="width: 15%">Price</th>
 
-            <th style="width: 10%"></th>
+            <th style="width: 15%"></th>
           </tr>
         </thead>
         <tbody>
@@ -31,27 +34,42 @@
                     style="height: 100px; border-radius: 10px; width: 161px"
                   />
                 </div>
-                <div class="col-sm-10">
-                  <h4 style="font-size: 18px; color: blue" class="nomargin">
-                    {{ item.title }}
-                  </h4>
-                </div>
               </div>
             </td>
-            <td data-th="Price">{{ item.price | currency }}</td>
-            <td
-              data-th="Quantity"
-              class="d-flex gap-2"
-              style="margin-top: 50px; border-bottom: 0"
-            >
-              <span class="form-control text-center">{{ item.quantity }}</span>
+            <td>
+              <div class="col-sm-10">
+                <h4 style="font-size: 18px" class="nomargin">
+                  {{ item.title }}
+                </h4>
+              </div>
+            </td>
+            <td>
+              <div class="col-sm-10">
+                <h4 style="font-size: 18px" class="nomargin">
+                  {{ item.authorName }}
+                </h4>
+              </div>
+            </td>
+            <td>
+              <div class="col-sm-10">
+                <h4 style="font-size: 18px" class="nomargin">
+                  {{ item.publisherName }}
+                </h4>
+              </div>
             </td>
 
             <td>
-              <button
-                class="btn btn-danger"
-                style="margin-left: 20%; margin-top: 10%"
-              >
+              <div class="col-sm-10">
+                <h4 style="font-size: 18px; color: grey" class="nomargin">
+                  {{ item.category }}
+                </h4>
+              </div>
+            </td>
+
+            <td data-th="Price">{{ item.price | currency }}</td>
+
+            <td>
+              <button class="btn btn-danger" style="margin-top: 10%">
                 Delete
               </button>
             </td>
