@@ -2,9 +2,10 @@
   href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
   rel="stylesheet"
 />
-<!-- Start Cart Selected-->
 
-<button class="btn btn-success" style="margin-top: 2%">Add Book</button>
+<button class="btn btn-success" style="margin-top: 2%" (click)="open(mymodal)">
+  Add Book
+</button>
 
 <div class="carts">
   <ng-container>
@@ -23,7 +24,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of books">
+          <tr
+            *ngFor="
+              let item of books | paginate : { itemsPerPage: 5, currentPage: p }
+            "
+          >
             <td data-th="Product">
               <div class="row d-flex" style="flex-direction: column-reverse">
                 <div class="col-sm-2 hidden-xs">
@@ -89,26 +94,19 @@
                     border: none;
                   "
                   routerLink="/home-allBooks"
-                  ><i class="fa fa-angle-left"></i> Continue Shopping
+                  ><i class="fa fa-angle-left"></i> Go To All Books
                 </a>
               </td>
-              <td colspan="2" class="hidden-xs"></td>
-              <td class="hidden-xs text-center">
-                <!-- <strong>Total : {{ total }} $</strong> -->
+
+              <td colspan="4">
+                <div class="d-flex justify-content-center pagination">
+                  <pagination-controls
+                    (pageChange)="p = $event"
+                  ></pagination-controls>
+                </div>
               </td>
-              <td>
-                <a>
-                  <!-- <button
-                    [disabled]="selectedItems.length === 0"
-                    (click)="toCheckoutPage()"
-                    class="btn btn-success"
-                    style="width: 161px"
-                  >
-                    Confirm my Orders
-                  </button> -->
-                  <!-- <i class="fa fa-angle-right"></i> -->
-                </a>
-              </td>
+
+              <td colspan="1" class="hidden-xs"></td>
             </tr>
           </ng-container>
         </tfoot>
@@ -116,45 +114,37 @@
     </ng-container>
   </ng-container>
 </div>
-<!-- End Cart Selected-->
 
-<!-- Start When empty-->
-<ng-template #cartIsEmptyMessage>
-  <div class="container-fluid" style="margin-top: 80px">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            <h5>Cart</h5>
-          </div>
-          <div class="card-body cart" style="margin-top: 50px">
-            <div class="col-sm-12 empty-cart-cls text-center">
-              <!-- CART IMAGE -->
-              <img
-                src="https://i.imgur.com/dCdflKN.png"
-                width="150"
-                height="150"
-                class="img-fluid mb-4 mr-4"
-              />
-              <h2 class=""><strong>Your Cart is Empty</strong></h2>
-              <p>Add something to make me happy :</p>
-              <a
-                href="#"
-                class="btn btn-danger back-btn"
-                style="
-                  margin-left: 1%;
-                  margin-bottom: 1%;
-                  color: rgb(255, 254, 171);
-                  border: none;
-                "
-                routerLink="/home-allBooks"
-                ><i class="fa fa-angle-left"></i> Continue Shopping
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- Modal -->
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add New Book</h4>
+
+    <button
+      type="button"
+      class="close btn-danger"
+      style="background-color: rgb(207, 61, 61); color: aliceblue"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">Discard</span>
+    </button>
+  </div>
+
+  <div class="modal-body">Image</div>
+  <div class="modal-body">Title</div>
+  <div class="modal-body">Author</div>
+  <div class="modal-body">Publisher</div>
+  <div class="modal-body">Category</div>
+  <div class="modal-body">Price</div>
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="modal.close('Save click')"
+    >
+      Add
+    </button>
   </div>
 </ng-template>
-<!-- Start When empty  -->
