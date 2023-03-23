@@ -28,7 +28,7 @@ export class UsersService {
       username: ['', [Validators.required, Validators.pattern("[a-zA-Z_]+")]],
       phone:['', [Validators.required, Validators.pattern("[0-9]{11}")]],
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$')]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.pattern('[^(?=.[a-z])(?=.[A-Z])(?=.*\d).{6,15}]')]],
       confirmpassword:['', Validators.required],
     },
     {validator:[confirmPassValidator]}
