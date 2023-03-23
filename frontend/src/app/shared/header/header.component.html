@@ -1,10 +1,10 @@
-<nav class="site-header sticky-top py-1">
+<nav class="site-header sticky-top">
   <div class="container d-flex flex-column flex-md-row justify-content-between">
     <div class="logo" routerLink="/home-allBooks">
       <img
         src="./../../../assets/imgs/artificial-intelligence.png"
         alt="logo"
-        style="width: 65px; margin: 10px; cursor: pointer"
+        style="width: 65px; margin: 10px; cursor: pointer; border-radius: 50%"
       />
     </div>
     <div class="links d-flex">
@@ -18,7 +18,18 @@
       </ng-template>
 
       <ng-template #auth>
-        <a class="py-2 d-md-inline-block">{{ account_data.username }}</a>
+
+        <a class="py-2 d-md-inline-block">
+          Welcome
+          <span class="text-light">'{{ userService.account_data.username }}'</span>
+        </a>
+        
+        <a class="py-2 d-md-inline-block text-primary"
+         routerLink="/register"
+         *ngIf="userService.account_data.role=='Administrator'">
+         Administrator
+        </a>
+        
         <a
           class="py-2 d-md-inline-block"
           routerLink="/login"

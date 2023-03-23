@@ -7,12 +7,15 @@
   <div class="card mb-3" style="max-width: 75%">
     <div class="row no-gutters">
       <div class="col-md-4">
+        <!-- Start Img -->
         <img
           [src]="book.image"
           class="card-img"
           style="padding: 15%"
           alt="..."
         />
+        <!-- End Img -->
+        <!-- Start Button -->
         <a
           href="#"
           class="btn btn-danger back-btn"
@@ -20,20 +23,24 @@
             margin-left: 17%;
             margin-bottom: 10%;
             color: rgb(255, 254, 171);
+            border: none;
           "
           routerLink="/home-allBooks"
           ><i class="fa fa-angle-left"></i> More Books
         </a>
+        <!-- End Button -->
       </div>
-      <div class="col-md-8">
+      <!--Start Cart info-->
+      <div class="col-md-8 cart-info">
         <div class="card-body">
+          <!--Start Title-->
           <div class="title">
             <h5 class="card-title display-6 fw-bolder">{{ book.title }}</h5>
             <p class="card-text">
               <small class="text-muted">{{ book.category }}</small>
             </p>
           </div>
-
+          <!--Start InFo Author | Publisher | price-->
           <div class="infoo">
             <div class="sub-info">
               <span class="subtitle">Author : </span>{{ book.authorName }}
@@ -46,34 +53,46 @@
               <h5 class="price">$ {{ book.price }}</h5>
             </div>
           </div>
-
+          <!--Start Description-->
           <hr class="hr-text" data-content="About The Book" />
           <p class="card-text" style="margin-bottom: 20px">
-            Some book info (metadata) is required and will be filled in by
-            default when you create your book. Required metadata allows
-            Pressbooks to build your book’s home page, automatically generate
-            the cover, title page, and copyright notice in your book exports,
-            and meet the metadata requirements of ebook sellers for your EPUB
-            exports. In general, we recommend adding as much information as you
-            can when creating your book.
+            Some book info metadata is required and will be filled in by default
+            when you create your book. Required metadata allows Pressbooks to
+            build your book’s home page, automatically generate the cover, title
+            page, and copyright notice in your book exports, and meet the
+            metadata requirements of ebook sellers for your EPUB exports. In
+            general, we recommend adding as much information as you can when
+            creating your book.
           </p>
-
-          <!-- <div
-            *ngIf="addButton"
+          <!--Start Button Select Quantity books-->
+          <div
             class="d-flex select-quantity"
-            style="justify-content: space-between; gap: 40px"
+            style="gap: 40px; align-items: center"
           >
             <button class="btn btn-danger" (click)="decrementQuantity()">
               -
             </button>
-            
-            <span class="quantity" type="text">{{ quantity }}</span>
+
+            <span
+              style="
+                border: 1px solid #b9d106;
+                padding: 10px;
+                height: 37px;
+                display: flex;
+                align-items: center;
+                border-radius: 10px;
+              "
+              class="quantity"
+              type="text"
+              >{{ quantity }}</span
+            >
             <button class="btn btn-success" (click)="incrementQuantity()">
               +
             </button>
-          </div> -->
+          </div>
         </div>
       </div>
+      <!--Start Cart info-->
     </div>
   </div>
 </div>

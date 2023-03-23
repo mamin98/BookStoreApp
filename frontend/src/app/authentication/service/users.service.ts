@@ -19,6 +19,8 @@ export class UsersService {
 
   regform!: FormGroup;
   logform!: FormGroup;
+  account_data: any = {};
+
   constructor(private http: HttpClient, private formbuilder: FormBuilder) { 
     
     // Register Form
@@ -37,6 +39,20 @@ export class UsersService {
       username: ['', [Validators.required, Validators.pattern("[a-zA-Z_]+")]],
       password: ['', Validators.required]
     });
+
+
+    // used here to call "account_data" in roleguard, header Comp 
+    //  &&==> to know the current role  
+    this.accountProfile().subscribe({
+      next: (userData) => {
+        console.log(userData);
+        this.account_data = userData;
+        //console.log(this.account_data);
+      },
+      error: (err) => {
+        console.log(err?.error.message);
+      }
+    })
   }
   
   

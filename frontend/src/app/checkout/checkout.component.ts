@@ -20,7 +20,7 @@ export class CheckoutComponent {
   };
 
   purchaseActionResponse!: string;
-
+  showImg:boolean = false;
   constructor(
     private cartService: CartService,
     private http: HttpClient,
@@ -45,7 +45,7 @@ export class CheckoutComponent {
       .post<UpdatedProductsResponse>(url, this.cartPayload)
       .pipe(
         catchError((err) => {
-          // if bad requeset (not sufficient quantity in products store), show related message
+          // if bad request (not sufficient quantity in products store), show related message
           if (err.status === 400) {
             this.purchaseActionResponse = err.error.message;
             console.log(
@@ -64,7 +64,6 @@ export class CheckoutComponent {
           console.log('Checkout successful:', res.message);
           this.purchaseActionResponse = res.message;
           console.log('this.purchaseActionResponse: ', this.purchaseActionResponse);
-
           // clear cart after successful purchase
           this.cartService.clearCart();
 
@@ -77,5 +76,5 @@ export class CheckoutComponent {
   }
 
   // handle user navigation
-  toProductsPage = () => this.router.navigate([ApiPaths.AllBooks]);
+  // toProductsPage = () => this.router.navigate([ApiPaths.AllBooks]);
 }

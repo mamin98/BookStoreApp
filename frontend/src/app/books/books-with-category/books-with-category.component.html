@@ -2,6 +2,7 @@
   <ng-container *ngIf="books.length > 0"> </ng-container>
 
   <div class="container">
+
     <ng-container
       *ngFor="
         let book of books | paginate : { itemsPerPage: 8, currentPage: p }

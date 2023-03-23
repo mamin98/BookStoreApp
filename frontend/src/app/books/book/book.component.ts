@@ -3,6 +3,7 @@ import { CartService } from 'src/app/cart/service/cart.service';
 import { CartAction } from 'src/app/enums/card-action';
 import { Book } from 'src/app/model/Book';
 
+
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -17,7 +18,7 @@ export class BookComponent {
 
   // add to card incrementing quantity by 1
   incrementQuantity = () => {
-    this.quantity++;
+    this.quantity += 1;
     this.addToCart(this.product);
     // notify quantity count observer for header cart update
     this.cartService.updateQuantityCount(CartAction.Increment);

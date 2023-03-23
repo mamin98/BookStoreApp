@@ -71,7 +71,7 @@ export class CartService {
     if (cartAction === CartAction.Increment) this.allSelectedQuantity += 1;
 
     if (cartAction === CartAction.Decrement)
-      this.allSelectedQuantity > 1 ? (this.allSelectedQuantity -= 1) : null;
+      this.allSelectedQuantity >= 1 ? (this.allSelectedQuantity -= 1) : null;
 
     this.selectedItemsCount.next(this.allSelectedQuantity);
   }

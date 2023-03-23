@@ -19,6 +19,7 @@ export class BooksWithCategoryComponent {
 
   id!: number;
   books$!: Observable<Book[]>;
+  
   ngOnInit() {
     this.route.params.subscribe((params) => {
       const categoryId = +params['categoryId'];
