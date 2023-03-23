@@ -1,0 +1,32 @@
+.carts {
+  @media (max-width: 991px) {
+    overflow: auto;
+  }
+  #cart {
+    margin-top: 50px;
+    width: 100%;
+    padding: 8px;
+    font-size: 13px;
+    min-width: 1000px;
+    border-spacing: 0;
+    transition: 0.3s;
+
+    thead {
+      background-color: #212529;
+      color: #fff;
+    }
+    tbody {
+      td {
+        font-size: 22px;
+      }
+      background-color: #fff;
+      vertical-align: middle;
+    }
+  }
+}
+
+.back-btn:hover {
+  background-color: #fce51a !important;
+  border: none;
+  color: #e2462b !important;
+}
