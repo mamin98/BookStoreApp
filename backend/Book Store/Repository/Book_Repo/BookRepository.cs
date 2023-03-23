@@ -1,4 +1,6 @@
-﻿using Book_Store.Models;
+﻿using Book_Store.DTOs.BookDTOs;
+using Book_Store.Models;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store.Repository.Books_Repo
@@ -29,11 +31,11 @@ namespace Book_Store.Repository.Books_Repo
                 .Include(b => b.Publisher)
                 .FirstOrDefault(b => b.Id == id);
         }
-        
+
         // Book by Id
         public Book GetById(int id)
         {
-            return context.Books.AsNoTracking().FirstOrDefault(b => b.Id == id);
+            return context.Books.FirstOrDefault(b => b.Id == id);
         }
 
         // Add new Book
@@ -62,6 +64,47 @@ namespace Book_Store.Repository.Books_Repo
             context.Books.Remove(Book);
 
             context.SaveChanges();
+        }
+
+        // Add Rating
+        public async Task<bool> AddRating(int bookId, RatingDto ratingDto)
+        {
+            try
+            {
+                var book = GetById(bookId);
+
+                // to be replace by real user id
+                var mockUserId = 1;
+                var mockedCustomer = context.Customers.FirstOrDefaultAsync(c => c.ID == mockUserId);
+
+                var rating = new Rating
+                {
+                    BookId = bookId,
+                    Customer = mockedCustomer.Result,
+                    Stars = ratingDto.Stars,
+                    Review = ratingDto.Review,
+                };
+
+                // update database ratings records
+                await context.Rating.AddAsync(rating);
+
+                // update the product's average rating
+                var ratings = await context.Rating.Where(r => r.BookId == bookId).ToListAsync();
+
+                book.AverageRatings = (float)ratings.Average(r => r.Stars);
+
+                // ensure ef core tracking products new value
+                context.Books.Update(book);
+
+                // update database
+                await context.SaveChangesAsync();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -18,7 +18,7 @@
 
         public string? Review { get; set; } = null!;
 
-        public int ProductId { get; set; }
+        public int BookId { get; set; }
         public Book Book { get; set; } = null!;
         public int CustomerId { get; set; }
         public Customer Customer { get; set; } = null!;

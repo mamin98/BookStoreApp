@@ -1,10 +1,11 @@
 ﻿using Book_Store.Data;
+
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store.Models
 {
-    public class BookStoreContext: IdentityDbContext<AppUser> //DbContext
+    public class BookStoreContext : IdentityDbContext<AppUser> //DbContext
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Book> Books { get; set; }
@@ -13,7 +14,7 @@ namespace Book_Store.Models
         public DbSet<Author> Author { get; set; }
         public DbSet<Publisher> Publisher { get; set; }
         public DbSet<Types> Types { get; set; }
-
+        public DbSet<Rating> Rating { get; set; }
 
         public BookStoreContext(DbContextOptions<BookStoreContext> options) : base(options) { }
 
@@ -22,7 +23,7 @@ namespace Book_Store.Models
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<OrderItem>()
-                .HasKey(k => new { k.OrderId, k.BookId});
+                .HasKey(k => new { k.OrderId, k.BookId });
 
             // seed dummy data
             modelBuilder.Seed();

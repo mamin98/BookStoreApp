@@ -32,6 +32,5 @@ namespace Book_Store.DTOs.BookDTOs
         // Type/Category
         [Required(ErrorMessage = "Choose a Book type")]
         public int TypeId { get; set; }
-        public float Ratings { get; set; }
     }
 }

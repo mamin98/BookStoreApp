@@ -1,6 +1,4 @@
-﻿using Book_Store.Models;
-
-namespace Book_Store.DTOs.BookDTOs
+﻿namespace Book_Store.DTOs.BookDTOs
 {
     public class HomeBookDto
     {
@@ -19,5 +17,6 @@ namespace Book_Store.DTOs.BookDTOs
         public string PublisherName { get; set; }
 
         public string Category { get; set; }
+        public float Ratings { get; set; }
     }
 }

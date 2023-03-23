@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+
 using Book_Store.DTOs.BookDTOs;
 using Book_Store.Models;
 using Book_Store.Repository.Books_Repo;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace Book_Store.Controllers
@@ -20,7 +22,7 @@ namespace Book_Store.Controllers
         }
 
         [HttpGet("books", Name = "HomePage")]
-        public IActionResult GetAll([FromQuery]int? page)
+        public IActionResult GetAll([FromQuery] int? page)
         {
             if (page != null)
             {
@@ -43,7 +45,8 @@ namespace Book_Store.Controllers
                         Image = b.Image,
                         Price = b.Price,
                         Title = b.Title,
-                        Quantity = b.QuantityInStock
+                        Quantity = b.QuantityInStock,
+                        Ratings = b.AverageRatings
                     })
                     .ToList();
 
@@ -74,7 +77,7 @@ namespace Book_Store.Controllers
             return Ok(allBooks);
         }
 
-        [HttpGet("{id:int}", Name ="BookRoute")]
+        [HttpGet("{id:int}", Name = "BookRoute")]
         public IActionResult GetById(int id)
         {
             var book = book_Repo.GetByIdInclude(id);
@@ -94,22 +97,22 @@ namespace Book_Store.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostBook([FromForm]BookDto dto)
+        public IActionResult PostBook([FromForm] BookDto dto)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var book = mapper.Map<Book>(dto);
                 book.IsRecommended = true;
                 book_Repo.Insert(book);
 
                 string actionLink = Url.Link("BookRoute", new { id = book.Id });
-                return Created(actionLink, book); 
+                return Created(actionLink, book);
             }
             return BadRequest(ModelState);
         }
 
         [HttpPut("{id}")]
-        public IActionResult PutBook(int id, [FromBody]BookDto dto) 
+        public IActionResult PutBook(int id, [FromBody] BookDto dto)
         {
             var ExistingBook = book_Repo.GetById(id);
 
@@ -151,7 +154,7 @@ namespace Book_Store.Controllers
                     // no content, data deleted
                     return StatusCode(StatusCodes.Status204NoContent);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     return BadRequest(ex.Message);
                 }

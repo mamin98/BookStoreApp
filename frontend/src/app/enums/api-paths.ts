@@ -3,5 +3,5 @@ export enum ApiPaths {
   OneBook = 'Book/',
   Categories = 'Types/',
   Checkout = 'checkout',
-  Purchase = 'purchase'
+  Purchase = 'books/purchases'
 }
