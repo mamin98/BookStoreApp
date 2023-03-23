@@ -18,8 +18,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { BooksWithCategoryComponent } from './books/books-with-category/books-with-category.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-
-
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -45,9 +44,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RouterModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-
-
-
+    AdminModule,
   ],
   exports: [NgxPaginationModule],
   providers: [],

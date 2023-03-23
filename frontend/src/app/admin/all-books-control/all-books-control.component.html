@@ -1,0 +1,142 @@
+<link
+  href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+  rel="stylesheet"
+/>
+<!-- Start Cart Selected-->
+
+<button class="btn btn-success" style="margin: 5%">Add Book</button>
+
+<div class="carts">
+  <ng-container>
+    <ng-container>
+      <table id="cart" class="table table-condensed">
+        <thead>
+          <tr>
+            <th style="width: 50%">All Books</th>
+            <th style="width: 10%">Price</th>
+            <th style="width: 8%">Quantity</th>
+
+            <th style="width: 10%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of books">
+            <td data-th="Product">
+              <div class="row d-flex" style="flex-direction: column-reverse">
+                <div class="col-sm-2 hidden-xs">
+                  <img
+                    src="{{ item.image }}"
+                    alt="..."
+                    class="img-responsive"
+                    style="height: 100px; border-radius: 10px; width: 161px"
+                  />
+                </div>
+                <div class="col-sm-10">
+                  <h4 style="font-size: 18px; color: blue" class="nomargin">
+                    {{ item.title }}
+                  </h4>
+                </div>
+              </div>
+            </td>
+            <td data-th="Price">{{ item.price | currency }}</td>
+            <td
+              data-th="Quantity"
+              class="d-flex gap-2"
+              style="margin-top: 50px; border-bottom: 0"
+            >
+              <span class="form-control text-center">{{ item.quantity }}</span>
+            </td>
+
+            <td>
+              <button
+                class="btn btn-danger"
+                style="margin-left: 50%; margin-top: 45%"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <ng-container>
+            <tr>
+              <td>
+                <a
+                  href="#"
+                  class="btn btn-danger back-btn"
+                  style="
+                    margin-left: 1%;
+                    margin-bottom: 1%;
+                    color: rgb(255, 254, 171);
+                    border: none;
+                  "
+                  routerLink="/home-allBooks"
+                  ><i class="fa fa-angle-left"></i> Continue Shopping
+                </a>
+              </td>
+              <td colspan="2" class="hidden-xs"></td>
+              <td class="hidden-xs text-center">
+                <!-- <strong>Total : {{ total }} $</strong> -->
+              </td>
+              <td>
+                <a>
+                  <!-- <button
+                    [disabled]="selectedItems.length === 0"
+                    (click)="toCheckoutPage()"
+                    class="btn btn-success"
+                    style="width: 161px"
+                  >
+                    Confirm my Orders
+                  </button> -->
+                  <!-- <i class="fa fa-angle-right"></i> -->
+                </a>
+              </td>
+            </tr>
+          </ng-container>
+        </tfoot>
+      </table>
+    </ng-container>
+  </ng-container>
+</div>
+<!-- End Cart Selected-->
+
+<!-- Start When empty-->
+<ng-template #cartIsEmptyMessage>
+  <div class="container-fluid" style="margin-top: 80px">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h5>Cart</h5>
+          </div>
+          <div class="card-body cart" style="margin-top: 50px">
+            <div class="col-sm-12 empty-cart-cls text-center">
+              <!-- CART IMAGE -->
+              <img
+                src="https://i.imgur.com/dCdflKN.png"
+                width="150"
+                height="150"
+                class="img-fluid mb-4 mr-4"
+              />
+              <h2 class=""><strong>Your Cart is Empty</strong></h2>
+              <p>Add something to make me happy :</p>
+              <a
+                href="#"
+                class="btn btn-danger back-btn"
+                style="
+                  margin-left: 1%;
+                  margin-bottom: 1%;
+                  color: rgb(255, 254, 171);
+                  border: none;
+                "
+                routerLink="/home-allBooks"
+                ><i class="fa fa-angle-left"></i> Continue Shopping
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!-- Start When empty  -->

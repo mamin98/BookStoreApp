@@ -8,6 +8,7 @@ import { BookDetailsComponent } from './books/book-details/book-details.componen
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { BooksWithCategoryComponent } from './books/books-with-category/books-with-category.component';
+import { AllBooksControlComponent } from './admin/all-books-control/all-books-control.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home-allBooks', pathMatch: 'full' },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
 
   // authentication Paths
+  { path: 'admin-control', component: AllBooksControlComponent },
 ];
 
 @NgModule({

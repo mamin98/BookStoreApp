@@ -15,21 +15,25 @@
       <ng-template #unauth>
         <a class="py-2 d-md-inline-block" routerLink="/login">Login</a>
         <a class="py-2 d-md-inline-block" routerLink="/register">Register</a>
+        <a class="py-2 d-md-inline-block" routerLink="/admin-control">Admin</a>
       </ng-template>
 
       <ng-template #auth>
-
         <a class="py-2 d-md-inline-block">
           Welcome
-          <span class="text-light">'{{ userService.account_data.username }}'</span>
+          <span class="text-light"
+            >'{{ userService.account_data.username }}'</span
+          >
         </a>
-        
-        <a class="py-2 d-md-inline-block text-primary"
-         routerLink="/register"
-         *ngIf="userService.account_data.role=='Administrator'">
-         Administrator
+
+        <a
+          class="py-2 d-md-inline-block text-primary"
+          routerLink="/register"
+          *ngIf="userService.account_data.role == 'Administrator'"
+        >
+          Administrator
         </a>
-        
+
         <a
           class="py-2 d-md-inline-block"
           routerLink="/login"

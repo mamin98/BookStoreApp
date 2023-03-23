@@ -27,7 +27,11 @@
   "
 >
   <p class="price">{{ product.price }}$</p>
-  <a class="view-details" routerLink="/bookDetails/{{ product.id }}">
+  <a
+    class="view-details"
+    style="margin-right: 25px"
+    routerLink="/bookDetails/{{ product.id }}"
+  >
     <i class="fa-solid fa-circle-info fa-lg"></i>
     <span>View Details</span>
   </a>
