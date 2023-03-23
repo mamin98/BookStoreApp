@@ -12,9 +12,7 @@ export class HeaderComponent implements OnInit{
 
   selectedItemsCount$: Observable<number> =
     this.cartService.selectedItemsCount$;
-    
-    account_data: any = {};
-    
+        
     constructor(
     private cartService: CartService,
     public userService: UsersService
@@ -22,15 +20,5 @@ export class HeaderComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.userService.accountProfile().subscribe({
-      next: (userData) => {
-        //console.log(userData);
-        this.account_data = userData;
-        //console.log(this.account_data);
-      },
-      error: (err) => {
-        console.log(err?.error.message);
-      }
-    })
   }
 }

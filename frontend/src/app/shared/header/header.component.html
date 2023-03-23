@@ -18,7 +18,18 @@
       </ng-template>
 
       <ng-template #auth>
-        <a class="py-2 d-md-inline-block">{{ account_data.username }}</a>
+
+        <a class="py-2 d-md-inline-block">
+          Welcome
+          <span class="text-light">'{{ userService.account_data.username }}'</span>
+        </a>
+        
+        <a class="py-2 d-md-inline-block text-primary"
+         routerLink="/register"
+         *ngIf="userService.account_data.role=='Administrator'">
+         Administrator
+        </a>
+        
         <a
           class="py-2 d-md-inline-block"
           routerLink="/login"
