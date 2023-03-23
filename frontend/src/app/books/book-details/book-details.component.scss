@@ -49,8 +49,8 @@
             border: none;
           }
         }
-        .select-quantity{
-          span{
+        .select-quantity {
+          span {
             border: 1px solid #982020;
             padding: 10px;
             height: 37px;
@@ -129,5 +129,44 @@
     // this is really the only tricky part, you need to specify the background color of the container element...
     color: #cf4a4a;
     background-color: #fcfcfa;
+  }
+}
+
+.user-rating {
+  margin-top: 2rem;
+  color: orange;
+  padding-left: 2rem;
+}
+
+.rating-textarea {
+  display: block;
+  padding: 0.5rem;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  width: 80%;
+  height: 7rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  resize: vertical;
+}
+
+.rating-button {
+  cursor: pointer;
+  border: none;
+  width: 20%;
+  margin-left: 2rem;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+  display: block;
+  padding: 0.7rem 1.5rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: orange;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darkorange;
   }
 }

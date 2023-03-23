@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BooksService } from '../services/books.service';
 import { CartService } from 'src/app/cart/service/cart.service';
 import { CartAction } from 'src/app/enums/card-action';
+import { Book } from 'src/app/model/Book';
+import { Rating } from 'src/app/model/BookRating';
+import { BooksService } from '../services/books.service';
 
 @Component({
   selector: 'app-book-details',
@@ -13,6 +15,10 @@ export class BookDetailsComponent implements OnInit {
   id: any;
   book: any = {};
   quantity: number = 0;
+  stars!: any;
+  review!: string;
+  successRatingStatus!: boolean;
+
   constructor(
     private activRoute: ActivatedRoute,
     private bookService: BooksService,
@@ -50,6 +56,26 @@ export class BookDetailsComponent implements OnInit {
   };
 
   // add choosen product to card
-  addToCart = (product: any) =>
+  private addToCart = (product: Book) =>
     this.cartService.addToCart(product, this.quantity);
+
+  // ratingChanged(evt: Event) {}
+
+  addRating(): void {
+    const rating: Rating = {
+      stars: this.stars,
+      review: this.review,
+    };
+    this.bookService.addRating(this.id, rating).subscribe(data => {
+      console.log("data ", data)
+    });
+
+    // recall get book by id, to reflect changes
+    // this.getBookId()
+  }
+
+  onRatingChange(evt: Event){
+    const target = evt.target as HTMLButtonElement;
+    this.stars = target.value
+  }
 }

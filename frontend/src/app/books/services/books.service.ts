@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { ApiPaths } from 'src/app/enums/api-paths';
 import { Book } from 'src/app/model/Book';
+import { Rating } from 'src/app/model/BookRating';
 import { Category } from 'src/app/model/Category';
 import { environment } from 'src/environments/environment';
 
@@ -29,12 +30,25 @@ export class BooksService {
   }
 
   getBooksByCategory(id: number): Observable<Book[]> {
-    return this.http.get<Book[]>(environment.baseApi + ApiPaths.Categories + id).pipe(
-      // todo: response type
-      map((response: any) => {
-        return response.books;
-      })
-    );
+    return this.http
+      .get<Book[]>(environment.baseApi + ApiPaths.Categories + id)
+      .pipe(
+        // todo: response type
+        map((response: any) => {
+          return response.books;
+        })
+      );
   }
 
+  // POST add rating
+  addRating(bookId: number, rating: Rating): Observable<unknown> {
+    const baseUrl = environment.baseApi;
+    const url = `${baseUrl}books/${bookId}/ratings`;
+    return this.http.post<Rating>(url, rating).pipe( 
+      catchError((error) => { 
+        console.error('Err while rating:', error); 
+        return throwError('err'); 
+      }) 
+    ); ;
+  }
 }

@@ -92,7 +92,21 @@
           </div>
         </div>
       </div>
+
       <!--Start Cart info-->
+      <!-- Here user Rating -->
+      <igc-rating
+        class="user-rating"
+        min="1"
+        max="5"
+        (igcChange)="onRatingChange($event)"
+      ></igc-rating>
+      <textarea
+        class="rating-textarea"
+        [(ngModel)]="review"
+        placeholder="What you think?"
+      ></textarea>
+      <button class="rating-button" (click)="addRating()">Add Rating</button>
     </div>
   </div>
 </div>
