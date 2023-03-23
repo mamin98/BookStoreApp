@@ -21,9 +21,9 @@ export class LoginComponent {
   login() {
     var loginData = this.service.logform
     if (loginData.valid) {
-      console.log(loginData.value);
+      //console.log(loginData.value);
       this.service.Login().subscribe((data: any) => {
-        console.log(data);
+        //console.log(data);
         loginData.reset();
         this.service.saveToken_InLocalStorage(data['token'])
         this.router.navigate(['home-allBooks'])

@@ -15,9 +15,7 @@
       <ng-template #unauth>
         <a class="py-2 d-md-inline-block" routerLink="/login">Login</a>
         <a class="py-2 d-md-inline-block" routerLink="/register">Register</a>
-        <a class="py-2 d-md-inline-block" routerLink="/admin-control"
-          >Dashboard</a
-        >
+        
       </ng-template>
 
       <ng-template #auth>
@@ -28,16 +26,14 @@
           >
         </a>
 
-        <a
-          class="py-2 d-md-inline-block text-primary"
-          routerLink="/register"
-          *ngIf="userService.account_data.role == 'Administrator'"
+        <a *ngIf="userService.account_data.role == 'Administrator'" 
+         class="py-2 d-md-inline-block text-primary"
+         routerLink="/admin-control"
+          >Admin Dashboard</a
         >
-          Administrator
-        </a>
 
         <a
-          class="py-2 d-md-inline-block"
+          class="py-2 d-md-inline-block "
           routerLink="/login"
           (click)="userService.removeToken()"
           >Logout</a
