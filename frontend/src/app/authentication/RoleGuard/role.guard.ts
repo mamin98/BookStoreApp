@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UsersService } from '../service/users.service';
 
@@ -11,7 +11,7 @@ export class RoleGuard implements CanActivate {
   isAdmin: boolean = false;
   role:string="";
 
-  constructor(private user: UsersService){}
+  constructor(private user: UsersService, private router:Router){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -21,9 +21,10 @@ export class RoleGuard implements CanActivate {
       this.role = this.user.account_data.role;
       if(this.role == "Administrator"){
         this.isAdmin = true;
+      }else{
+        alert("Just allowed for Admins");
+        this.router.navigate(['login']);
       }
-
-      alert("Just allowed for Admins");
       return this.isAdmin;
   }
   

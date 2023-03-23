@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { ApiPaths } from 'src/app/enums/api-paths';
 import { Book } from 'src/app/model/Book';
 import { Category } from 'src/app/model/Category';
 import { environment } from 'src/environments/environment';
+import { UsersService } from 'src/app/authentication/service/users.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class AdminService {
 
   deletePath: string= environment.baseApi+ApiPaths.OneBook;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private user: UsersService) {}
 
   
 
@@ -41,6 +42,10 @@ export class AdminService {
 
   // Delete Book by id
   DeleteBook(id:any){
-    return this.http.delete(this.deletePath+ id);
+    const headers = new HttpHeaders()
+    // connection-Tupe, app/json 'Bearer token' ==> like in postman
+    .set('Authorization', `Bearer ${this.user.getToken_fromLocalStorage()}`);
+    
+    return this.http.delete(this.deletePath+ id, {headers});
   }
 }

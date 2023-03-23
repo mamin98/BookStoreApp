@@ -9,6 +9,7 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { BooksWithCategoryComponent } from './books/books-with-category/books-with-category.component';
 import { AllBooksControlComponent } from './admin/all-books-control/all-books-control.component';
+import { RoleGuard } from './authentication/RoleGuard/role.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home-allBooks', pathMatch: 'full' },
@@ -20,7 +21,7 @@ const routes: Routes = [
   { path: 'bookDetails/:id', component: BookDetailsComponent },
   {
     path: 'cart',
-    component: CartComponent /*, canActivate:[AuthorizeService]*/,
+    component: CartComponent , canActivate:[AuthorizeService],
   },
   // authentication Paths
   { path: 'login', component: LoginComponent },
@@ -28,7 +29,9 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
 
   // authentication Paths
-  { path: 'admin-control', component: AllBooksControlComponent },
+  { path: 'admin-control',
+   component: AllBooksControlComponent,
+   canActivate:[AuthorizeService, RoleGuard] },
 ];
 
 @NgModule({
