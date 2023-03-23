@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Book_Store.Controllers;
 
-[Route("api/purchase")]
+[Route("api/books/purchases")]
 [ApiController]
 public class PurchaseOrderController : ControllerBase
 {
