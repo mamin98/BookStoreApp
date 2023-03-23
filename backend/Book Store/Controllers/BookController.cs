@@ -3,7 +3,7 @@
 using Book_Store.DTOs.BookDTOs;
 using Book_Store.Models;
 using Book_Store.Repository.Books_Repo;
-
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Book_Store.Controllers
@@ -137,6 +137,7 @@ namespace Book_Store.Controllers
             return NotFound($"There is No such a book with id: {id}");
         }
 
+        [Authorize(Roles ="Administrator")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
