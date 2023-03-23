@@ -160,18 +160,18 @@ export class CartService {
     if (index !== -1) {
       this.selectedCartItems.splice(index, 1);
 
+      // immediately update new quantity value on remove action avoiding out of sync issue
+      this.allSelectedQuantity = this.selectedCartItems.reduce(
+        (acc, curr) => acc + curr.quantity,
+        0
+      );
+      this.selectedItemsCount.next(this.allSelectedQuantity);
+
       // subscribe to changes of user selected products & update local storage
       this.selectedCartItems$.next(this.selectedCartItems);
       this.selectedCartItems$.subscribe((items) => {
         // sync carted items with local storage
         localStorage.setItem(this.cartItemsKey, JSON.stringify(items));
-
-        this.allSelectedQuantity = this.selectedCartItems.reduce(
-          (acc, curr) => acc + curr.quantity,
-          0
-        );
-        this.selectedItemsCount.next(this.allSelectedQuantity);
-
         // sync quantity with local storage
         this.localStore.saveData(
           this.selectedItemsCountKey,

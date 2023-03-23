@@ -54,15 +54,15 @@ public class CustomerCartRepository : ICustomerCartRepository
 
 
         // update products quantity
-        var quantitiyUpdated = await UpdateProductsQuantityAsync(productIds, customerCart);
+        var productUpdated = await UpdateProductsQuantityAsync(productIds, customerCart);
 
-        if (quantitiyUpdated.success)
+        if (productUpdated.success)
         {
             //update database with customer Order
             _context.Orders.Add(cart);
             _context.SaveChangesAsync();
         }
-        return quantitiyUpdated;
+        return productUpdated;
     }
 
 
