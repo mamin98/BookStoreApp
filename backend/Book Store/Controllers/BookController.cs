@@ -2,6 +2,7 @@
 
 using Book_Store.DTOs.BookDTOs;
 using Book_Store.Models;
+using Book_Store.Repository.Author_Repo;
 using Book_Store.Repository.Books_Repo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,12 +14,14 @@ namespace Book_Store.Controllers
     public class BookController : ControllerBase
     {
         private readonly IBookRepository book_Repo;
+        private readonly IAuthorRepository author_Repo;
         private readonly IMapper mapper;
 
-        public BookController(IBookRepository book_repo, IMapper _mapper)
+        public BookController(IBookRepository book_repo, IMapper _mapper, IAuthorRepository author_Repo)
         {
             book_Repo = book_repo;
             mapper = _mapper;
+            this.author_Repo = author_Repo;
         }
 
         [HttpGet("books", Name = "HomePage")]
@@ -123,8 +126,18 @@ namespace Book_Store.Controllers
                 {
                     var MappedBook = mapper.Map<Book>(dto);
                     MappedBook.Id = id;
+                    MappedBook.AuthorId = ExistingBook.AuthorId;
                     //ExistingBook = MappedBook;
                     book_Repo.Edit(MappedBook, id);
+
+                    var author = author_Repo.GetById(MappedBook.AuthorId);
+
+                    author.FirstName = dto.AuthorFirstName;
+                    author.LastName = dto.AuthorLastName;
+
+                    author_Repo.Edit(author, MappedBook.AuthorId);
+
+                    MappedBook.Author = null;
 
                     // Return with the modified book
                     return Ok(MappedBook);
