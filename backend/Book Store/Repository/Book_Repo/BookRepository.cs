@@ -35,7 +35,7 @@ namespace Book_Store.Repository.Books_Repo
         // Book by Id
         public Book GetById(int id)
         {
-            return context.Books.FirstOrDefault(b => b.Id == id);
+            return context.Books.AsNoTracking().FirstOrDefault(b => b.Id == id);
         }
 
         // Add new Book
