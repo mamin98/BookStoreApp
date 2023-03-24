@@ -25,7 +25,7 @@ export class UsersService {
     
     // Register Form
     this.regform = this.formbuilder.group({
-      username: ['', [Validators.required, Validators.pattern("[a-zA-Z_]+")]],
+      username: ['', [Validators.required]],
       phone:['', [Validators.required, Validators.pattern("[0-9]{11}")]],
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$')]],
       password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.-]*$')]],
@@ -36,7 +36,7 @@ export class UsersService {
 
     // Login Form
     this.logform = this.formbuilder.group({
-      username: ['', [Validators.required, Validators.pattern("[a-zA-Z_]+")]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.-]*$')]]
     });
 
