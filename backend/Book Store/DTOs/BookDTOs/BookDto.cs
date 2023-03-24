@@ -27,7 +27,9 @@ namespace Book_Store.DTOs.BookDTOs
 
         // Author 
         [Required(ErrorMessage = "Choose a Book author")]
-        public int AuthorId { get; set; }
+        public string AuthorFirstName { get; set; }
+
+        public string AuthorLastName { get; set; }
 
         // Type/Category
         [Required(ErrorMessage = "Choose a Book type")]
