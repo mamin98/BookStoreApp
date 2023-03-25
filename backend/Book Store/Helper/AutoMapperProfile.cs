@@ -14,6 +14,7 @@ namespace Book_Store.Helper
             CreateMap<Book, BookDetailsDto>();
             CreateMap<Book, HomeBookDto>();
             CreateMap<BookDto, Book>();
+            CreateMap<CreateBookDto, Book>();
             CreateMap<CreateAuthorDto, Author>();
             CreateMap<CreateTypeDto, Types>();
             CreateMap<CreatePublisherDto, Publisher>();
