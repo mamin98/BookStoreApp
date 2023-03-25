@@ -16,6 +16,8 @@ namespace Book_Store.Controllers
         private readonly IBookRepository book_Repo;
         private readonly IAuthorRepository author_Repo;
         private readonly IMapper mapper;
+        private List<string> allowedExtensions = new List<string> { ".jpg", "jpeg", ".png" };
+        private long maxImgFileSize = 2097152;
 
         public BookController(IBookRepository book_repo, IMapper _mapper, IAuthorRepository author_Repo)
         {
@@ -49,7 +51,8 @@ namespace Book_Store.Controllers
                         Price = b.Price,
                         Title = b.Title,
                         Quantity = b.QuantityInStock,
-                        Ratings = b.AverageRatings
+                        Ratings = b.AverageRatings,
+                        ImgFile = b.UploadImage
                     })
                     .ToList();
 
@@ -75,7 +78,8 @@ namespace Book_Store.Controllers
                     Price = b.Price,
                     Title = b.Title,
                     Quantity = b.QuantityInStock,
-                    Ratings = b.AverageRatings
+                    Ratings = b.AverageRatings,
+                    ImgFile = b.UploadImage
                 }).ToList();
 
             return Ok(allBooks);
@@ -101,12 +105,25 @@ namespace Book_Store.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostBook([FromForm] BookDto dto)
+        public IActionResult PostBook([FromForm] CreateBookDto dto)
         {
             if (ModelState.IsValid)
             {
+                if (!allowedExtensions.Contains(Path.GetExtension(dto.ImgFile.FileName).ToLower()))
+                    return BadRequest("Only jpg & png file extensions are allowed.");
+
+                if (dto.ImgFile.Length > maxImgFileSize)
+                    return BadRequest("Maximum allowed file size is 2 mb");
+
                 var book = mapper.Map<Book>(dto);
                 book.IsRecommended = true;
+
+                // Upload Img File
+                using var dataStream = new MemoryStream();
+
+                dto.ImgFile.CopyTo(dataStream);
+                book.UploadImage = dataStream.ToArray();
+
                 book_Repo.Insert(book);
 
                 string actionLink = Url.Link("BookRoute", new { id = book.Id });
@@ -124,10 +141,20 @@ namespace Book_Store.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    if (!allowedExtensions.Contains(Path.GetExtension(dto.ImgFile.FileName).ToLower()))
+                        return BadRequest("Only jpg & png file extensions are allowed.");
+
+                    if (dto.ImgFile.Length > maxImgFileSize)
+                        return BadRequest("Maximum allowed file size is 2 mb");
+
+                    using var dataStream = new MemoryStream();
+                    dto.ImgFile.CopyTo(dataStream);
+
                     var MappedBook = mapper.Map<Book>(dto);
                     MappedBook.Id = id;
                     MappedBook.AuthorId = ExistingBook.AuthorId;
-                    //ExistingBook = MappedBook;
+                    MappedBook.UploadImage = dataStream.ToArray();
+
                     book_Repo.Edit(MappedBook, id);
 
                     var author = author_Repo.GetById(MappedBook.AuthorId);
