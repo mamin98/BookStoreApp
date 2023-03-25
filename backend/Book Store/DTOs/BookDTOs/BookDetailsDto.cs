@@ -11,6 +11,7 @@ namespace Book_Store.DTOs.BookDTOs
         public decimal Price { get; set; }
         public DateOnly? PublicationDate { get; set; }
         public string? Image { get; set; }
+        public byte[]? UploadImage { get; set; }
 
         // Publisher
         public string PublisherName { get; set; } = string.Empty;
