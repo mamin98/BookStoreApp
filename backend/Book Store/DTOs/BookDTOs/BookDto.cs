@@ -21,14 +21,17 @@ namespace Book_Store.DTOs.BookDTOs
         public DateOnly? PublicationDate { get; set; }
         public string? Image { get; set; }
 
+        public IFormFile? ImgFile { get; set; }
+
         // Publisher        
         [Required(ErrorMessage = "Choose a Book Publisher")]
         public int PublisherId { get; set; }
 
         // Author 
-        [Required(ErrorMessage = "Choose a Book author")]
+        [Required(ErrorMessage = "Choose Author's First Name")]
         public string AuthorFirstName { get; set; }
 
+        [Required(ErrorMessage = "Choose Author's Last Name")]
         public string AuthorLastName { get; set; }
 
         // Type/Category
