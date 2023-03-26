@@ -2,41 +2,31 @@
 <!-- <div class="box"> -->
 <img
   [src]="product.image"
-  class="card-img-top"
-  style="height: 227px; cursor: pointer; padding: 3%"
+  class="card-img-top image-book"
   routerLink="/bookDetails/{{ product.id }}"
 />
-<div class="c-body">
-  <h2 class="title" style="font-size: 21px">{{ product.title }}</h2>
+<div class="c-title">
+  <h2 class="title">{{ product.title }}</h2>
 </div>
-<div
-  class="c-body d-flex"
-  style="justify-content: space-between; align-items: center"
->
-  <p class="description" style="text-decoration: underline; font-size: 12px">
+
+<div class="info d-flex">
+  <p class="author">
     {{ product.authorName }}
   </p>
-  <p class="text-muted">{{ product.category }}</p>
+  <p class="text-muted category">{{ product.category }}</p>
 </div>
-<div
-  class="c-body d-flex"
-  style="
-    border-bottom: 2px solid var(--bs-gray-500);
-    align-items: center;
-    justify-content: space-around;
-  "
->
-  <p class="price">{{ product.price }}$</p>
+
+<div class="price-detail d-flex">
+   <p class="price">{{ product.price }}$</p>
   <a
     class="view-details"
-    style="margin-right: 25px"
     routerLink="/bookDetails/{{ product.id }}"
   >
     <i class="fa-solid fa-circle-info fa-lg"></i>
     <span>View Details</span>
   </a>
 </div>
-<div class="info">
+<div class="cart-buttons">
   <div class="button" *ngIf="!addButton" (click)="addButton = true">
     <a class="btn btn-success clk" (click)="addToCart(product)">
       <i class="fa-solid fa-cart-shopping"></i>
@@ -45,13 +35,10 @@
 
   <div
     *ngIf="addButton"
-    class="d-flex select-quantity"
-    style="justify-content: space-between; gap: 40px"
-  >
-    <button class="btn btn-danger" (click)="decrementQuantity()">-</button>
-    <!-- <input  [(ngModel)]="quantity" /> -->
+    class="d-flex select-quantity">
+    <button class="btn minus" (click)="decrementQuantity()">-</button>
     <span class="quantity" type="text">{{ quantity }}</span>
-    <button class="btn btn-success" (click)="incrementQuantity()">+</button>
+    <button class="btn plus" (click)="incrementQuantity()">+</button>
   </div>
 </div>
 <!-- </div> -->

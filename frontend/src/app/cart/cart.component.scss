@@ -1,3 +1,4 @@
+@import '../../paleetTheme.scss';
 .carts {
   @media (max-width: 991px) {
     overflow: auto;
@@ -12,21 +13,70 @@
     transition: 0.3s;
 
     thead {
-      background-color: #212529;
+      background-color: theme-colors(c-sec-black);
       color: #fff;
     }
     tbody {
       td {
         font-size: 22px;
+        .img-detail{
+          flex-direction: column-reverse;
+          img{
+            height: 100px;
+             border-radius: 10px;
+              width: 161px
+          }
+        }
+        .danger{
+          background-color: theme-colors(red-600);
+          color: theme-colors(c-white)  ;
+        }
+        .success{
+          background-color: theme-colors(secondary);
+          color: theme-colors(c-white)  ;
+        }
+        .subtotal{
+          background-color:theme-colors(secondary);
+          padding: 5px;
+          border-radius: 6px;
+        }
+        .bt-delete{
+          img{
+            width: 50px;
+
+          }
+        }
       }
+
+         td.subtotal{
+        color: theme-colors(red-900);
+
+         }
       background-color: #fff;
       vertical-align: middle;
     }
   }
 }
 
-.back-btn:hover {
-  background-color: #fce51a !important;
-  border: none;
-  color: #e2462b !important;
+tfoot{
+  tr{
+    td{
+      .back-btn{
+        transition: 0.3s;
+        background-color: theme-colors(tertiary);
+        margin-left: 1%;
+        margin-bottom: 1%;
+        border: none;
+        &:hover{
+          background-color: #fce51a ;
+          border: none;
+        }
+      }
+      .success{
+        background-color: theme-colors(secondary);
+        color: theme-colors(c-white)
+      }
+    }
+  }
 }
+

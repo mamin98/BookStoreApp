@@ -1,15 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import 'paleetTheme';
 /* Importing Bootstrap SCSS file. */
 @import "bootstrap/scss/bootstrap";
 body {
-  background-color: #eee !important;
+  background-color: theme-colors(c-gray);
 }
 .button-color {
-  background: linear-gradient(to right, #ff5678, #198754);
+  background: linear-gradient(to right, theme-colors(primary), theme-colors(secondary));
 }
 
-:root {
-  --maincolor: #2e294e;
-  --secondarycolor: #fff;
-}
+// :root {
+//   --maincolor: #2e294e;
+//   --secondarycolor: #fff;
+// }

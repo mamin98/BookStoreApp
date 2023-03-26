@@ -1,3 +1,4 @@
+@import '../../paleetTheme.scss';
 .component {
   position: relative;
   width: 50%;
@@ -15,11 +16,16 @@
     margin: 20px auto;
     .confirmed{
       h2{
-        color: green;
+        color: theme-colors(secondary);
         &::after{
 
         }
       }
+    }
+    a{
+      background-color: theme-colors(tertiary);
+      border: none;
+      margin-top:2rem;
     }
   }
 }
@@ -35,6 +41,6 @@
 }
 
 .valid-button:hover {
-  background-color: rgba(4,99,128,1);
+  background-color: theme-colors(secondary);
   box-shadow: none;
 }

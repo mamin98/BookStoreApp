@@ -1,9 +1,14 @@
+@import '../../../paleetTheme.scss';
 footer{
   margin-top: 274px;
+  background-color: theme-colors(c-black);
+  .foot{
+    background-color: theme-colors(c-sec-black);
+
+  }
 }
 a{
   text-decoration: none;
-
 }
 .row{
   // gap: 10px;

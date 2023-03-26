@@ -29,14 +29,14 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of selectedItems">
+            <!-- Start Img book -->
             <td data-th="Product">
-              <div class="row d-flex" style="flex-direction: column-reverse">
+              <div class="row d-flex img-detail" >
                 <div class="col-sm-2 hidden-xs">
                   <img
                     src="{{ item.imageSrc }}"
                     alt="..."
                     class="img-responsive"
-                    style="height: 100px; border-radius: 10px; width: 161px"
                   />
                 </div>
                 <div class="col-sm-10">
@@ -46,67 +46,85 @@
                 </div>
               </div>
             </td>
-            <td data-th="Price">{{ item.price | currency }}</td>
+            <!-- ENd Img book -->
+            <!--Start Price-->
+            <td data-th="Price" class="price">{{ item.price | currency }}</td>
+            <!--End Price-->
+
+            <!--Start Quantity-->
             <td
               data-th="Quantity"
               class="d-flex gap-2"
               style="margin-top: 50px; border-bottom: 0"
             >
-              <button class="btn btn-danger" (click)="decrementQuantity(item)">
+              <button class="btn danger" (click)="decrementQuantity(item)">
                 -
               </button>
               <span class="form-control text-center">{{ item.quantity }}</span>
-              <button class="btn btn-success" (click)="incrementQuantity(item)">
+              <button class="btn success" (click)="incrementQuantity(item)">
                 +
               </button>
             </td>
-            <td data-th="Subtotal" class="text-center">
-              {{ item.price * item.quantity | currency }}
+            <!--End Quantity-->
+
+             <!--Start Subtotal-->
+            <td data-th="Subtotal" class="text-center subtotal">
+              <span class="subtotal">{{ item.price * item.quantity | currency }}</span>
             </td>
+             <!--Start Subtotal-->
+
+             <!--Start Delete Button-->
             <td>
-              <button class="btn btn-danger" (click)="removeItemFromCart(item)">
-                Delete
+              <button class="btn bt-delete" (click)="removeItemFromCart(item)">
+                <img src="../../assets/imgs/trash.png" alt="">
               </button>
             </td>
+             <!--End Delete Button-->
+
           </tr>
         </tbody>
+        <!--Start Table Footer-->
         <tfoot>
           <ng-container *ngIf="chosenCartItems$ | async as selectedItems">
             <tr>
+              <!--Start Continue Shopping-->
               <td>
                 <a
                   href="#"
-                  class="btn btn-danger back-btn"
+                  class="btn  back-btn"
                   style="
-                    margin-left: 1%;
-                    margin-bottom: 1%;
-                    color: rgb(255, 254, 171);
-                    border: none;
                   "
                   routerLink="/home-allBooks"
                   ><i class="fa fa-angle-left"></i> Continue Shopping
                 </a>
               </td>
+              <!--End Continue Shopping-->
+
               <td colspan="2" class="hidden-xs"></td>
               <td class="hidden-xs text-center">
                 <!-- <strong>Total : $</strong> -->
               </td>
               <td>
+                <!--Start Confirm Button-->
                 <a>
                   <button
                     [disabled]="selectedItems.length === 0"
                     (click)="toCheckoutPage()"
-                    class="btn btn-success"
+                    class="btn success"
                     style="width: 161px"
                   >
                     Confirm my Orders
                   </button>
                   <!-- <i class="fa fa-angle-right"></i> -->
                 </a>
+                <!--End Confirm Button-->
+
               </td>
             </tr>
           </ng-container>
         </tfoot>
+        <!--ENd Table Footer-->
+
       </table>
     </ng-container>
   </ng-container>

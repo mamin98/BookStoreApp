@@ -1,6 +1,7 @@
+@import '../../../paleetTheme.scss';
 .user-header{
     text-align: center;
-    background-color: #fff;
+    background-color: theme-colors(c-white);
     width: 200px;
     margin: 20px auto;
     border-radius: 10px;
@@ -13,7 +14,8 @@
       content: "";
       width: 4px;
       height: 53px;
-      background-color: green;
+      background-color: theme-colors(secondary);
+
       top: -21px;
       z-index: -1;
     }
@@ -21,7 +23,6 @@
       width: 30px;
     }
 }
-
 .log-page{
   align-items: center;
   .form-login{
@@ -43,7 +44,6 @@
     animation-direction: alternate;
     img{
       width: 100%;
-
     }
     @media (max-width:991px ){
       display:none
@@ -55,8 +55,18 @@
   display: flex;
     justify-content: space-between;
     align-items: center;
+    .box{
+      .success{
+      background-color: theme-colors(secondary);
+      }
+    }
 }
-
+.alert{
+  background-color: theme-colors(red-400);
+  color: theme-colors(c-white);
+  font-weight: bold;
+  padding: 10px;
+}
 @keyframes goUpDown {
   from {
     bottom: 60px;

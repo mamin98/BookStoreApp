@@ -1,3 +1,4 @@
+@import '../../../paleetTheme.scss';
 // Start Header
 .user-header {
   text-align: center;
@@ -24,34 +25,40 @@
 }
 // End Header
 
-.box {
+.cont {
   .card {
-    max-width: 100% !important;
+    max-width: 75% !important;
     .row {
-      img {
-        width: 280px;
-        padding: 40px;
+      .img-back{
+        .card-img {
+          padding: 15%  !important;
+        }
+        .back-btn{
+          margin-left: 17%;
+          margin-bottom: 10%;
+          color: theme-colors(c-white);
+          border: none;
+          background-color: theme-colors(tertiary);
+        }
       }
+
       .card-body {
         padding: 40px;
         span {
-          background-color: #fa7f74;
-          color: #fff;
-          padding: 2px;
-          border-radius: 5px;
-        }
-        .btn {
-          padding: 0;
-          button {
-            padding: 0px;
-            width: 95px;
-            background: #8bc34a;
-            border: none;
-          }
+          font-weight: bold;
+          color: black;
         }
         .select-quantity {
+          .danger{
+            background-color: theme-colors(red-600);
+            color: theme-colors(c-white);
+          }
+          .success{
+            background-color: theme-colors(secondary);
+            color: theme-colors(c-white);
+          }
           span {
-            border: 1px solid #982020;
+            border: 1px solid theme-colors(secondary);
             padding: 10px;
             height: 37px;
             display: flex;

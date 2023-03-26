@@ -1,0 +1,30 @@
+$primary: #6b202f;
+$secondary: #33c7ca;
+$tertiary: #efbb38;
+
+$theme-colors: (
+  primary: $primary,
+  secondary: $secondary,
+  tertiary: $tertiary,
+  c-yellow: #ebd424,
+  c-gray: #eee,
+  c-black: #080808,
+  c-sec-black: #212529,
+  c-white: #ffffff,
+  red-50: #fef5f5,
+red-100:#fdd7d7,
+red-200:#fbb3b3,
+red-300:#f88383,
+red-400:#f66464,
+red-500:#f32525,
+red-600:#d50404,
+red-700:#ad0404,
+red-800:#940303,
+red-900:#6e0202,
+);
+@function theme-colors($key) {
+  @return map-get($theme-colors, $key);
+}
+// @function red-color($key) {
+//   @return map-get($red-color, $key);
+// }

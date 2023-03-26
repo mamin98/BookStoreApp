@@ -4,27 +4,20 @@
 </div>
 
 <div class="cont d-flex justify-content-center">
-  <div class="card mb-3" style="max-width: 75%">
+  <div class="card mb-3" style="">
     <div class="row no-gutters">
-      <div class="col-md-4">
+      <div class="col-md-4 img-back">
         <!-- Start Img -->
         <img
           [src]="book.image"
           class="card-img"
-          style="padding: 15%"
           alt="..."
-        />
+          style="padding:12%"/>
         <!-- End Img -->
         <!-- Start Button -->
         <a
           href="#"
           class="btn btn-danger back-btn"
-          style="
-            margin-left: 17%;
-            margin-bottom: 10%;
-            color: rgb(255, 254, 171);
-            border: none;
-          "
           routerLink="/home-allBooks"
           ><i class="fa fa-angle-left"></i> More Books
         </a>
@@ -64,29 +57,22 @@
             general, we recommend adding as much information as you can when
             creating your book.
           </p>
+
           <!--Start Button Select Quantity books-->
           <div
             class="d-flex select-quantity"
             style="gap: 40px; align-items: center"
           >
-            <button class="btn btn-danger" (click)="decrementQuantity()">
+            <button class="btn danger" (click)="decrementQuantity()">
               -
             </button>
 
             <span
-              style="
-                border: 1px solid #b9d106;
-                padding: 10px;
-                height: 37px;
-                display: flex;
-                align-items: center;
-                border-radius: 10px;
-              "
               class="quantity"
               type="text"
               >{{ quantity }}</span
             >
-            <button class="btn btn-success" (click)="incrementQuantity()">
+            <button class="btn success" (click)="incrementQuantity()">
               +
             </button>
           </div>

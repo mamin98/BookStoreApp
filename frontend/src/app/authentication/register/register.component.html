@@ -2,11 +2,11 @@
   <img src="../../../assets/imgs/book.png" alt="">
  <h4>Sing Up</h4>
 </div>
-<br />
+
 <div class="reg-page d-flex gap-5">
     <form [formGroup]="service.regform" (ngSubmit)="register()" class="form-signup pt-5 pb-5">
+      <!-- Start User Name -->
     <div class="form-group">
-      <!-- <label for="name">UserName  </label> -->
       <input
         type="text"
         class="form-control"
@@ -15,16 +15,17 @@
         name="username"
         placeholder="username"
       />
-      <div *ngIf="username?.invalid && username?.touched">
+      <div *ngIf="username?.invalid && username?.touched" class="alert">
         <small class="text-danger" *ngIf="username?.errors?.['required']"
           >username is required!</small>
           <small class="text-danger" *ngIf="username?.errors?.['pattern']">username must contains only capital,
              and small characters</small>
       </div>
     </div>
+      <!-- End User Name -->
 
+      <!-- Start txtPhone -->
     <div class="form-group">
-      <!-- <label>Phone Number </label> -->
       <input type="tel" name="txtPhone"
        [class.is-invalid]="phone?.invalid&&phone?.touched"
       formControlName="phone" name="phone"
@@ -32,14 +33,16 @@
       placeholder="phone number"
       >
 
-     <div *ngIf="phone?.errors && phone?.touched">
+     <div *ngIf="phone?.errors && phone?.touched" class="alert">
       <small class="text-danger" *ngIf="phone?.errors?.['required']">phone is reuired!</small>
       <small class="text-danger" *ngIf="phone?.errors?.['pattern']">phone must be at least 11 digit!</small>
      </div>
   </div>
+      <!-- ENd txtPhone -->
+
+      <!-- Start email -->
 
     <div class="form-group">
-      <!-- <label for="email">Email </label> -->
       <input
         type="email"
         class="form-control"
@@ -49,15 +52,17 @@
         placeholder="email"
       />
 
-      <div *ngIf="email?.invalid && email?.touched">
+      <div *ngIf="email?.invalid && email?.touched" class="alert">
         <small class="text-danger" *ngIf="email?.errors?.['required']"
           >email is required!</small>
           <small class="text-danger" *ngIf="email?.errors?.['pattern']">
             email must contains @ and . in the format (user@example.com)</small>
       </div>
     </div>
+          <!-- End email -->
+
+          <!-- Start password -->
     <div class="form-group">
-      <!-- <label for="pass">Password  </label> -->
       <input
         type="password"
         class="form-control"
@@ -66,7 +71,7 @@
         name="password"
         placeholder="password"
       />
-      <div *ngIf="password?.invalid && password?.touched">
+      <div *ngIf="password?.invalid && password?.touched" class="alert">
         <small class="text-danger" *ngIf="password?.errors?.['required']"
           >password is required!</small
         >
@@ -77,8 +82,10 @@
 
       </div>
     </div>
+          <!-- End password -->
+
+          <!-- Start confirmpassword -->
     <div class="form-group">
-      <!-- <label for="confirmpassword">Confirm Password </label> -->
       <input
         type="password"
         class="form-control"
@@ -87,30 +94,29 @@
         name="confirmpassword"
         placeholder="confirm password"
       />
-      <div *ngIf="confirmpassword?.invalid && confirmpassword?.touched">
+      <div *ngIf="confirmpassword?.invalid && confirmpassword?.touched" class="alert">
         <small class="text-danger" *ngIf="confirmpassword?.errors?.['required']"
           >confirm password is required!</small>
       </div>
       <small class="text-danger" *ngIf="service.regform.errors?.['misMatch']"
         >doesn't match password!</small>
     </div>
+         <!-- ENd confirmpassword -->
 
     <div class="buttons">
-
-
     <div *ngIf=" service.regform.invalid; then thenBlock; else elseBlock"></div>
 
       <ng-template #thenBlock>
         <input type="submit" disabled
-        class="btn btn-success button-color"
+        class="btn button-color"
          value="Register"
-         style="width: 55%; font-weight: 600;"
+         style="width: 55%; font-weight: 600; color:#fff ;"
           />
       </ng-template>
 
       <ng-template #elseBlock>
         <input type="submit"
-        class="btn btn-success"
+        class="btn success"
          value="Register"
          style="width: 55%; font-weight: 600;"
         />

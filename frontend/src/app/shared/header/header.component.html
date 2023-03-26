@@ -4,29 +4,29 @@
       <img
         src="./../../../assets/imgs/artificial-intelligence.png"
         alt="logo"
-        style="width: 65px; margin: 10px; cursor: pointer; border-radius: 50%"
       />
     </div>
     <div class="links d-flex">
-      <!-- <a class="py-2 d-none d-md-inline-block" href="#">Tour</a> -->
       <a class="py-2 d-md-inline-block" routerLink="/home-allBooks">Books</a>
 
+      <!-- start Links Unauth -->
       <div *ngIf="userService.isAuthenticated(); then auth; else unauth"></div>
       <ng-template #unauth>
         <a class="py-2 d-md-inline-block" routerLink="/login">Login</a>
         <a class="py-2 d-md-inline-block" routerLink="/register">Register</a>
-        
       </ng-template>
+      <!-- End Links Unauth -->
+
+      <!-- start Links auth -->
 
       <ng-template #auth>
-        <a class="py-2 d-md-inline-block">
-          Welcome
+        <a class="py-2 d-md-inline-block admin">
           <span class="text-light"
-            >'{{ userService.account_data.username }}'</span
+            >{{ userService.account_data.username }}</span
           >
         </a>
 
-        <a *ngIf="userService.account_data.role == 'Administrator'" 
+        <a *ngIf="userService.account_data.role == 'Administrator'"
          class="py-2 d-md-inline-block text-primary"
          routerLink="/admin-control"
           >Admin Dashboard</a
@@ -39,9 +39,9 @@
           >Logout</a
         >
       </ng-template>
+    <!-- End Links auth -->
 
-      <!-- <a class="py-2 d-none d-md-inline-block" href="#">Support</a> -->
-      <!-- <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a> -->
+        <!-- start Counter notification -->
       <div class="cart d-flex">
         <a class="py-2 d-md-inline-block" routerLink="/cart">
           <i class="fa-solid fa-cart-arrow-down fa-lg"></i>
@@ -50,6 +50,8 @@
           </ng-container>
         </a>
       </div>
+        <!-- End Counter notification -->
+
     </div>
   </div>
 </nav>

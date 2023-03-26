@@ -2,11 +2,12 @@
   <img src="../../../assets/imgs/book.png" alt="">
  <h4>Log In</h4>
 </div>
-<br />
+
+<!--  Start LogIng -->
 <div class="log-page d-flex gap-5">
   <form [formGroup]="service.logform" class="form-login pt-5 pb-5" (ngSubmit)="login()">
+    <!-- Start User Name -->
     <div class="form-group">
-
       <input
         type="text"
         class="form-control"
@@ -15,7 +16,7 @@
         name="username"
         placeholder="username"
       />
-      <div *ngIf="username?.invalid && username?.touched">
+      <div *ngIf="username?.invalid && username?.touched" class="alert">
         <small class="text-danger" *ngIf="username?.errors?.['required']"
           >username is required!</small>
           <small class="text-danger" *ngIf="username?.errors?.['pattern']">
@@ -23,7 +24,9 @@
              and small characters</small>
       </div>
     </div>
+    <!-- End User Name -->
 
+    <!-- Start password -->
     <div class="form-group">
 
       <input
@@ -35,7 +38,7 @@
 
         placeholder="password"
       />
-      <div *ngIf="password?.invalid && password?.touched">
+      <div *ngIf="password?.invalid && password?.touched" class="alert">
         <small class="text-danger" *ngIf="password?.errors?.['required']"
           >password is required!</small
         >
@@ -45,6 +48,9 @@
         >
       </div>
     </div>
+    <!-- End password -->
+
+     <!-- Start buttons when invalid -->
 
     <div class="buttons">
           <div *ngIf=" service.logform.invalid; then thenBlock; else elseBlock"></div>
@@ -53,16 +59,16 @@
               <input type="submit" disabled
               class="btn btn-danger button-color"
               value="Login"
-              style="width: 55%;  font-weight: 600;"
+              style="width: 55%;  font-weight: 600; color: #fff;"
               >
             </ng-template>
           </div>
           <div class="box">
             <ng-template #elseBlock>
               <input type="submit"
-              class="btn btn-success"
+              class="btn success"
               value="Login"
-              style="width: 55%;  font-weight: 600;">
+              style="width: 55%;  font-weight: 600; background-color: aqua;">
             </ng-template>
           </div>
           <div class="box">
@@ -72,9 +78,10 @@
              routerLink="/register"
            > Register
          </a>
-       </div>
           </div>
-        </div>
+          </div>
+     </div>
+     <!-- ENd buttons when invalid -->
 
 
 
@@ -86,3 +93,4 @@
     <img src="../././../../assets/imgs/sitting-reading.png" alt="" />
   </div>
 </div>
+<!--  ENd LogIng -->
