@@ -162,7 +162,7 @@ namespace Book_Store.Controllers
                         //// AddToRolesAsync==> take AppUser & string "Roles"
                         await _userManager.AddToRoleAsync(user, role);
 
-                        return Ok($"Registered Successfully, and your rols is {role}."); // or Accepted();
+                        return Ok($"Registered Successfully, and your role is {role}."); // or Accepted();
                     }
                     else
                     {
