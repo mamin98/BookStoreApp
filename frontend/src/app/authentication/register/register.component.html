@@ -33,10 +33,10 @@
       placeholder="phone number"
       >
 
-     <div *ngIf="phone?.errors && phone?.touched" class="alert">
+     <!-- <div *ngIf="phone?.errors && phone?.touched" class="alert">
       <small class="text-danger" *ngIf="phone?.errors?.['required']">phone is reuired!</small>
       <small class="text-danger" *ngIf="phone?.errors?.['pattern']">phone must be at least 11 digit!</small>
-     </div>
+     </div> -->
   </div>
       <!-- ENd txtPhone -->
 
@@ -76,7 +76,7 @@
           >password is required!</small
         >
         <small class="text-danger" *ngIf="password?.errors?.['pattern']"
-          >password must contains only capital,small characters and numbers
+          >password must contain only numbers, at least 4 digits
           </small
         >
 
