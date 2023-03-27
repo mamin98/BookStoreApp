@@ -1,4 +1,4 @@
-﻿using Book_Store.DTOs.BookDTOs;
+﻿using Book_Store.DTOs.RatingsDtos;
 using Book_Store.Repository.Books_Repo;
 
 using Microsoft.AspNetCore.Mvc;

@@ -14,11 +14,12 @@ export class BookComponent {
 
   @Input() product!: Book;
   addButton: boolean = false;
-  constructor(private cartService: CartService) {}
-
+  constructor(private cartService: CartService) {
+  }
+  
   // add to card incrementing quantity by 1
   incrementQuantity = () => {
-    this.quantity += 1;
+    this.quantity++;
     this.addToCart(this.product);
     // notify quantity count observer for header cart update
     this.cartService.updateQuantityCount(CartAction.Increment);

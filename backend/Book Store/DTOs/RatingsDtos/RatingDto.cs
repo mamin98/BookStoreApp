@@ -1,4 +1,5 @@
-﻿namespace Book_Store.DTOs.BookDTOs;
+﻿namespace Book_Store.DTOs.RatingsDtos;
+
 public class RatingDto
 {
     public int Stars { get; set; }

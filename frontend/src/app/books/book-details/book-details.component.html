@@ -79,12 +79,10 @@
         </div>
       </div>
 
-      <!--Start Cart info-->
       <!-- Here user Rating -->
       <igc-rating
         class="user-rating"
-        min="1"
-        max="5"
+        value="{{stars}}"
         (igcChange)="onRatingChange($event)"
       ></igc-rating>
       <textarea
@@ -93,6 +91,23 @@
         placeholder="What you think?"
       ></textarea>
       <button class="rating-button" (click)="addRating()">Add Rating</button>
+      <div class="ms-3"> 
+        <h6>Ratings</h6> 
+        <div *ngIf="book.reviews?.length > 0"> 
+          <div class="card p-3 mb-3" *ngFor="let review of book.reviews"> 
+            <div class="d-flex align-items-center mb-2"> 
+              <strong class="me-2">{{ review.customerFirstName }}</strong> 
+              <igc-rating 
+                class="rating" 
+                [value]="review.stars" 
+                disabled="true" 
+              ></igc-rating> 
+            </div> 
+            <p class="mb-0">{{ review.review }}</p> 
+          </div> 
+        </div> 
+        <p class="ms-4" *ngIf="book.reviews?.length == 0">No ratings yet</p> 
+      </div> 
     </div>
   </div>
 </div>

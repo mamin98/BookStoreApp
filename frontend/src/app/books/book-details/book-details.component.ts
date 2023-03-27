@@ -15,7 +15,7 @@ export class BookDetailsComponent implements OnInit {
   id: any;
   book: any = {};
   quantity: number = 0;
-  stars!: any;
+  stars: number = 0;
   review!: string;
   successRatingStatus!: boolean;
 
@@ -59,23 +59,22 @@ export class BookDetailsComponent implements OnInit {
   private addToCart = (product: Book) =>
     this.cartService.addToCart(product, this.quantity);
 
-  // ratingChanged(evt: Event) {}
-
   addRating(): void {
     const rating: Rating = {
       stars: this.stars,
       review: this.review,
     };
-    this.bookService.addRating(this.id, rating).subscribe(data => {
-      console.log("data ", data)
+    this.bookService.addRating(this.id, rating).subscribe((data) => {
+      // recall get book by id, to reflect changes
+      this.getBookId();
+      // clear user input upon submit
+      this.stars = 0;
+      this.review = '';
     });
-
-    // recall get book by id, to reflect changes
-    // this.getBookId()
   }
 
-  onRatingChange(evt: Event){
+  onRatingChange(evt: Event) {
     const target = evt.target as HTMLButtonElement;
-    this.stars = target.value
+    this.stars = Number(target.value);
   }
 }

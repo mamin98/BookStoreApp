@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 
 using Book_Store.DTOs.BookDTOs;
+using Book_Store.DTOs.RatingsDtos;
 using Book_Store.Models;
 using Book_Store.Repository.Author_Repo;
 using Book_Store.Repository.Books_Repo;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -100,6 +102,14 @@ namespace Book_Store.Controllers
             mappedBook.AuthorName = book.Author.FirstName + " " + book.Author.LastName;
             mappedBook.BookType = book.BookType.Name;
             mappedBook.PublisherName = book.Publisher.Name;
+            mappedBook.Reviews = book.Ratings
+              .Select(r => new CreateNewRatingDto
+              {
+                  Stars = r.Stars,
+                  Review = r.Review,
+                  CustomerFirstName = r.Customer.FirstName,
+                  CustomerLastName = r.Customer.LastName,
+              }).ToList();
 
             return Ok(mappedBook);
         }
@@ -177,7 +187,7 @@ namespace Book_Store.Controllers
             return NotFound($"There is No such a book with id: {id}");
         }
 
-        [Authorize(Roles ="Administrator")]
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

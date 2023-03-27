@@ -1,4 +1,6 @@
-﻿namespace Book_Store.DTOs.BookDTOs
+﻿using Book_Store.DTOs.RatingsDtos;
+
+namespace Book_Store.DTOs.BookDTOs
 {
     public class BookDetailsDto
     {
@@ -19,5 +21,6 @@
         // Type/Category
         public string BookType { get; set; } = string.Empty;
         public float AverageRatings { get; set; }
+        public List<CreateNewRatingDto>? Reviews { get; set; } = null!;
     }
 }

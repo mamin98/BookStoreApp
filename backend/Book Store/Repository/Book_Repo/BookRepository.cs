@@ -1,4 +1,4 @@
-﻿using Book_Store.DTOs.BookDTOs;
+﻿using Book_Store.DTOs.RatingsDtos;
 using Book_Store.Models;
 
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +29,8 @@ namespace Book_Store.Repository.Books_Repo
             return context.Books.Include(b => b.Author)
                 .Include(b => b.BookType)
                 .Include(b => b.Publisher)
+                .Include(b => b.Ratings)
+                .ThenInclude(r => r.Customer)
                 .FirstOrDefault(b => b.Id == id);
         }
 
