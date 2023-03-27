@@ -33,6 +33,8 @@ namespace Book_Store
             // Add identity service to work on users & admins, and declare which store you used
             builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
             {
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
 
             }).AddEntityFrameworkStores<BookStoreContext>();
