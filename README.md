@@ -4,7 +4,7 @@
 
 ### Installation
 
-EF Core Sql, Tools
+EF Core Sql, Tools, Identity
 
 ### Features
 
@@ -23,7 +23,7 @@ common user.
 He can add, delete and update the book details, book categories,
 member information and also confirm a placed order.
 
-### technologies
+### Technologies
 
 This application is developed using C#, ASP.NET, Web API, Angular. 
 
