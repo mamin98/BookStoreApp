@@ -12,13 +12,11 @@
           [src]="book.image"
           class="card-img"
           alt="..."
-          style="padding:12%"/>
+          style="padding: 12%"
+        />
         <!-- End Img -->
         <!-- Start Button -->
-        <a
-          href="#"
-          class="btn btn-danger back-btn"
-          routerLink="/home-allBooks"
+        <a href="#" class="btn btn-danger back-btn" routerLink="/home-allBooks"
           ><i class="fa fa-angle-left"></i> More Books
         </a>
         <!-- End Button -->
@@ -63,51 +61,46 @@
             class="d-flex select-quantity"
             style="gap: 40px; align-items: center"
           >
-            <button class="btn danger" (click)="decrementQuantity()">
-              -
-            </button>
+            <button class="btn danger" (click)="decrementQuantity()">-</button>
 
-            <span
-              class="quantity"
-              type="text"
-              >{{ quantity }}</span
-            >
-            <button class="btn success" (click)="incrementQuantity()">
-              +
-            </button>
+            <span class="quantity" type="text">{{ quantity }}</span>
+            <button class="btn success" (click)="incrementQuantity()">+</button>
           </div>
         </div>
       </div>
 
       <!-- Here user Rating -->
-      <igc-rating
+      <rating
         class="user-rating"
-        value="{{stars}}"
-        (igcChange)="onRatingChange($event)"
-      ></igc-rating>
+        [(ngModel)]="stars"
+        (rateChange)="onRatingChange($event)"
+      >
+      
+    </rating>
+
       <textarea
         class="rating-textarea"
         [(ngModel)]="review"
         placeholder="What you think?"
       ></textarea>
       <button class="rating-button" (click)="addRating()">Add Rating</button>
-      <div class="ms-3"> 
-        <h6>Ratings</h6> 
-        <div *ngIf="book.reviews?.length > 0"> 
-          <div class="card p-3 mb-3" *ngFor="let review of book.reviews"> 
-            <div class="d-flex align-items-center mb-2"> 
-              <strong class="me-2">{{ review.customerFirstName }}</strong> 
-              <igc-rating 
-                class="rating" 
-                [value]="review.stars" 
-                disabled="true" 
-              ></igc-rating> 
-            </div> 
-            <p class="mb-0">{{ review.review }}</p> 
-          </div> 
-        </div> 
-        <p class="ms-4" *ngIf="book.reviews?.length == 0">No ratings yet</p> 
-      </div> 
+      <div class="ms-3">
+        <h6>Ratings</h6>
+        <div *ngIf="book.reviews?.length > 0">
+          <div class="card p-3 mb-3" *ngFor="let review of book.reviews">
+            <div class="d-flex align-items-center mb-2">
+              <strong class="me-2">{{ review.customerFirstName }}</strong>
+              <rating
+                class="rating"
+                [ngModel]="review.stars"
+                [readonly]="true"
+              ></rating>
+            </div>
+            <p class="mb-0">{{ review.review }}</p>
+          </div>
+        </div>
+        <p class="ms-4" *ngIf="book.reviews?.length == 0">No ratings yet</p>
+      </div>
     </div>
   </div>
 </div>
