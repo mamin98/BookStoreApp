@@ -88,10 +88,10 @@ namespace Book_Store.Repository.Books_Repo
                 // update database ratings records
                 await context.Rating.AddAsync(rating);
 
-                // update the product's average rating
                 var ratings = await context.Rating.Where(r => r.BookId == bookId).ToListAsync();
 
-                book.AverageRatings = (float)ratings.Average(r => r.Stars);
+                // update the product's average rating
+                book.AverageRatings = (ratings.Count == 0) ? 0 : (float)ratings.Average(r => r.Stars);
 
                 // ensure ef core tracking products new value
                 context.Books.Update(book);

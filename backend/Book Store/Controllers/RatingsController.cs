@@ -20,6 +20,6 @@ public class RatingsController : ControllerBase
     {
         var result = await _bookRepository.AddRating(bookId, rating);
 
-        return result ? Ok() : BadRequest();
+        return result ? CreatedAtAction(nameof(AddRating), new { bookId }, rating) : BadRequest();
     }
 }

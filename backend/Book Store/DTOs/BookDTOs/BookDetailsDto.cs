@@ -1,7 +1,4 @@
-﻿using Book_Store.Models;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Book_Store.DTOs.BookDTOs
+﻿namespace Book_Store.DTOs.BookDTOs
 {
     public class BookDetailsDto
     {
@@ -21,5 +18,6 @@ namespace Book_Store.DTOs.BookDTOs
 
         // Type/Category
         public string BookType { get; set; } = string.Empty;
+        public float AverageRatings { get; set; }
     }
 }
