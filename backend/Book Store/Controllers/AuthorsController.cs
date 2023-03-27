@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Book_Store.DTOs.AuthorDTOs;
+using Book_Store.DTOs.BookDTOs;
 using Book_Store.Models;
 using Book_Store.Repository.Author_Repo;
+using Book_Store.Repository.Books_Repo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,22 +11,48 @@ namespace Book_Store.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class AuthorsController : ControllerBase
     {
         private readonly IAuthorRepository author_Repo;
+        private readonly IBookRepository book_Repo;
         private readonly IMapper mapper;
 
-        public AuthorsController(IAuthorRepository author_repo, IMapper _mapper)
+        public AuthorsController(IAuthorRepository author_repo, IMapper _mapper, IBookRepository book_Repo)
         {
             mapper = _mapper;
             author_Repo = author_repo;
+            this.book_Repo = book_Repo;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var Authors = author_Repo.GetAll();
+            var Authors =
+                author_Repo.GetAll()
+                .Select(a => new AuthorDto
+                {
+                    Id = a.Id,
+                    FirstName = a.FirstName,
+                    LastName = a.LastName,
+                    Image = a.Image,
+                    UploadImg = a.UploadImg,
+                    Books = book_Repo.GetAll()
+                    .Where(b => b.AuthorId == a.Id)
+                    .Select(b => new HomeBookDto
+                    {
+                        AuthorName = b.Author.FirstName + " " + b.Author.LastName,
+                        Category = b.BookType.Name,
+                        PublisherName = b.Publisher.Name,
+                        ID = b.Id,
+                        Image = b.Image,
+                        Price = b.Price,
+                        Title = b.Title,
+                        Quantity = b.QuantityInStock,
+                        Ratings = b.AverageRatings,
+                        ImgFile = b.UploadImage
+                    }).ToList()
+                }).ToList();
 
             return Ok(Authors);
         }
@@ -32,7 +60,7 @@ namespace Book_Store.Controllers
         [HttpGet("{id}", Name = "GetAuthor")]
         public IActionResult GetById(int id)
         {
-            var author = author_Repo.GetById(id);
+            var author = author_Repo.GetByIdInclude(id);
 
             if (author == null)
             {
