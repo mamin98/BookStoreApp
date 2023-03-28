@@ -1,7 +1,7 @@
 <!-- <p>checkout works!</p> -->
 
 <!-- <ng-container *ngIf="purchaseActionResponse"> -->
-  <!-- <h2>{{ purchaseActionResponse }}</h2>
+<!-- <h2>{{ purchaseActionResponse }}</h2>
 </ng-container> -->
 
 <!-- <button (click)="confirmOrder()">Confirm Order</button>
@@ -9,16 +9,36 @@
 <button (click)="toProductsPage()">take me to products page</button>-->
 
 <section class="component">
-  <div class="credit-card">
-
+  < class="credit-card">
     <div class="confirmed">
       <!-- <img src="../../assets/imgs/confirm.png" style="width:50px" /> -->
       <h2>{{ purchaseActionResponse }}</h2>
     </div>
+    <ng-container *ngIf="selectedCartItems?.length !== 0">
+      <ng-container *ngFor="let item of selectedCartItems">
+
+          items: {{item | json}}
+      </ng-container>
+      
+      <div class="my-3">
+        <h3 class="text-muted">Total Amount</h3>
+        <h5 class="">
+          {{ getTotalAmount(selectedCartItems) | currency }}
+        </h5>
+      </div>
+    </ng-container>
 
     <!-- <form> -->
-      <button (click)="confirmOrder()" type="submit" class="valid-button btn btn-info">CONFIRM ORDER</button>
-      <a href="" class=" btn btn-info"  routerLink="/home-allBooks">Take me to Books Page</a>      <!-- </form> -->
-    </div>
-  </section>
-
+    <button
+      (click)="confirmOrder()"
+      type="submit"
+      class="valid-button btn btn-info"
+    >
+      CONFIRM ORDER
+    </button>
+    {{ successStatus }}
+    <a href="" class="btn btn-info" routerLink="/home-allBooks"
+      >Take me to Books Page</a
+    >
+    <!-- </form> -->
+</section>
