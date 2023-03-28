@@ -1,4 +1,13 @@
 @import '../../../paleetTheme.scss';
+.success{
+  background-color: theme-colors(secondary);
+  color: theme-colors(c-white);
+  margin-top: 50px;
+}
+.danger{
+  background-color: theme-colors(red-800);
+  color: theme-colors(c-white);
+}
 .carts {
   @media (max-width: 991px) {
     overflow: auto;
@@ -25,9 +34,11 @@
     }
   }
 }
+.back-btn{
+  background-color: theme-colors(tertiary);
 
+}
 .back-btn:hover {
-  background-color: #fce51a !important;
+  background-color: #fce51a;
   border: none;
-  color: #e2462b !important;
 }

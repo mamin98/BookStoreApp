@@ -2,10 +2,7 @@
   href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
   rel="stylesheet"
 />
-
-<button class="btn btn-success" style="margin-top: 2%" (click)="open(mymodal)">
-  Add Book
-</button>
+<button class="btn success" (click)="open(AddModual)">Add Book</button>
 
 <div class="carts">
   <ng-container>
@@ -21,6 +18,7 @@
             <th style="width: 15%">Price</th>
 
             <th style="width: 15%"></th>
+            <th style="width: 15%">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -72,12 +70,22 @@
             </td>
 
             <td data-th="Price">{{ item.price | currency }}</td>
+            <td >
+              <a
+               class="btn btn-danger"
+               style="margin-top: 10%"
+               (click)="open(EditModual)">
+                <img src="../../../assets/imgs/edit.png" style="width:50px"   >
+              </a>
+            </td>
 
+            <!-- Delete Book-->
             <td>
               <button class="btn btn-danger" style="margin-top: 10%" (click)="Delete(item.id)">
-                Delete
+               <img src="../../../assets/imgs/trash.png" style="width:50px" alt="">
               </button>
             </td>
+
           </tr>
         </tbody>
         <tfoot>
@@ -87,12 +95,6 @@
                 <a
                   href="#"
                   class="btn btn-danger back-btn"
-                  style="
-                    margin-left: 1%;
-                    margin-bottom: 1%;
-                    color: rgb(255, 254, 171);
-                    border: none;
-                  "
                   routerLink="/home-allBooks"
                   ><i class="fa fa-angle-left"></i> Go To All Books
                 </a>
@@ -115,11 +117,75 @@
   </ng-container>
 </div>
 
-<!-- Modal -->
-<ng-template #mymodal let-modal>
+<!-- Modal add new book-->
+<ng-template #AddModual let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Add New Book</h4>
 
+    <!-- dismiss button -->
+    <button
+      type="button"
+      class="close danger"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">X</span>
+    </button>
+
+  </div>
+
+  <!-- Form -->
+  <form [formGroup]="bookForm"
+  (ngSubmit)="createBook()"
+   style="width: 460px;
+  margin: 1px auto;">
+  <div class="mb-3">
+    <label for="Title" class="form-label">Book Title</label>
+    <input type="text" class="form-control" name="title" formControlName="title">
+  </div>
+  <div class="mb-3">
+    <label for="Isban" class="form-label">Isbn</label>
+    <input type="number" class="form-control" name="isbn" formControlName="isbn">
+  </div>
+  <div class="mb-3">
+    <label for="Price" class="form-label">Price</label>
+    <input type="number" class="form-control" name="price" formControlName="price">
+  </div>
+  <div class="mb-3 form-check">
+    <label class="form-label" for="img">Image</label>
+    <input type="file" class="form-control" name="image" formControlName="image">
+  </div>
+  <!-- <div class="mb-3">
+    <label for="publisher" class="form-label">PublisherId</label>
+    <input type="number" class="form-control" name="publisherId" formControlName="publisherId">
+  </div> -->
+  <!-- <div class="mb-3">
+    <label for="authorId" class="form-label">AuthorId</label>
+    <input type="number" class="form-control" name="authorId" formControlName="authorId">
+  </div>
+  <div class="mb-3">
+    <label for="typeId" class="form-label">TypeId</label>
+    <input type="number" class="form-control" name="typeId" formControlName="typeId">
+  </div> -->
+
+  <!--Add button -->
+  <div class="modal-footer">
+    <button
+      type="submit"
+      class="btn success"
+      (click)="modal.close('Save click')"
+    >
+      Create Book
+    </button>
+  </div>
+</form>
+</ng-template>
+<!-- Modal Edit new book-->
+<ng-template #EditModual let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Book</h4>
+
+    <!-- dismiss button -->
     <button
       type="button"
       class="close btn-danger"
@@ -129,16 +195,46 @@
     >
       <span aria-hidden="true">Discard</span>
     </button>
+
   </div>
 
-  <div class="modal-body">Image</div>
-  <div class="modal-body">Title</div>
-  <div class="modal-body">Author</div>
-  <div class="modal-body">Publisher</div>
-  <div class="modal-body">Category</div>
-  <div class="modal-body">Price</div>
+  <!-- Form -->
+  <form style="width: 460px;
+  margin: 1px auto;">
+  <div class="mb-3">
+    <label for="Title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="Title" >
+  </div>
+  <div class="mb-3">
+    <label for="Isban" class="form-label">Isbn</label>
+    <input type="number" class="form-control" id="password">
+  </div>
+  <div class="mb-3">
+    <label for="Isban" class="form-label">Price</label>
+    <input type="number" class="form-control" id="isban">
+  </div>
+  <div class="mb-3 form-check">
+    <label class="form-label" for="img">Image</label>
+    <input type="file" class="form-control" id="img">
+  </div>
+  <!-- <div class="mb-3">
+    <label for="publisher" class="form-label">PublisherId</label>
+    <input type="number" class="form-control" id="publisher">
+  </div>
+  <div class="mb-3">
+    <label for="AuthorId" class="form-label">AuthorId</label>
+    <input type="number" class="form-control" id="AuthorId">
+  </div>
+  <div class="mb-3">
+    <label for="TypeId" class="form-label">TypeId</label>
+    <input type="number" class="form-control" id="TypeId">
+  </div> -->
+  <button type="submit" class="btn btn-primary" (click)="modal.close('Save click')">Update</button>
+</form>
 
-  <div class="modal-footer">
+
+  <!--Add button -->
+  <!-- <div class="modal-footer">
     <button
       type="button"
       class="btn btn-success"
@@ -146,5 +242,5 @@
     >
       Add
     </button>
-  </div>
+  </div> -->
 </ng-template>

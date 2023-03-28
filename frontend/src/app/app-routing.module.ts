@@ -29,9 +29,13 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
 
   // authentication Paths
+  //Crud
   { path: 'admin-control',
    component: AllBooksControlComponent,
    canActivate:[AuthorizeService, RoleGuard] },
+
+  //Crud
+
 ];
 
 @NgModule({

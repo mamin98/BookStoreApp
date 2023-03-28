@@ -15,19 +15,19 @@ export class AdminService {
   deletePath: string= environment.baseApi+ApiPaths.OneBook;
   constructor(private http: HttpClient, private user: UsersService) {}
 
-  
+
 
   getAllBooks() {
     return this.http.get<Book[]>(environment.baseApi + ApiPaths.AllBooks);
   }
-  
-  getBooksID(id: number) {
-    return this.http.get(environment.baseApi + ApiPaths.OneBook + id);
-  }
 
-  getAllCategories() {
-    return this.http.get<Category[]>(environment.baseApi + ApiPaths.Categories);
-  }
+  // getBooksID(id: number) {
+  //   return this.http.get(environment.baseApi + ApiPaths.OneBook + id);
+  // }
+
+  // getAllCategories() {
+  //   return this.http.get<Category[]>(environment.baseApi + ApiPaths.Categories);
+  // }
 
   getBooksByCategory(id: number): Observable<Book[]> {
     return this.http
@@ -40,12 +40,22 @@ export class AdminService {
       );
   }
 
+  // Add book
+  addBook(bookObj:any){
+    return this.http.post(environment.baseApi + ApiPaths.addBook , bookObj )
+  }
+
+
+
   // Delete Book by id
   DeleteBook(id:any){
     const headers = new HttpHeaders()
     // connection-Tupe, app/json 'Bearer token' ==> like in postman
     .set('Authorization', `Bearer ${this.user.getToken_fromLocalStorage()}`);
-    
+
     return this.http.delete(this.deletePath+ id, {headers});
   }
+
+
 }
+

@@ -5,6 +5,7 @@ import { Book } from 'src/app/model/Book';
 import { Category } from 'src/app/model/Category';
 import { AdminService } from '../services/admin.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-all-books-control',
@@ -16,12 +17,15 @@ export class AllBooksControlComponent {
   p: number = 1;
   title = 'appBootstrap';
   closeResult: any;
-
   selectedItemsCount: number = 0;
+
+  bookForm!: FormGroup //= new FormGroup({});
+
   constructor(
     private service: AdminService,
     private router: Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private formBuilder: FormBuilder,
   ) {}
 
   Categories: Category[] = [];
@@ -30,11 +34,21 @@ export class AllBooksControlComponent {
   loading: boolean = false; // this for spinner
 
   booksByCategory!: Book[];
-  categories: any = this.getCategories();
+  // categories: any = this.getCategories();
 
   ngOnInit(): void {
     this.getAllBooks();
-    this.getCategories();
+    // From
+    this.bookForm = this.formBuilder.group({
+      title: new FormControl(''),
+      isbn: new FormControl(''),
+      price: new FormControl(''),
+      image: new FormControl(''),
+      publisherId: new FormControl(''),
+      // 'authorId ': new FormControl(''),
+      // 'typeId ': new FormControl('')
+    })
+    // From
   }
 
 
@@ -46,15 +60,7 @@ export class AllBooksControlComponent {
     });
   }
 
-  // Get All Categories In Select Option
-  getCategories() {
-    this.loading = true; //  spinner open
-    this.service.getAllCategories().subscribe((data: Category[]) => {
-      this.Categories = data;
-      this.loading = false; // spinner closed when
-    });
-  }
-
+//=======================modal===============================
   open(content: any) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
@@ -77,16 +83,27 @@ export class AllBooksControlComponent {
       return `with: ${reason}`;
     }
   }
-
-  // Delete Book 
+ //=======================modal===============================
+  // Delete Book
   Delete(id:any){
     this.service.DeleteBook(id).subscribe((res:any)=>{
-      
+
       if(confirm("Opps! Book Will be delete")){this.getAllBooks()}
       else{
         alert("Well, Book not deleted")
       }
-          
+
     })
   }
+
+
+  // Add new book
+  createBook(){
+    console.log(this.bookForm.value);
+    this.service.addBook(this.bookForm.value).subscribe(data => {
+      console.log("book Created")
+    });
+  }
+
+
 }
