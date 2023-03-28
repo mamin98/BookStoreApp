@@ -1,4 +1,5 @@
-﻿using Book_Store.Models;
+﻿using Book_Store.DTOs.AuthorDTOs;
+using Book_Store.Models;
 
 namespace Book_Store.Repository.Author_Repo
 {
@@ -9,5 +10,6 @@ namespace Book_Store.Repository.Author_Repo
         void Insert(Author author);
         void Edit(Author author, int id);
         void Delete(int id);
+        AuthorDto GetByIdInclude(int id);
     }
 }
