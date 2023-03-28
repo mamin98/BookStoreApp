@@ -182,9 +182,16 @@ export class CartService {
   }
 
   public clearCart = () => {
+    // global count reset
+    this.allSelectedQuantity = 0;
+    this.selectedItemsCount.next(0);
+
+    // chosen cart items reset
+    this.selectedCartItems = [];
     this.selectedCartItems$.next([]);
+
+    // clear local storage
     this.localStore.deleteData(this.cartItemsKey);
     this.localStore.deleteData(this.selectedItemsCountKey);
-    this.selectedItemsCount.next(0);
   };
 }

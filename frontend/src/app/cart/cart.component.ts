@@ -60,6 +60,10 @@ export class CartComponent {
   // clear cart
   clearCart = () => this.cartService.clearCart();
 
+  // total amount
+  getTotalAmount = (cartItems: CartedItem[]) =>
+    cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
+
   // handle user navigation
   toProductsPage = () => this.router.navigate([ApiPaths.AllBooks]);
   toCheckoutPage = () => this.router.navigate([ApiPaths.Checkout]);

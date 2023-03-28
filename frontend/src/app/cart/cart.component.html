@@ -16,13 +16,13 @@
             <th style="width: 8%">Quantity</th>
             <th style="width: 22%" class="text-center">Subtotal</th>
             <th style="width: 22%" class="text-center">
-              <!-- <button
+              <button
                 (click)="clearCart()"
-                class="btn btn-danger"
+                class="btn btn-danger text-white"
                 style="width: 161px"
               >
                 Clear Cart
-              </button> -->
+              </button>
             </th>
             <th style="width: 10%"></th>
           </tr>
@@ -31,7 +31,7 @@
           <tr *ngFor="let item of selectedItems">
             <!-- Start Img book -->
             <td data-th="Product">
-              <div class="row d-flex img-detail" >
+              <div class="row d-flex img-detail">
                 <div class="col-sm-2 hidden-xs">
                   <img
                     src="{{ item.imageSrc }}"
@@ -67,33 +67,43 @@
             </td>
             <!--End Quantity-->
 
-             <!--Start Subtotal-->
+            <!--Start Subtotal-->
             <td data-th="Subtotal" class="text-center subtotal">
-              <span class="subtotal">{{ item.price * item.quantity | currency }}</span>
+              <span class="subtotal">{{
+                item.price * item.quantity | currency
+              }}</span>
             </td>
-             <!--Start Subtotal-->
+            <!--Start Subtotal-->
 
-             <!--Start Delete Button-->
+            <!--Start Delete Button-->
             <td>
               <button class="btn bt-delete" (click)="removeItemFromCart(item)">
-                <img src="../../assets/imgs/trash.png" alt="">
+                <img src="../../assets/imgs/trash.png" alt="" />
               </button>
             </td>
-             <!--End Delete Button-->
-
+            <!--End Delete Button-->
           </tr>
         </tbody>
         <!--Start Table Footer-->
         <tfoot>
           <ng-container *ngIf="chosenCartItems$ | async as selectedItems">
             <tr>
+              <td  colspan="2" class="text-right">
+                <div class="my-3">
+                  <h3 class="text-muted">Total Amount</h3>
+                  <h5 class="">
+                    {{ getTotalAmount(selectedItems) | currency }}
+                  </h5>
+                </div>
+              </td>
+            </tr>
+            <tr>
               <!--Start Continue Shopping-->
               <td>
                 <a
                   href="#"
-                  class="btn  back-btn"
-                  style="
-                  "
+                  class="btn back-btn"
+                  style=""
                   routerLink="/home-allBooks"
                   ><i class="fa fa-angle-left"></i> Continue Shopping
                 </a>
@@ -118,13 +128,11 @@
                   <!-- <i class="fa fa-angle-right"></i> -->
                 </a>
                 <!--End Confirm Button-->
-
               </td>
             </tr>
           </ng-container>
         </tfoot>
         <!--ENd Table Footer-->
-
       </table>
     </ng-container>
   </ng-container>

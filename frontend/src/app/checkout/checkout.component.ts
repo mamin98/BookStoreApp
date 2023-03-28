@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { catchError } from 'rxjs';
-import { CartService } from '../cart/service/cart.service';
-import { CartPayload } from '../model/customer-cart/CartPayload';
 import { environment } from 'src/environments/environment';
+import { CartService } from '../cart/service/cart.service';
 import { ApiPaths } from '../enums/api-paths';
+import { CartPayload } from '../model/customer-cart/CartPayload';
+import { CartedItem } from '../model/customer-cart/CartedItem';
 import { UpdatedProductsResponse } from '../model/customer-cart/UpdatedProductsResponse';
 
 @Component({
@@ -14,26 +14,30 @@ import { UpdatedProductsResponse } from '../model/customer-cart/UpdatedProductsR
   styleUrls: ['./checkout.component.scss'],
 })
 export class CheckoutComponent {
+  successStatus: boolean = false;
+  selectedCartItems!: CartedItem[];
+
   cartPayload: CartPayload = {
     customerId: 1, // to be replaced by real user ID
     cartItems: [],
   };
 
   purchaseActionResponse!: string;
-  showImg:boolean = false;
-  constructor(
-    private cartService: CartService,
-    private http: HttpClient,
-    private router: Router
-  ) {
+
+  constructor(private cartService: CartService, private http: HttpClient) {
     // update cart items from cart service ready for submitting to backend
-    this.cartService.selectedCartItems$.subscribe((cartItems) => {
+    this.cartService.getChosenCartItems().subscribe((cartItems) => {
+      this.selectedCartItems = cartItems;
       this.cartPayload.cartItems = cartItems.map((item) => ({
         id: item.id,
         quantity: item.quantity,
       }));
     });
   }
+
+  // total amount
+  getTotalAmount = (cartItems: CartedItem[]) =>
+    cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
 
   confirmOrder() {
     const baseUrl = environment.baseApi;
@@ -61,9 +65,13 @@ export class CheckoutComponent {
       )
       .subscribe((res) => {
         if (res.success) {
+          this.successStatus = true;
           console.log('Checkout successful:', res.message);
           this.purchaseActionResponse = res.message;
-          console.log('this.purchaseActionResponse: ', this.purchaseActionResponse);
+          console.log(
+            'this.purchaseActionResponse: ',
+            this.purchaseActionResponse
+          );
           // clear cart after successful purchase
           this.cartService.clearCart();
 
