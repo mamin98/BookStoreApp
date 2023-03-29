@@ -1,42 +1,99 @@
 @import '../../paleetTheme.scss';
-.component {
+.container {
   position: relative;
-  width: 50%;
-
+  width: 70%;
   margin: 5rem auto;
   padding: 1rem;
   box-shadow: 2px 2px 10px #454545;
   background-color: #FFFFFF;
   text-align: center;
-  // display: flex;
-  // flex-direction: column-reverse;
-  .credit-card{
+  .checkout-card{
     display: flex;
     flex-direction: column;
     margin: 20px auto;
     .confirmed{
+      justify-content: space-around;
+      align-items: center;
+      img{
+        width: 50px;
+        width: 50px;
+        border-radius: 50%;
+      }
       h2{
         color: theme-colors(secondary);
-        &::after{
+      }
+      }
+      .table{
+        thead{
+          background-color: theme-colors(secondary);
+        color: theme-colors(c-white);
+
+        }
+        tbody{
+          tr{
+            vertical-align: baseline;
+            td {
+              .img{
+                width: 100px;
+                height: 77px;
+              }
+            }
+          }
+          .total-amount{
+            border: 1px solid #ddd;
+            margin-top: 80px;
+            color: theme-colors(red-800);
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            position: relative;
+            width: 230px;
+            .total{
+              display: flex;
+              align-items: center;
+              position: relative;
+              h3{
+                font-size: 20px;
+                font-weight: bold;
+              }
+              img{
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                right: -122px;
+                top: -17px;
+              }
+            }
+          }
 
         }
       }
-    }
-    a{
-      background-color: theme-colors(tertiary);
-      border: none;
-      margin-top:2rem;
-    }
+      .actions{
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        a{
+          background-color: theme-colors(tertiary);
+          border: none;
+          // margin-top:2rem;
+          &:hover{
+            background-color: theme-colors(red-400);
+           box-shadow: none;
+          }
+        }
+      }
+
+
   }
 }
 
-.valid-button {
+.valid-button ,.back{
 	border: 0;
 	padding: 1rem 2rem;
 	background-color: rgba(4,99,128,0.9);
 	color: #EFECCA;
 	font-weight:bold;
-	margin-top:2rem;
   box-shadow: 1px 1px 1px black;
 }
 

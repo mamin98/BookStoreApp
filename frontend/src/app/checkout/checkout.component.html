@@ -8,37 +8,58 @@
 
 <button (click)="toProductsPage()">take me to products page</button>-->
 
-<section class="component">
-  < class="credit-card">
-    <div class="confirmed">
-      <!-- <img src="../../assets/imgs/confirm.png" style="width:50px" /> -->
-      <h2>{{ purchaseActionResponse }}</h2>
+<section class="container">
+  <div class="checkout-card">
+
+    <div class="confirmed d-flex">
+            <img *ngIf="successStatus" (click)="successStatus = true " src=".././../assets/imgs/confirm.png" alt="">
+            <h2>{{ purchaseActionResponse }}</h2>
     </div>
-    <ng-container *ngIf="selectedCartItems?.length !== 0">
-      <ng-container *ngFor="let item of selectedCartItems">
+  <ng-container *ngIf="selectedCartItems?.length !== 0">
+      <table class="table" >
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Book</th>
+            <th scope="col">price</th>
+            <th scope="col">quantity</th>
 
-          items: {{item | json}}
-      </ng-container>
-      
-      <div class="my-3">
-        <h3 class="text-muted">Total Amount</h3>
-        <h5 class="">
-          {{ getTotalAmount(selectedCartItems) | currency }}
-        </h5>
-      </div>
-    </ng-container>
-
-    <!-- <form> -->
-    <button
+          </tr>
+        </thead>
+        <tbody>
+              <tr *ngFor="let item of selectedCartItems">
+                <td> <img class="img" src="{{item.imageSrc}}"></td>
+                <td>{{item.name}}</td>
+                <td>{{item.price | currency}}  </td>
+                <td>{{item.quantity}}</td>
+              </tr>
+              <div class="total-amount">
+                <div class="total">
+                  <h3 class="text-muted">Total Amount</h3>
+                  <img src="../../assets/imgs/gross.png" style="width: 50px;">
+                </div>
+                <h5 class="amount">
+                  {{ getTotalAmount(selectedCartItems) | currency }}
+                </h5>
+              </div>
+        </tbody>
+        </table>
+  </ng-container>
+  <ng-container>
+    <div class="actions d-flex">
+      <button
       (click)="confirmOrder()"
       type="submit"
-      class="valid-button btn btn-info"
+      class="valid-button"
     >
       CONFIRM ORDER
     </button>
-    {{ successStatus }}
-    <a href="" class="btn btn-info" routerLink="/home-allBooks"
+
+    <a href="" class="btn back" routerLink="/home-allBooks"
       >Take me to Books Page</a
     >
-    <!-- </form> -->
+    </div>
+  </ng-container>
+
+  </div>
 </section>
