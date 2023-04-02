@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'bookDetails/:id', component: BookDetailsComponent },
   {
     path: 'cart',
-    component: CartComponent , canActivate:[AuthorizeService],
+    component: CartComponent /*, canActivate:[AuthorizeService],*/
   },
   // authentication Paths
   { path: 'login', component: LoginComponent },

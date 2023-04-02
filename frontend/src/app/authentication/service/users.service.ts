@@ -28,7 +28,7 @@ export class UsersService {
       username: ['', [Validators.required]],
       phone:[''], /* [Validators.required, Validators.pattern("[0-9]{11}")]*/ 
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$')]],
-      password: ['', [Validators.required, Validators.pattern("[0-9]{6}")]],
+      password: ['', [Validators.required, Validators.pattern("[0-9]{4}")]],
       confirmpassword:['', Validators.required],
     },
     {validator:[confirmPassValidator]}
@@ -37,7 +37,7 @@ export class UsersService {
     // Login Form
     this.logform = this.formbuilder.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.pattern("[0-9]{6}")]]
+      password: ['', [Validators.required, Validators.pattern("[0-9]{4}")]]
     });
 
 
