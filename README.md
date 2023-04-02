@@ -9,8 +9,7 @@ EF Core Sql, Tools, Identity
 ### Features
 
 It's an app allows users to search and purchase a book online based on title, author and subject. 
-and the user can order their books online through credit card payment. Using this Website the user 
-can purchase a book online instead of going out to a book store and wasting time.
+Using this Website the user can purchase a book online instead of going out to a book store and wasting time.
 
 The user can login using his account details or new customers can set up an account very quickly. 
 
