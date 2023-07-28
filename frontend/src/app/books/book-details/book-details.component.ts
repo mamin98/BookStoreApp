@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/cart/service/cart.service';
-import { CartAction } from 'src/app/enums/card-action';
+import { CartAction } from 'src/app/constants/cart-action';
 import { Book } from 'src/app/model/Book';
 import { Rating } from 'src/app/model/BookRating';
 import { BooksService } from '../services/books.service';
@@ -14,7 +14,7 @@ import { BooksService } from '../services/books.service';
 export class BookDetailsComponent implements OnInit {
   id: any;
   book: any = {};
-  quantity: number = 0;
+  selectedQuantity: number = 0;
   stars: number = 0;
   review!: string;
   successRatingStatus!: boolean;
@@ -25,11 +25,15 @@ export class BookDetailsComponent implements OnInit {
     private cartService: CartService
   ) {
     this.id = this.activRoute.snapshot.paramMap.get('id');
-    console.log(this.id);
   }
 
   ngOnInit(): void {
     this.getBookId();
+    this.cartService
+      .getChosenCartItemsById(Number(this.id))
+      .subscribe((selected) => {
+        if (selected) this.selectedQuantity = selected.quantity;
+      });
   }
   getBookId() {
     this.bookService.getBooksID(this.id).subscribe((res) => {
@@ -39,25 +43,21 @@ export class BookDetailsComponent implements OnInit {
 
   // add to card incrementing quantity by 1
   incrementQuantity = () => {
-    this.quantity++;
-    this.addToCart(this.book);
-    // notify quantity count observer for header cart update
-    this.cartService.updateQuantityCount(CartAction.Increment);
+    this.selectedQuantity++;
+    this.addToCart(this.book, CartAction.Increment);
   };
 
   // decrement item quantity from card when quantity is bigger than 1
   decrementQuantity = () => {
-    if (this.quantity >= 1) {
-      this.quantity--;
-      this.addToCart(this.book);
-      // notify quantity count observer for header cart update
-      this.cartService.updateQuantityCount(CartAction.Decrement);
+    if (this.selectedQuantity >= 1) {
+      this.selectedQuantity--;
+      this.addToCart(this.book, CartAction.Decrement);
     }
   };
 
   // add choosen product to card
-  private addToCart = (product: Book) =>
-    this.cartService.addToCart(product, this.quantity);
+  private addToCart = (product: Book, cartAction: CartAction) =>
+    this.cartService.addToCart(product, cartAction);
 
   addRating(): void {
     const rating: Rating = {

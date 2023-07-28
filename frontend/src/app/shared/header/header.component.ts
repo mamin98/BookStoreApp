@@ -8,17 +8,14 @@ import { CartService } from 'src/app/cart/service/cart.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit{
-
+export class HeaderComponent implements OnInit {
   selectedItemsCount$: Observable<number> =
-    this.cartService.selectedItemsCount$;
-        
-    constructor(
+    this.cartService.getSelectedItemsCount$;
+
+  constructor(
     private cartService: CartService,
     public userService: UsersService
   ) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 }

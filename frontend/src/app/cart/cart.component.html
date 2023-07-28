@@ -34,14 +34,14 @@
               <div class="row d-flex img-detail">
                 <div class="col-sm-2 hidden-xs">
                   <img
-                    src="{{ item.imageSrc }}"
+                    src="{{ item.image }}"
                     alt="..."
                     class="img-responsive"
                   />
                 </div>
                 <div class="col-sm-10">
                   <h4 style="font-size: 18px; color: blue" class="nomargin">
-                    {{ item.name }}
+                    {{ item.title }}
                   </h4>
                 </div>
               </div>
@@ -57,9 +57,9 @@
               class="d-flex gap-2"
               style="margin-top: 50px; border-bottom: 0"
             >
-              <button class="btn danger" (click)="decrementQuantity(item)">
-                -
-              </button>
+            <button [disabled]="item.quantity === 1" class="btn danger" (click)="decrementQuantity(item)">
+              -
+            </button>
               <span class="form-control text-center">{{ item.quantity }}</span>
               <button class="btn success" (click)="incrementQuantity(item)">
                 +
@@ -125,7 +125,7 @@
                   >
                     Confirm my Orders
                   </button>
-                  <!-- <i class="fa fa-angle-right"></i> -->
+                  <i class="fa fa-angle-right"></i>
                 </a>
                 <!--End Confirm Button-->
               </td>

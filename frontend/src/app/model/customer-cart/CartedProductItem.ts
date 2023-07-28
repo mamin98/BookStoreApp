@@ -1,4 +1,6 @@
 import { Book } from '../Book';
-import { CartedItem } from './CartedItem';
+import { SelectedItem } from './SelectedItem';
 
-export interface CartedProductItem extends CartedItem, Book {}
+export interface CartedProductItem
+  extends SelectedItem,
+    Pick<Book, 'id' | 'title' | 'image' | 'price'> {}

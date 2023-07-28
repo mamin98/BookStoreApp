@@ -30,8 +30,8 @@
   </a>
 </div>
 <div class="cart-buttons">
-  <div class="button" *ngIf="!addButton" (click)="addButton = true">
-    <a class="btn btn-success clk" (click)="addToCart(product)">
+  <div class="button" *ngIf="!addButton" (click)="addButton = true; showIncrementCount()">
+    <a class="btn btn-success clk" (click)="showIncrementCount()">
       <i class="fa-solid fa-cart-shopping"></i>
     </a>
   </div>
@@ -40,7 +40,7 @@
     *ngIf="addButton"
     class="d-flex select-quantity">
     <button class="btn minus" (click)="decrementQuantity()">-</button>
-    <span class="quantity" type="text">{{ quantity }}</span>
+    <span class="quantity" type="text">{{ selectedQuantity }}</span>
     <button class="btn plus" (click)="incrementQuantity()">+</button>
   </div>
 </div>

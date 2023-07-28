@@ -18,12 +18,6 @@ public class CustomerCartRepository : ICustomerCartRepository
         if (customerCart == null)
             throw new ArgumentNullException(nameof(customerCart));
 
-        // fetch user record from database
-        var mockedUserId = 1;
-
-        // TODO:: to replaced by real customer from user manager
-        var MockedCustomer = _context.Customers.FirstOrDefault(c => c.ID == mockedUserId);
-
         // fetch productIds needed for product prices & handling product quantity in stock
         var productIds = customerCart.CartItems.Select(ci => ci.Id).ToList();
 
@@ -41,7 +35,7 @@ public class CustomerCartRepository : ICustomerCartRepository
         // create customer Order (Cart) updating the cart items ready for the database schema
         var cart = new Order
         {
-            CustomerId = mockedUserId,
+            CustomerId = customerCart.CustomerId,
             OrderDate = DateTime.UtcNow,
             Books = cartItemsDto.Select(ci => new OrderItem
             {

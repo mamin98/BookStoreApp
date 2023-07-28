@@ -10,56 +10,53 @@
 
 <section class="container">
   <div class="checkout-card">
-
     <div class="confirmed d-flex">
-            <img *ngIf="successStatus" (click)="successStatus = true " src=".././../assets/imgs/confirm.png" alt="">
-            <h2>{{ purchaseActionResponse }}</h2>
+      <img *ngIf="successStatus" src=".././../assets/imgs/confirm.png" alt="" />
+      <h2>{{ orderStatus }}</h2>
     </div>
-  <ng-container *ngIf="selectedCartItems?.length !== 0">
-      <table class="table" >
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Book</th>
-            <th scope="col">price</th>
-            <th scope="col">quantity</th>
-
-          </tr>
-        </thead>
-        <tbody>
-              <tr *ngFor="let item of selectedCartItems">
-                <td> <img class="img" src="{{item.imageSrc}}"></td>
-                <td>{{item.name}}</td>
-                <td>{{item.price | currency}}  </td>
-                <td>{{item.quantity}}</td>
-              </tr>
-              <div class="total-amount">
-                <div class="total">
-                  <h3 class="text-muted">Total Amount</h3>
-                  <img src="../../assets/imgs/gross.png" style="width: 50px;">
-                </div>
-                <h5 class="amount">
-                  {{ getTotalAmount(selectedCartItems) | currency }}
-                </h5>
+    <ng-container *ngIf="selectedCartItems$ | async as selectedCartItems">
+      <ng-container *ngIf="selectedCartItems.length !== 0">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Book</th>
+              <th scope="col">price</th>
+              <th scope="col">quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of selectedCartItems">
+              <td><img class="img" src="{{ item.image }}" /></td>
+              <td>{{ item.title }}</td>
+              <td>{{ item.price | currency }}</td>
+              <td>{{ item.quantity }}</td>
+            </tr>
+            <div class="total-amount">
+              <div class="total">
+                <h3 class="text-muted">Total Amount</h3>
+                <img src="../../assets/imgs/gross.png" style="width: 50px" />
               </div>
-        </tbody>
+              <h5 class="amount">
+                {{ getTotalAmount(selectedCartItems) | currency }}
+              </h5>
+            </div>
+          </tbody>
         </table>
-  </ng-container>
-  <ng-container>
-    <div class="actions d-flex">
-      <button
-      (click)="confirmOrder()"
-      type="submit"
-      class="valid-button"
-    >
-      CONFIRM ORDER
-    </button>
+      </ng-container>
+      <ng-container>
+        <div class="actions d-flex">
+          <ng-container *ngIf="selectedCartItems.length !== 0">
+            <button (click)="purchaseCart()" type="submit" class="valid-button">
+              CONFIRM ORDER
+            </button>
+          </ng-container>
 
-    <a href="" class="btn back" routerLink="/home-allBooks"
-      >Take me to Books Page</a
-    >
-    </div>
-  </ng-container>
-
+          <a href="" class="btn back" routerLink="/home-allBooks"
+            >Take me to Books Page</a
+          >
+        </div>
+      </ng-container>
+    </ng-container>
   </div>
 </section>

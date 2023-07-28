@@ -2,192 +2,171 @@ import { Injectable } from '@angular/core';
 import {
   BehaviorSubject,
   Observable,
-  combineLatest,
   map,
+  of,
   switchMap,
+  take,
+  tap,
 } from 'rxjs';
-import { BooksService } from 'src/app/books/services/books.service';
-import { CartAction } from 'src/app/enums/card-action';
+import { CartAction } from 'src/app/constants/cart-action';
 import { LocalStorageService } from 'src/app/local-storage.service';
 import { Book } from 'src/app/model/Book';
-import { CartedItem } from 'src/app/model/customer-cart/CartedItem';
+import { CartedProductItem } from 'src/app/model/customer-cart/CartedProductItem';
 import { SelectedItem } from 'src/app/model/customer-cart/SelectedItem';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private selectedCartItems: SelectedItem[] = [];
-  selectedCartItems$ = new BehaviorSubject<SelectedItem[]>([]);
-  selectedProducts$ = this.getChosenProducts();
+  selectedCartItems$ = new BehaviorSubject<CartedProductItem[]>([]);
 
   // unique key for local storage
   private readonly cartItemsKey = 'cart-items';
   private readonly selectedItemsCountKey = 'selected-items-count';
 
   // selected items by user subject meant for syncing cart header (cart count)
-  private selectedItemsCount = new BehaviorSubject<number>(0);
-  selectedItemsCount$ = this.selectedItemsCount.asObservable();
+  selectedItemsCount$ = new BehaviorSubject<number>(0);
 
-  // local reference for totaling selected cart quantity of carts quantities
-  // used instead of selected count observable for needed initial value
-  allSelectedQuantity: number = 0;
+  getSelectedItemsCount$ = this.selectedCartItems$.pipe(
+    map((items) => items.reduce((acc, item) => acc + item.quantity, 0))
+  );
 
-  constructor(
-    private productService: BooksService,
-    private localStore: LocalStorageService
-  ) {
+  constructor(private localStore: LocalStorageService) {
     // local storage Init
     const localItemsData = this.localStore.getData(this.cartItemsKey);
 
     if (localItemsData) {
-      // allSelectedQuantity
-      const selectedStorageCartItems = JSON.parse(
+      // get selected items from local storage if any
+
+      const selectedCartItemsStorage: CartedProductItem[] = JSON.parse(
         localItemsData
-      ) as SelectedItem[];
-      this.selectedCartItems = selectedStorageCartItems;
-      this.selectedCartItems$.next(selectedStorageCartItems);
-      this.allSelectedQuantity = selectedStorageCartItems.reduce(
-        (acc, curr) => acc + curr.quantity,
-        0
-      );
-      localStore.saveData(
-        this.selectedItemsCountKey,
-        this.allSelectedQuantity.toString()
-      );
-    }
+      ).filter((selectedBook: Book) => selectedBook.quantity !== 0);
 
-    // quantity - local storage sync
-    const selectedItemsCount = Number(
-      localStorage.getItem(this.selectedItemsCountKey)
-    );
-    if (selectedItemsCount) {
-      this.selectedItemsCount.next(selectedItemsCount);
-      this.allSelectedQuantity = selectedItemsCount;
+      this.selectedCartItems$.next(selectedCartItemsStorage);
     }
   }
 
-  updateQuantityCount(cartAction: CartAction) {
-    if (cartAction === CartAction.Increment) this.allSelectedQuantity += 1;
-
-    if (cartAction === CartAction.Decrement)
-      this.allSelectedQuantity >= 1 ? (this.allSelectedQuantity -= 1) : null;
-
-    this.selectedItemsCount.next(this.allSelectedQuantity);
-  }
-
-  getCartItems = () => this.selectedCartItems$;
-
-  getChosenProducts(): Observable<Book[]> {
-    return this.productService
-      .getAllBooks()
-      .pipe(
-        switchMap((products) =>
-          this.selectedCartItems$.pipe(
-            map((selectedItems) =>
-              products.filter((p) =>
-                selectedItems.some((selected) => selected.id === p.id)
-              )
-            )
-          )
-        )
-      );
-  }
-
-  getChosenCartItemsById(id: number): Observable<Book | undefined> {
-    return this.selectedCartItems$.pipe(
-      map((products) => products.find((product) => product.id === id))
-    );
-  }
-
-  getChosenCartItems(): Observable<CartedItem[]> {
-    return combineLatest([
-      this.selectedProducts$,
-      this.selectedCartItems$,
-    ]).pipe(
-      map(([products, cartItems]) => {
-        const chosenCartItems: CartedItem[] = products.map((product) => {
-          const cartItem = cartItems.find((item) => item.id === product.id);
-          const quantity = cartItem ? cartItem.quantity : 1;
-
-          return {
-            id: product.id,
-            quantity,
-            name: product.title,
-            imageSrc: product.image,
-            price: product.price,
-          };
-        });
-        return chosenCartItems;
-      })
-    );
-  }
-
-  addToCart(product: Book, quantity: number = 1) {
+  addToCart(product: CartedProductItem, cartAction: CartAction) {
     if (!product) return;
 
-    const productWithQuantity: Book = {
-      ...product,
-      quantity,
-    };
+    this.selectedCartItems$.pipe(take(1)).subscribe((selectedItems) => {
+      const selectedProduct = selectedItems.find(
+        (p: SelectedItem) => p.id === product.id
+      );
 
-    const productIdx = this.selectedCartItems.findIndex(
-      (p: SelectedItem) => p.id === productWithQuantity.id
-    );
-
-    if (productIdx !== -1) {
-      // update item quantity in cart
-      this.selectedCartItems[productIdx].quantity = quantity;
-    } else {
-      // add new item to card if not added before
-      this.selectedCartItems.push({
-        ...product,
-        id: productWithQuantity.id,
-        quantity: productWithQuantity.quantity,
+      // for the already selected item, update quanity according to cart action
+      if (selectedProduct) {
+        this.updateTotalQuantityCount(cartAction, selectedProduct.id);
+        return;
+      }
+      // Add new item to card if not added before
+      this.selectedCartItems$.pipe(take(1)).subscribe((selectedCartItems) => {
+        const updatedCartItems = [
+          ...selectedCartItems,
+          {
+            ...product,
+            quantity: 1, // user selected quantity rather than product in-stock quantity
+          },
+        ];
+        this.selectedCartItems$.next(updatedCartItems);
       });
-    }
+
+      // for the first selected item, intialize quanity to 1
+      this.selectedItemsCount$
+        .pipe(
+          take(1),
+          map(() => 1)
+        )
+        .subscribe((updatedCount) => {
+          this.selectedItemsCount$.next(updatedCount);
+        });
+    });
+
     // subscribe to changes of user selected products & update local storage
     this.selectedCartItems$.subscribe((items) => {
       localStorage.setItem(this.cartItemsKey, JSON.stringify(items));
     });
-    this.selectedCartItems$.next(this.selectedCartItems);
   }
 
-  public removeItemFromCart(itemId: number): void {
-    const index = this.selectedCartItems.findIndex(
-      (item) => item.id === itemId
-    );
-    if (index !== -1) {
-      this.selectedCartItems.splice(index, 1);
+  private updateTotalQuantityCount(cartAction: CartAction, productId: number) {
+    if (!cartAction) console.error('missing Cart Action');
 
-      // immediately update new quantity value on remove action avoiding out of sync issue
-      this.allSelectedQuantity = this.selectedCartItems.reduce(
-        (acc, curr) => acc + curr.quantity,
-        0
-      );
-      this.selectedItemsCount.next(this.allSelectedQuantity);
+    if (cartAction === CartAction.Increment) {
+      this.handleCartIncrement(productId);
+    }
 
-      // subscribe to changes of user selected products & update local storage
-      this.selectedCartItems$.next(this.selectedCartItems);
-      this.selectedCartItems$.subscribe((items) => {
-        // sync carted items with local storage
-        localStorage.setItem(this.cartItemsKey, JSON.stringify(items));
-        // sync quantity with local storage
-        this.localStore.saveData(
-          this.selectedItemsCountKey,
-          this.allSelectedQuantity.toString()
-        );
-      });
+    if (cartAction === CartAction.Decrement) {
+      this.handleCartDecrement(productId);
     }
   }
 
-  public clearCart = () => {
+  private handleCartIncrement(productId: number) {
+    this.selectedCartItems$
+      .pipe(
+        take(1),
+        map((items) => {
+          const selectedItem = items.find((item) => item.id === productId);
+          if (selectedItem) {
+            selectedItem.quantity += 1;
+          }
+          return items;
+        }),
+        tap((items) => {
+          this.selectedCartItems$.next([...items]);
+        })
+      )
+      .subscribe((selected) => this.selectedCartItems$.next(selected));
+  }
+  private handleCartDecrement(productId: number) {
+    this.selectedCartItems$
+      .pipe(
+        take(1),
+        map((items) => {
+          const selectedItem = items.find((item) => item.id === productId);
+          if (selectedItem && selectedItem.quantity > 1) {
+            selectedItem.quantity -= 1;
+          }
+          return items;
+        }),
+        tap((items) => {
+          this.selectedCartItems$.next([...items]);
+        })
+      )
+      .subscribe((selected) => this.selectedCartItems$.next(selected));
+  }
+
+  getChosenCartItemsById(id: any): Observable<CartedProductItem | undefined> {
+    return this.selectedCartItems$.pipe(
+      map((products) => products.find((product) => product.id === id)),
+      switchMap((product) => {
+        if (product) {
+          return of(product);
+        } else {
+          return of(undefined);
+        }
+      })
+    );
+  }
+
+  removeItemFromCart(itemId: number): void {
+    const updatedCartItems = this.selectedCartItems$.value.filter(
+      (item) => item.id !== itemId
+    );
+    this.updateTotalQuantityCount(CartAction.Increment, itemId);
+    this.selectedCartItems$.next(updatedCartItems);
+
+    // subscribe to changes of user selected products & update local storage
+    this.selectedCartItems$.subscribe((items) => {
+      // sync carted items with local storage
+      localStorage.setItem(this.cartItemsKey, JSON.stringify(items));
+    });
+  }
+
+  clearCart = () => {
     // global count reset
-    this.allSelectedQuantity = 0;
-    this.selectedItemsCount.next(0);
+    this.selectedItemsCount$.next(0);
 
     // chosen cart items reset
-    this.selectedCartItems = [];
     this.selectedCartItems$.next([]);
 
     // clear local storage

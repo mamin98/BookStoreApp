@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
+import { CartAction } from '../constants/cart-action';
 import { ApiPaths } from '../enums/api-paths';
-import { CartAction } from '../enums/card-action';
-import { CartedItem } from '../model/customer-cart/CartedItem';
+import { CartedProductItem } from '../model/customer-cart/CartedProductItem';
+import { SelectedItem } from '../model/customer-cart/SelectedItem';
 import { CartService } from './service/cart.service';
 
 @Component({
@@ -12,48 +13,44 @@ import { CartService } from './service/cart.service';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  quantity: number = 1;
-  chosenCartItems$ = this.cartService.getChosenCartItems();
+  quantity!: number;
+  // chosenCartItems$ = this.cartService.getChosenProducts();
+  chosenCartItems$ = this.cartService.selectedCartItems$;
 
   constructor(private cartService: CartService, private router: Router) {}
 
   // add to card incrementing quantity by 1
   // notify updateCart func with increment type
-  incrementQuantity = (item: CartedItem) => {
-    console.log('item: ', item);
+  incrementQuantity = (item: CartedProductItem) => {
     this.quantity++;
     this.updateCart(item, CartAction.Increment);
 
     // notify quantity count observer for header cart update
-    this.cartService.updateQuantityCount(CartAction.Increment);
+    // this.cartService.updateTotalQuantityCount(CartAction.Increment);
   };
 
   // decrement item quantity from card
   // notify updateCart func with increment type
-  decrementQuantity = (item: CartedItem) => {
+  decrementQuantity = (item: SelectedItem) => {
+    this.quantity--;
     this.updateCart(item, CartAction.Decrement);
 
     // notify quantity count observer for header cart update
-    this.cartService.updateQuantityCount(CartAction.Decrement);
+    // this.cartService.updateTotalQuantityCount(CartAction.Decrement);
   };
 
-  updateCart(item: CartedItem, type: CartAction) {
+  private updateCart(item: SelectedItem, cartAction: CartAction) {
     this.cartService
       .getChosenCartItemsById(item.id)
       .pipe(take(1))
       .subscribe((product) => {
         if (product) {
-          if (type === CartAction.Increment) {
-            this.cartService.addToCart(product, product.quantity + 1);
-          }
-          if (type === CartAction.Decrement && product.quantity >= 1) {
-            this.cartService.addToCart(product, product.quantity - 1);
-          }
+          this.cartService.addToCart(product, cartAction);
         }
       });
   }
 
-  removeItemFromCart(item: CartedItem) {
+  removeItemFromCart(item: SelectedItem) {
     this.cartService.removeItemFromCart(item.id);
   }
 
@@ -61,7 +58,7 @@ export class CartComponent {
   clearCart = () => this.cartService.clearCart();
 
   // total amount
-  getTotalAmount = (cartItems: CartedItem[]) =>
+  getTotalAmount = (cartItems: CartedProductItem[]) =>
     cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
 
   // handle user navigation

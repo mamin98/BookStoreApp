@@ -1,3 +1,5 @@
+import { Review } from './Review';
+
 export interface Book {
   id: number;
   title: string;
@@ -7,5 +9,6 @@ export interface Book {
   authorName: string;
   publisherName: string;
   category?: string;
-  ratings: number
+  ratings: number;
+  reviews: Review[];
 }
